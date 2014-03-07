@@ -10,10 +10,11 @@
 
 enum
 {
-    QGDirectionLeft = 0,
-    QGDirectionRight = 1,
-    QGDirectionUp = 2,
-    QGDirectionDown = 3,
+    QGDirectionNone = 0,
+    QGDirectionLeft,
+    QGDirectionRight,
+    QGDirectionUp,
+    QGDirectionDown,
 };
 
 typedef NSUInteger QGDirection;

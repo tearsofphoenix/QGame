@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		925B564318C9601800414F57 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5D18C8522E008BCA12 /* down.png */; };
+		925B564418C9601800414F57 /* down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5E18C8522E008BCA12 /* down@2x.png */; };
+		925B564518C9601800414F57 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5F18C8522E008BCA12 /* right.png */; };
+		925B564618C9601800414F57 /* right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B6018C8522E008BCA12 /* right@2x.png */; };
+		925B564718C9601800414F57 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B6118C8522E008BCA12 /* left.png */; };
+		925B564818C9601800414F57 /* left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B6218C8522E008BCA12 /* left@2x.png */; };
+		925B564918C9601800414F57 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B6318C8522E008BCA12 /* up.png */; };
+		925B564A18C9601800414F57 /* up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B6418C8522E008BCA12 /* up@2x.png */; };
+		925B564B18C9648700414F57 /* QGControlView.h in Sources */ = {isa = PBXBuildFile; fileRef = 92F52B6D18C85252008BCA12 /* QGControlView.h */; };
+		925B564C18C9648700414F57 /* QGControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F52B6E18C85252008BCA12 /* QGControlView.m */; };
 		92F52B0218C83BAC008BCA12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0118C83BAC008BCA12 /* Foundation.framework */; };
 		92F52B0418C83BAC008BCA12 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0318C83BAC008BCA12 /* CoreGraphics.framework */; };
 		92F52B0618C83BAC008BCA12 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0518C83BAC008BCA12 /* UIKit.framework */; };
@@ -479,6 +489,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				925B564318C9601800414F57 /* down.png in Resources */,
+				925B564418C9601800414F57 /* down@2x.png in Resources */,
+				925B564518C9601800414F57 /* right.png in Resources */,
+				925B564618C9601800414F57 /* right@2x.png in Resources */,
+				925B564718C9601800414F57 /* left.png in Resources */,
+				925B564818C9601800414F57 /* left@2x.png in Resources */,
+				925B564918C9601800414F57 /* up.png in Resources */,
+				925B564A18C9601800414F57 /* up@2x.png in Resources */,
 				92F52B9518C85887008BCA12 /* Images.xcassets in Resources */,
 				92F52BAF18C85B71008BCA12 /* levels.json in Resources */,
 				92F52B8B18C85886008BCA12 /* Main_iPad.storyboard in Resources */,
@@ -521,6 +539,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				925B564B18C9648700414F57 /* QGControlView.h in Sources */,
+				925B564C18C9648700414F57 /* QGControlView.m in Sources */,
 				92F52B8E18C85886008BCA12 /* QGViewController.m in Sources */,
 				92F52B8518C85886008BCA12 /* QGAppDelegate.m in Sources */,
 				92F52B9118C85886008BCA12 /* QGScene.m in Sources */,
@@ -761,6 +781,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "QGameiOS/QGameiOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -777,6 +798,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QGameiOS/QGameiOS-Prefix.pch";
 				INFOPLIST_FILE = "QGameiOS/QGameiOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -845,6 +867,7 @@
 				92F52B3218C83BAC008BCA12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92F52B3318C83BAC008BCA12 /* Build configuration list for PBXNativeTarget "QGameTests" */ = {
 			isa = XCConfigurationList;
@@ -853,6 +876,7 @@
 				92F52B3518C83BAC008BCA12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92F52BA818C85887008BCA12 /* Build configuration list for PBXNativeTarget "QGameiOS" */ = {
 			isa = XCConfigurationList;
@@ -861,6 +885,7 @@
 				92F52BAA18C85887008BCA12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92F52BAB18C85887008BCA12 /* Build configuration list for PBXNativeTarget "QGameiOSTests" */ = {
 			isa = XCConfigurationList;
@@ -869,6 +894,7 @@
 				92F52BAD18C85887008BCA12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

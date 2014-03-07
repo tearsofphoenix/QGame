@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class QGScene;
+
 @interface QGLevels : NSObject
 
-
 - (id)initWithString: (NSString *)str;
+
+- (void)buildWordForScene: (QGScene *)scene
+                    level: (NSInteger)level;
 
 @end

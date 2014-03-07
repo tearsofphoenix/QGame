@@ -8,12 +8,34 @@
 
 #import "QGViewController.h"
 #import "QGScene.h"
+#import "QGLevels.h"
+#import "QGControlView.h"
+
+@interface QGViewController ()
+{
+    QGLevels *_levels;
+    QGControlView *_controlView;
+    
+}
+@end
 
 @implementation QGViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSError *error = nil;
+    NSString *str = [NSString stringWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"levels"
+                                                                                         ofType: @"json"]
+                                               encoding: NSUTF8StringEncoding
+                                                  error: &error];
+    if (error)
+    {
+        NSLog(@"%@", error);
+    }
+    
+    _levels = [[QGLevels alloc] initWithString: str];
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
@@ -21,11 +43,19 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [QGScene sceneWithSize:skView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
+    QGScene * scene = [QGScene sceneWithSize: skView.bounds.size];
+    [scene setScaleMode: SKSceneScaleModeAspectFill];
     
     // Present the scene.
-    [skView presentScene:scene];
+    [skView presentScene: scene];
+    
+    [_levels buildWordForScene: scene
+                         level: 0];
+    
+    _controlView = [[QGControlView alloc] initWithFrame: CGRectMake(0, 0, 120, 120)];
+    [_controlView setDelegate: scene];
+    
+    [[self view] addSubview: _controlView];
 }
 
 - (BOOL)shouldAutorotate
@@ -35,17 +65,15 @@
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+    return UIInterfaceOrientationMaskPortrait;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
         return UIInterfaceOrientationMaskAllButUpsideDown;
-    } else {
+    } else
+    {
         return UIInterfaceOrientationMaskAll;
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
 }
 
 @end
