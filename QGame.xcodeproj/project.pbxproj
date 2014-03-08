@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60020F1318CB0F43004E6C6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0118C83BAC008BCA12 /* Foundation.framework */; };
+		60020F1618CB0F43004E6C6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 60020F1518CB0F43004E6C6A /* main.m */; };
+		60020F1A18CB0F43004E6C6A /* MapGenerator.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60020F1918CB0F43004E6C6A /* MapGenerator.1 */; };
 		925B564318C9601800414F57 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5D18C8522E008BCA12 /* down.png */; };
 		925B564418C9601800414F57 /* down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5E18C8522E008BCA12 /* down@2x.png */; };
 		925B564518C9601800414F57 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5F18C8522E008BCA12 /* right.png */; };
@@ -83,7 +86,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		60020F1018CB0F43004E6C6A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				60020F1A18CB0F43004E6C6A /* MapGenerator.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		60020F1218CB0F43004E6C6A /* MapGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MapGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
+		60020F1518CB0F43004E6C6A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		60020F1818CB0F43004E6C6A /* MapGenerator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MapGenerator-Prefix.pch"; sourceTree = "<group>"; };
+		60020F1918CB0F43004E6C6A /* MapGenerator.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MapGenerator.1; sourceTree = "<group>"; };
 		92F52AFE18C83BAC008BCA12 /* QGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F52B0118C83BAC008BCA12 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		92F52B0318C83BAC008BCA12 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -144,6 +164,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		60020F0F18CB0F43004E6C6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60020F1318CB0F43004E6C6A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		92F52AFB18C83BAC008BCA12 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,6 +216,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60020F1418CB0F43004E6C6A /* MapGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				60020F1518CB0F43004E6C6A /* main.m */,
+				60020F1918CB0F43004E6C6A /* MapGenerator.1 */,
+				60020F1718CB0F43004E6C6A /* Supporting Files */,
+			);
+			path = MapGenerator;
+			sourceTree = "<group>";
+		};
+		60020F1718CB0F43004E6C6A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				60020F1818CB0F43004E6C6A /* MapGenerator-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		92F52AF518C83BAC008BCA12 = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +241,7 @@
 				92F52B2618C83BAC008BCA12 /* QGameTests */,
 				92F52B7A18C85886008BCA12 /* QGameiOS */,
 				92F52BA018C85887008BCA12 /* QGameiOSTests */,
+				60020F1418CB0F43004E6C6A /* MapGenerator */,
 				92F52B0018C83BAC008BCA12 /* Frameworks */,
 				92F52AFF18C83BAC008BCA12 /* Products */,
 			);
@@ -207,6 +254,7 @@
 				92F52B1F18C83BAC008BCA12 /* QGameTests.xctest */,
 				92F52B7418C85886008BCA12 /* QGameiOS.app */,
 				92F52B9A18C85887008BCA12 /* QGameiOSTests.xctest */,
+				60020F1218CB0F43004E6C6A /* MapGenerator */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -342,6 +390,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		60020F1118CB0F43004E6C6A /* MapGenerator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60020F1D18CB0F43004E6C6A /* Build configuration list for PBXNativeTarget "MapGenerator" */;
+			buildPhases = (
+				60020F0E18CB0F43004E6C6A /* Sources */,
+				60020F0F18CB0F43004E6C6A /* Frameworks */,
+				60020F1018CB0F43004E6C6A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MapGenerator;
+			productName = MapGenerator;
+			productReference = 60020F1218CB0F43004E6C6A /* MapGenerator */;
+			productType = "com.apple.product-type.tool";
+		};
 		92F52AFD18C83BAC008BCA12 /* QGame */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92F52B3018C83BAC008BCA12 /* Build configuration list for PBXNativeTarget "QGame" */;
@@ -447,6 +512,7 @@
 				92F52B1E18C83BAC008BCA12 /* QGameTests */,
 				92F52B7318C85886008BCA12 /* QGameiOS */,
 				92F52B9918C85887008BCA12 /* QGameiOSTests */,
+				60020F1118CB0F43004E6C6A /* MapGenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -515,6 +581,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		60020F0E18CB0F43004E6C6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60020F1618CB0F43004E6C6A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		92F52AFA18C83BAC008BCA12 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -622,6 +696,35 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		60020F1B18CB0F43004E6C6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MapGenerator/MapGenerator-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		60020F1C18CB0F43004E6C6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MapGenerator/MapGenerator-Prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		92F52B2E18C83BAC008BCA12 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -849,6 +952,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		60020F1D18CB0F43004E6C6A /* Build configuration list for PBXNativeTarget "MapGenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60020F1B18CB0F43004E6C6A /* Debug */,
+				60020F1C18CB0F43004E6C6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		92F52AF918C83BAC008BCA12 /* Build configuration list for PBXProject "QGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
