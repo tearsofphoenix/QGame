@@ -9,7 +9,6 @@
 #import "QGLevels.h"
 #import "QGScene.h"
 
-#define QGTileWidth 16
 #define QGWallColor [SKColor colorWithRed:0.8 green:0.99 blue:0.44 alpha:1]
 #define QGRiverColor [SKColor colorWithRed:0.24 green:0.44 blue:0.65 alpha:1]
 
@@ -56,6 +55,8 @@
     
     CGFloat originY = (546 - wallHeight * QGTileWidth) / 2;
     
+    [scene setCurrentLevelMap: map];
+    
     [map enumerateObjectsUsingBlock: (^(NSString *iLooper, NSUInteger row, BOOL *stop)
                                       {
                                           const char *pChar = [iLooper cStringUsingEncoding: NSUTF8StringEncoding];
@@ -79,18 +80,6 @@
                                                       CGSize size = CGSizeMake(QGTileWidth, QGTileWidth);
                                                       node = [SKSpriteNode spriteNodeWithColor: QGWallColor
                                                                                           size: size];
-                                                      
-                                                      SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize: size];
-                                                      [body setCategoryBitMask: GRWallCategory];
-                                                      [body setCollisionBitMask: GRPlayerCategory];
-                                                      [body setContactTestBitMask: GRPlayerCategory];
-                                                      [body setFriction: 0];
-                                                      [body setRestitution: 0];
-                                                      [body setDynamic: NO];
-                                                      [body setUsesPreciseCollisionDetection: YES];
-                                                      
-                                                      [node setPhysicsBody: body];
-                                                      
                                                       break;
                                                   }
                                                   case '2':
@@ -114,15 +103,6 @@
                                                       CGSize size = CGSizeMake(QGTileWidth, QGTileWidth);
                                                       node = [SKSpriteNode spriteNodeWithColor: QGRiverColor
                                                                                           size: size];
-                                                      
-                                                      SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize: size];
-                                                      [body setCategoryBitMask: GRRiverCategory];
-                                                      [body setCollisionBitMask: GRPlayerCategory];
-                                                      [body setContactTestBitMask: GRPlayerCategory];
-
-                                                      [body setDynamic: NO];
-                                                      
-                                                      [node setPhysicsBody: body];
                                                       break;
                                                   }
                                                   default:
@@ -147,6 +127,9 @@
     NSInteger px = [playerInfo[@"x"] integerValue];
     NSInteger py = [playerInfo[@"y"] integerValue];
     
+    [scene setPlayerX: px];
+    [scene setPlayerY: py];
+    
     SKSpriteNode *playerNode = [scene playerNode];
     if (!playerNode)
     {
@@ -154,19 +137,6 @@
         playerNode =  [SKSpriteNode spriteNodeWithColor: [UIColor whiteColor]
                                                    size: size];
         [playerNode setName: @"player"];
-        SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize: CGSizeMake(QGTileWidth - 2, QGTileWidth - 2)];
-        [body setCategoryBitMask: GRPlayerCategory];
-        [body setCollisionBitMask: GRWallCategory | GRRiverCategory];
-        [body setContactTestBitMask: GRWallCategory | GRRiverCategory];
-        [body setAffectedByGravity: NO];
-        [body setMass: 0];
-        [body setLinearDamping: 0];
-        [body setAllowsRotation: NO];
-        [body setRestitution: 0];
-        [body setFriction: 0];
-        [body setDensity: 1000];
-        [body setUsesPreciseCollisionDetection: YES];
-        
         [scene setPlayerNode: playerNode];
     }
     

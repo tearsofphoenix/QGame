@@ -15,7 +15,6 @@
 		925B564818C9601800414F57 /* left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B6218C8522E008BCA12 /* left@2x.png */; };
 		925B564918C9601800414F57 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B6318C8522E008BCA12 /* up.png */; };
 		925B564A18C9601800414F57 /* up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B6418C8522E008BCA12 /* up@2x.png */; };
-		925B564B18C9648700414F57 /* QGControlView.h in Sources */ = {isa = PBXBuildFile; fileRef = 92F52B6D18C85252008BCA12 /* QGControlView.h */; };
 		925B564C18C9648700414F57 /* QGControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F52B6E18C85252008BCA12 /* QGControlView.m */; };
 		92F52B0218C83BAC008BCA12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0118C83BAC008BCA12 /* Foundation.framework */; };
 		92F52B0418C83BAC008BCA12 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0318C83BAC008BCA12 /* CoreGraphics.framework */; };
@@ -539,7 +538,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				925B564B18C9648700414F57 /* QGControlView.h in Sources */,
 				925B564C18C9648700414F57 /* QGControlView.m in Sources */,
 				92F52B8E18C85886008BCA12 /* QGViewController.m in Sources */,
 				92F52B8518C85886008BCA12 /* QGAppDelegate.m in Sources */,

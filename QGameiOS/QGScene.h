@@ -17,5 +17,7 @@ extern const uint32_t planetCategory;
 @interface QGScene : SKScene<QGControlViewDelegate>
 
 @property (nonatomic, weak) SKSpriteNode *playerNode;
-
+@property (nonatomic) NSInteger playerX;
+@property (nonatomic) NSInteger playerY;
+@property (nonatomic, retain) NSArray *currentLevelMap;
 @end

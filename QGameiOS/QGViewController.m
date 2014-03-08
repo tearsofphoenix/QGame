@@ -13,9 +13,7 @@
 
 @interface QGViewController ()
 {
-    QGLevels *_levels;
     QGControlView *_controlView;
-    
 }
 @end
 
@@ -25,18 +23,6 @@
 {
     [super viewDidLoad];
     
-    NSError *error = nil;
-    NSString *str = [NSString stringWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"levels"
-                                                                                         ofType: @"json"]
-                                               encoding: NSUTF8StringEncoding
-                                                  error: &error];
-    if (error)
-    {
-        NSLog(@"%@", error);
-    }
-    
-    _levels = [[QGLevels alloc] initWithString: str];
-
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
@@ -48,9 +34,6 @@
     
     // Present the scene.
     [skView presentScene: scene];
-    
-    [_levels buildWordForScene: scene
-                         level: 0];
     
     _controlView = [[QGControlView alloc] initWithFrame: CGRectMake(0, 0, 120, 120)];
     [_controlView setDelegate: scene];
@@ -74,6 +57,11 @@
     {
         return UIInterfaceOrientationMaskAll;
     }
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 @end
