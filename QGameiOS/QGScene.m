@@ -47,6 +47,30 @@
     return self;
 }
 
+static NSTimeInterval timeForLength(CGFloat length)
+{
+    return length / (4 * QGTileWidth) * 0.3;
+}
+
+static SKAction *actionForXY(CGFloat x, CGFloat y)
+{
+    NSTimeInterval time = 0;
+    CGFloat absx = fabsf(x);
+    CGFloat absy = fabsf(y);
+    
+    if (absx > 0)
+    {
+        time = timeForLength(absx);
+    }else
+    {
+        time = timeForLength(absy);
+    }
+    
+    return [SKAction moveByX: x
+                           y: y
+                    duration: time];
+}
+
 - (void)_perform
 {
     switch (_direction)
@@ -69,10 +93,7 @@
                     {
                         if (yLooper - 1 > _playerY)
                         {
-                            SKAction *action = [SKAction moveByX: 0
-                                                               y: (yLooper - 1 - _playerY) * QGTileWidth
-                                                        duration: 0.3];
-                            [_playerNode runAction: action];
+                            [_playerNode runAction: actionForXY(0, (yLooper - 1 - _playerY) * QGTileWidth)];
                             
                             _playerY = yLooper - 1;
                         }
@@ -81,10 +102,7 @@
                     }
                     case '2':
                     {
-                        SKAction *action = [SKAction moveByX: 0
-                                                           y: (yLooper - _playerY) * QGTileWidth
-                                                    duration: 0.3];
-                        [_playerNode runAction: action
+                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * QGTileWidth)
                                     completion: (^
                                                  {
                                                      [self enterLevel: _currentLevel + 1];
@@ -133,10 +151,7 @@
                     {
                         if (yLooper + 1 < _playerY)
                         {
-                            SKAction *action = [SKAction moveByX: 0
-                                                               y: (yLooper + 1 - _playerY) * QGTileWidth
-                                                        duration: 0.3];
-                            [_playerNode runAction: action];
+                            [_playerNode runAction: actionForXY(0, (yLooper + 1 - _playerY) * QGTileWidth)];
                             _playerY = yLooper + 1;
                         }
                         willBreak = YES;
@@ -145,10 +160,7 @@
                     }
                     case '2':
                     {
-                        SKAction *action = [SKAction moveByX: 0
-                                                           y: (yLooper - _playerY) * QGTileWidth
-                                                    duration: 0.3];
-                        [_playerNode runAction: action
+                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * QGTileWidth)
                                     completion: (^
                                                  {
                                                      [self enterLevel: _currentLevel + 1];
@@ -194,10 +206,11 @@
                     {
                         if (xLooper + 1 < _playerX)
                         {
-                            SKAction *action = [SKAction moveByX: (xLooper + 1 - _playerX) * QGTileWidth
-                                                               y: 0
-                                                        duration: 0.3];
-                            [_playerNode runAction: action];
+                            [_playerNode runAction: actionForXY((xLooper + 1 - _playerX) * QGTileWidth, 0)
+                                        completion: (^
+                                                     {
+                                
+                                                     })];
                             _playerX = xLooper + 1;
                         }
                         willBreak = YES;
@@ -205,11 +218,7 @@
                     }
                     case '2':
                     {
-                        
-                        SKAction *action = [SKAction moveByX: (xLooper - _playerX) * QGTileWidth
-                                                           y: 0
-                                                    duration: 0.3];
-                        [_playerNode runAction: action
+                        [_playerNode runAction: actionForXY((xLooper - _playerX) * QGTileWidth, 0)
                                     completion: (^
                                                  {
                                                      [self enterLevel: _currentLevel + 1];
@@ -257,10 +266,7 @@
                     {
                         if (xLooper - 1 > _playerX)
                         {
-                            SKAction *action = [SKAction moveByX: (xLooper - 1 - _playerX) * QGTileWidth
-                                                               y: 0
-                                                        duration: 0.3];
-                            [_playerNode runAction: action];
+                            [_playerNode runAction: actionForXY((xLooper - 1 - _playerX) * QGTileWidth, 0)];
                             _playerX = xLooper - 1;
                         }
                         willBreak = YES;
@@ -268,11 +274,7 @@
                     }
                     case '2':
                     {
-                        
-                        SKAction *action = [SKAction moveByX: (xLooper - _playerX) * QGTileWidth
-                                                           y: 0
-                                                    duration: 0.3];
-                        [_playerNode runAction: action
+                        [_playerNode runAction: actionForXY((xLooper - _playerX) * QGTileWidth, 0)
                                     completion: (^
                                                  {
                                                      [self enterLevel: _currentLevel + 1];
