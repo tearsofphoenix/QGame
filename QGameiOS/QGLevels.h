@@ -16,7 +16,6 @@
 
 - (id)initWithString: (NSString *)str;
 
-- (void)buildWordForScene: (QGScene *)scene
-                    level: (NSInteger)level;
+- (NSDictionary *)levelInfoAtIndex: (NSInteger)index;
 
 @end

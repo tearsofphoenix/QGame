@@ -9,10 +9,13 @@
 #import <SpriteKit/SpriteKit.h>
 #import "QGControlView.h"
 
-extern const uint32_t GRWallCategory;
-extern const uint32_t GRRiverCategory;
-extern const uint32_t GRPlayerCategory;
-extern const uint32_t planetCategory;
+@class QGScene;
+@protocol QGSceneDelegate <NSObject>
+
+- (void)didScene: (QGScene *)scene
+    enteredLevel: (NSInteger)index;
+
+@end
 
 @interface QGScene : SKScene<QGControlViewDelegate>
 
@@ -20,4 +23,10 @@ extern const uint32_t planetCategory;
 @property (nonatomic) NSInteger playerX;
 @property (nonatomic) NSInteger playerY;
 @property (nonatomic, retain) NSArray *currentLevelMap;
+@property (nonatomic, weak) id<QGSceneDelegate> delegate;
+
+- (void)enterLevel: (NSInteger)index;
+
+- (NSDictionary *)levelInfoAtIndex: (NSInteger)index;
+
 @end
