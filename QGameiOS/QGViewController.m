@@ -61,7 +61,7 @@
 
     [scene setScaleMode: SKSceneScaleModeAspectFill];
     [scene setDelegate: self];
-    [scene enterLevel: 0];
+    [scene enterLevel: 2];
     
     // Present the scene.
     [skView presentScene: scene];

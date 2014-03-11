@@ -195,12 +195,42 @@ static void PrintMap(NSInteger stepLength)
     
 }
 
+
+static void convert(NSString *str)
+{
+    NSArray *map = [str componentsSeparatedByString: @"\n"];
+    //NSLog(@"%@", map);
+    
+    NSInteger width = [map[0] length];
+    NSInteger height = [map count];
+    
+    NSMutableArray *newMap = [NSMutableArray array];
+    
+    for(NSInteger i = 0;i < width; ++i)
+    {
+        NSMutableString *str = [NSMutableString stringWithString: @""];
+        for (NSInteger j = 0; j < height; ++j)
+        {
+            const char *cstr = [map[j] cStringUsingEncoding: NSUTF8StringEncoding];
+            [str appendFormat: @"%c",  cstr[i]];
+        }
+        
+        [newMap addObject: str];
+    }
+    
+    NSLog(@"%@", newMap);
+    NSLog(@"%@", [newMap componentsJoinedByString: @"\\n"]);
+}
+
 int main(int argc, const char * argv[])
 {
 
     @autoreleasepool
     {
-        PrintMap(5);
+        //PrintMap(5);
+        NSString *str = @"0000000000000000000\n0000000000000000000\n1111111112111111111\n1000000000000000001\n1000000000000000011\n1000000010000000001\n1000000000000000001\n1000000000000000001\n1111111111111111111\n0000000000000000000\n0000000000000000000\n0000000000000000000";
+        convert(str);
+        
     }
     return 0;
 }
