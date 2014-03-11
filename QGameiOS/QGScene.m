@@ -406,10 +406,6 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     NSArray *map = [wordInfo componentsSeparatedByString: @"\n"];
 
     CGFloat originX = [info[@"ox"] floatValue];
-    if (originX < 0)
-    {
-        originX = 0;
-    }
     
     CGFloat originY = [info[@"oy"] floatValue];
     
@@ -426,12 +422,12 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                               SKSpriteNode *node = nil;
                                               switch (cLooper)
                                               {
-                                                  case '0':
+                                                  case QGEmptyType:
                                                   {
                                                       //empty
                                                       break;
                                                   }
-                                                  case '1':
+                                                  case QGWallType:
                                                   {
                                                       //wall solid
                                                       //
@@ -440,7 +436,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                                                                           size: size];
                                                       break;
                                                   }
-                                                  case '2':
+                                                  case QGEndType:
                                                   {
                                                       //out end
                                                       break;
@@ -455,7 +451,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                                       //door solid
                                                       break;
                                                   }
-                                                  case '5':
+                                                  case QGRiverType:
                                                   {
                                                       //river
                                                       CGSize size = CGSizeMake(QGTileWidth, QGTileWidth);
