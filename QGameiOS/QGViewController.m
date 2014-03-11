@@ -30,7 +30,7 @@
     
     [[self view] addSubview: _controlView];
     UIFont *font = [UIFont fontWithName: @"HelveticaNeue-Light" //@"Baskerville-SemiBoldItalic"
-                                   size: 20];
+                                   size: 18.5];
     
     _titleLabel = [[UILabel alloc] initWithFrame: CGRectMake(20, 0, 280, 60)];
     [_titleLabel setBackgroundColor: [UIColor clearColor]];
@@ -61,7 +61,7 @@
 
     [scene setScaleMode: SKSceneScaleModeAspectFill];
     [scene setDelegate: self];
-    [scene enterLevel: 3];
+    [scene enterLevel: 4];
     
     // Present the scene.
     [skView presentScene: scene];
