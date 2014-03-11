@@ -17,6 +17,8 @@
 #define QGEndType   '2'
 #define QGRiverType '5'
 
+#define QGTileWidth 16
+
 
 @interface QGScene ()<SKPhysicsContactDelegate>
 {
@@ -79,6 +81,8 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 
 - (void)_perform
 {
+    CGFloat tileWidth = QGTileWidth;
+    
     switch (_direction)
     {
         case QGDirectionUp:
@@ -99,7 +103,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     {
                         if (yLooper - 1 > _playerY)
                         {
-                            [_playerNode runAction: actionForXY(0, (yLooper - 1 - _playerY) * QGTileWidth)];
+                            [_playerNode runAction: actionForXY(0, (yLooper - 1 - _playerY) * tileWidth)];
                             
                             _playerY = yLooper - 1;
                         }
@@ -108,7 +112,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     }
                     case QGEndType:
                     {
-                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * QGTileWidth)
+                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * tileWidth)
                                     completion: (^
                                                  {
                                                      [self enterLevel: _currentLevel + 1];
@@ -125,7 +129,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     }
                     case QGRiverType:
                     {
-                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * QGTileWidth)
+                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * tileWidth)
                                     completion: (^
                                                  {
                                                      [self _dieInRiver];
@@ -170,7 +174,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     {
                         if (yLooper + 1 < _playerY)
                         {
-                            [_playerNode runAction: actionForXY(0, (yLooper + 1 - _playerY) * QGTileWidth)];
+                            [_playerNode runAction: actionForXY(0, (yLooper + 1 - _playerY) * tileWidth)];
                             _playerY = yLooper + 1;
                         }
                         willBreak = YES;
@@ -179,7 +183,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     }
                     case QGEndType:
                     {
-                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * QGTileWidth)
+                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * tileWidth)
                                     completion: (^
                                                  {
                                                      [self enterLevel: _currentLevel + 1];
@@ -196,7 +200,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     }
                     case QGRiverType:
                     {
-                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * QGTileWidth)
+                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * tileWidth)
                                     completion: (^
                                                  {
                                                      [self _dieInRiver];
@@ -235,7 +239,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     {
                         if (xLooper + 1 < _playerX)
                         {
-                            [_playerNode runAction: actionForXY((xLooper + 1 - _playerX) * QGTileWidth, 0)
+                            [_playerNode runAction: actionForXY((xLooper + 1 - _playerX) * tileWidth, 0)
                                         completion: (^
                                                      {
                                 
@@ -247,7 +251,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     }
                     case QGEndType:
                     {
-                        [_playerNode runAction: actionForXY((xLooper - _playerX) * QGTileWidth, 0)
+                        [_playerNode runAction: actionForXY((xLooper - _playerX) * tileWidth, 0)
                                     completion: (^
                                                  {
                                                      [self enterLevel: _currentLevel + 1];
@@ -263,7 +267,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     }
                     case QGRiverType:
                     {
-                        [_playerNode runAction: actionForXY((xLooper - _playerX) * QGTileWidth, 0)
+                        [_playerNode runAction: actionForXY((xLooper - _playerX) * tileWidth, 0)
                                     completion: (^
                                                  {
                                                      [self _dieInRiver];
@@ -306,7 +310,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     {
                         if (xLooper - 1 > _playerX)
                         {
-                            [_playerNode runAction: actionForXY((xLooper - 1 - _playerX) * QGTileWidth, 0)];
+                            [_playerNode runAction: actionForXY((xLooper - 1 - _playerX) * tileWidth, 0)];
                             _playerX = xLooper - 1;
                         }
                         willBreak = YES;
@@ -314,7 +318,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     }
                     case QGEndType:
                     {
-                        [_playerNode runAction: actionForXY((xLooper - _playerX) * QGTileWidth, 0)
+                        [_playerNode runAction: actionForXY((xLooper - _playerX) * tileWidth, 0)
                                     completion: (^
                                                  {
                                                      [self enterLevel: _currentLevel + 1];
@@ -330,7 +334,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     }
                     case QGRiverType:
                     {
-                        [_playerNode runAction: actionForXY((xLooper - _playerX) * QGTileWidth, 0)
+                        [_playerNode runAction: actionForXY((xLooper - _playerX) * tileWidth, 0)
                                     completion: (^
                                                  {
                                                      [self _dieInRiver];
@@ -411,6 +415,8 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     
     [scene setCurrentLevelMap: map];
     
+    CGFloat tileWidth = QGTileWidth;
+    
     [map enumerateObjectsUsingBlock: (^(NSString *iLooper, NSUInteger row, BOOL *stop)
                                       {
                                           const char *pChar = [iLooper cStringUsingEncoding: NSUTF8StringEncoding];
@@ -431,7 +437,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                                   {
                                                       //wall solid
                                                       //
-                                                      CGSize size = CGSizeMake(QGTileWidth, QGTileWidth);
+                                                      CGSize size = CGSizeMake(tileWidth, tileWidth);
                                                       node = [SKSpriteNode spriteNodeWithColor: QGWallColor
                                                                                           size: size];
                                                       break;
@@ -454,7 +460,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                                   case QGRiverType:
                                                   {
                                                       //river
-                                                      CGSize size = CGSizeMake(QGTileWidth, QGTileWidth);
+                                                      CGSize size = CGSizeMake(tileWidth, tileWidth);
                                                       node = [SKSpriteNode spriteNodeWithColor: QGRiverColor
                                                                                           size: size];
                                                       break;
@@ -468,7 +474,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                               
                                               if (node)
                                               {
-                                                  [node setPosition: CGPointMake(originX + col * QGTileWidth, row * QGTileWidth + originY)];
+                                                  [node setPosition: CGPointMake(originX + col * tileWidth, row * tileWidth + originY)];
                                                   [scene addChild: node];
                                               }
                                               
@@ -487,14 +493,14 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     SKSpriteNode *playerNode = [scene playerNode];
     if (!playerNode)
     {
-        CGSize size = CGSizeMake(QGTileWidth - 4, QGTileWidth - 4);
+        CGSize size = CGSizeMake(tileWidth - 4, tileWidth - 4);
         playerNode =  [SKSpriteNode spriteNodeWithColor: [UIColor whiteColor]
                                                    size: size];
         [playerNode setName: @"player"];
         [scene setPlayerNode: playerNode];
     }
     
-    [playerNode setPosition: CGPointMake(originX + px * QGTileWidth, originY + py * QGTileWidth)];
+    [playerNode setPosition: CGPointMake(originX + px * tileWidth, originY + py * tileWidth)];
     
     SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize: [playerNode size]];
     [body setAffectedByGravity: NO];

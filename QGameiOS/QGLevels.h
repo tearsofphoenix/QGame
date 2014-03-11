@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define QGTileWidth 16
-
 @class QGScene;
 
 @interface QGLevels : NSObject
