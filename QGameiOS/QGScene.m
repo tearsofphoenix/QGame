@@ -8,6 +8,7 @@
 
 #import "QGScene.h"
 #import "QGLevels.h"
+#import "QGMusicManager.h"
 
 #define QGWallColor [SKColor colorWithRed:0.8 green:0.99 blue:0.44 alpha:1]
 #define QGRiverColor [SKColor colorWithRed:0.24 green:0.44 blue:0.65 alpha:1]
@@ -507,6 +508,8 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     [playerNode setPhysicsBody: body];
     
     [scene addChild: playerNode];
+    
+    [[QGMusicManager manager] playAudio: @"violin"];
 }
 
 @end
