@@ -12,6 +12,12 @@
 #define QGWallColor [SKColor colorWithRed:0.8 green:0.99 blue:0.44 alpha:1]
 #define QGRiverColor [SKColor colorWithRed:0.24 green:0.44 blue:0.65 alpha:1]
 
+#define QGEmptyType '0'
+#define QGWallType  '1'
+#define QGEndType   '2'
+#define QGRiverType '5'
+
+
 @interface QGScene ()<SKPhysicsContactDelegate>
 {
     QGLevels *_levels;
@@ -89,7 +95,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                 //
                 switch (blockType)
                 {
-                    case '1':
+                    case QGWallType:
                     {
                         if (yLooper - 1 > _playerY)
                         {
@@ -100,7 +106,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                         willBreak = YES;
                         break;
                     }
-                    case '2':
+                    case QGEndType:
                     {
                         [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * QGTileWidth)
                                     completion: (^
@@ -115,6 +121,19 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     }
                     case '3':
                     {
+                        break;
+                    }
+                    case QGRiverType:
+                    {
+                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * QGTileWidth)
+                                    completion: (^
+                                                 {
+                                                     [self _dieInRiver];
+                                                 })];
+                        
+                        _playerY = yLooper;
+                        
+                        willBreak = YES;
                         break;
                     }
                     default:
@@ -137,7 +156,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
             NSInteger yLooper = _playerY;
             char blockType = '\0';
             
-            for (yLooper = _playerY; yLooper > 0; --yLooper)
+            for (yLooper = _playerY; yLooper >= 0; --yLooper)
             {
                 const char *str = [_currentLevelMap[yLooper] cStringUsingEncoding: NSUTF8StringEncoding];
                 blockType = str[_playerX];
@@ -147,7 +166,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                 //
                 switch (blockType)
                 {
-                    case '1':
+                    case QGWallType:
                     {
                         if (yLooper + 1 < _playerY)
                         {
@@ -158,7 +177,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                         
                         break;
                     }
-                    case '2':
+                    case QGEndType:
                     {
                         [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * QGTileWidth)
                                     completion: (^
@@ -173,6 +192,16 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     }
                     case '3':
                     {
+                        break;
+                    }
+                    case QGRiverType:
+                    {
+                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * QGTileWidth)
+                                    completion: (^
+                                                 {
+                                                     [self _dieInRiver];
+                                                 })];
+                        willBreak = YES;
                         break;
                     }
                     default:
@@ -202,7 +231,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                 
                 switch (blockType)
                 {
-                    case '1':
+                    case QGWallType:
                     {
                         if (xLooper + 1 < _playerX)
                         {
@@ -216,7 +245,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                         willBreak = YES;
                         break;
                     }
-                    case '2':
+                    case QGEndType:
                     {
                         [_playerNode runAction: actionForXY((xLooper - _playerX) * QGTileWidth, 0)
                                     completion: (^
@@ -230,6 +259,17 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     }
                     case '3':
                     {
+                        break;
+                    }
+                    case QGRiverType:
+                    {
+                        [_playerNode runAction: actionForXY((xLooper - _playerX) * QGTileWidth, 0)
+                                    completion: (^
+                                                 {
+                                                     [self _dieInRiver];
+                                                 })];
+                        willBreak = YES;
+                        
                         break;
                     }
                     default:
@@ -262,7 +302,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 
                 switch (blockType)
                 {
-                    case '1':
+                    case QGWallType:
                     {
                         if (xLooper - 1 > _playerX)
                         {
@@ -272,7 +312,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                         willBreak = YES;
                         break;
                     }
-                    case '2':
+                    case QGEndType:
                     {
                         [_playerNode runAction: actionForXY((xLooper - _playerX) * QGTileWidth, 0)
                                     completion: (^
@@ -286,6 +326,17 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     }
                     case '3':
                     {
+                        break;
+                    }
+                    case QGRiverType:
+                    {
+                        [_playerNode runAction: actionForXY((xLooper - _playerX) * QGTileWidth, 0)
+                                    completion: (^
+                                                 {
+                                                     [self _dieInRiver];
+                                                 })];
+                        willBreak = YES;
+                        
                         break;
                     }
                     default:
@@ -340,6 +391,11 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 - (NSDictionary *)levelInfoAtIndex: (NSInteger)index
 {
     return [_levels levelInfoAtIndex: index];
+}
+
+- (void)_dieInRiver
+{
+    [self enterLevel: _currentLevel];
 }
 
 - (void)buildWordForScene: (QGScene *)scene
