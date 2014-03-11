@@ -28,7 +28,7 @@
     
     _controlView = [[QGControlView alloc] initWithFrame: CGRectMake(0, 0, 120, 120)];
     
-    //[[self view] addSubview: _controlView];
+    [[self view] addSubview: _controlView];
     UIFont *font = [UIFont fontWithName: @"HelveticaNeue-Light" //@"Baskerville-SemiBoldItalic"
                                    size: 20];
     
