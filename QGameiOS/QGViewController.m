@@ -40,7 +40,7 @@
     [_titleLabel setNumberOfLines: 0];
     [[self view] addSubview: _titleLabel];
     
-    _contentLabel = [[UILabel alloc] initWithFrame: CGRectMake(20, 400, 280, 60)];
+    _contentLabel = [[UILabel alloc] initWithFrame: CGRectMake(10, 400, 300, 60)];
     [_contentLabel setNumberOfLines: 0];
     [_contentLabel setBackgroundColor: [UIColor clearColor]];
     [_contentLabel setFont: font];
@@ -61,7 +61,7 @@
 
     [scene setScaleMode: SKSceneScaleModeAspectFill];
     [scene setDelegate: self];
-    [scene enterLevel: 4];
+    [scene enterLevel: 5];
     
     // Present the scene.
     [skView presentScene: scene];
