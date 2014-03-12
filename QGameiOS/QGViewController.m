@@ -16,6 +16,7 @@
     QGControlView *_controlView;
     UILabel *_titleLabel;
     UILabel *_contentLabel;
+    UILabel *_messageLabel;
 }
 @end
 
@@ -49,6 +50,17 @@
     
     [[self view] addSubview: _contentLabel];
 
+    //
+    _messageLabel = [[UILabel alloc] initWithFrame: CGRectMake(10, 400, 300, 60)];
+    [_messageLabel setNumberOfLines: 0];
+    [_messageLabel setBackgroundColor: [UIColor clearColor]];
+    [_messageLabel setFont: [UIFont fontWithName: @"Baskerville-SemiBoldItalic"
+                                            size: 18]];
+    [_messageLabel setTextAlignment: NSTextAlignmentCenter];
+    [_messageLabel setTextColor: [UIColor whiteColor]];
+    
+    [[self view] addSubview: _messageLabel];
+
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
@@ -61,7 +73,7 @@
 
     [scene setScaleMode: SKSceneScaleModeAspectFill];
     [scene setDelegate: self];
-    [scene enterLevel: 10];
+    [scene enterLevel: 13];
     
     // Present the scene.
     [skView presentScene: scene];
@@ -101,6 +113,12 @@
     frame.origin.x = cx;
     frame.origin.y = cy;
     [_controlView setFrame: frame];
+}
+
+- (void)scene: (QGScene *)scene
+  showMessage: (NSString *)message
+{
+    [_messageLabel setText: message];
 }
 
 - (BOOL)shouldAutorotate

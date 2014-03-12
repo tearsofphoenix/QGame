@@ -21,7 +21,8 @@
         [[self layer] setCornerRadius: 60];
         [self setClipsToBounds: YES];
         
-        UIButton *upButton = [[UIButton alloc] initWithFrame: CGRectMake(40, 0, 40, 40)];
+        UIButton *upButton = [[UIButton alloc] initWithFrame: CGRectMake(40, 0, 48, 48)];
+//        [upButton setBackgroundColor: [UIColor redColor]];
         [upButton setShowsTouchWhenHighlighted: YES];
         [upButton addTarget: self
                      action: @selector(_handleUpButtonTappedEvent:)
@@ -30,7 +31,8 @@
                   forState: UIControlStateNormal];
         [self addSubview: upButton];
         
-        UIButton *leftButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 40, 40, 40)];
+        UIButton *leftButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 40, 48, 48)];
+//        [leftButton setBackgroundColor: [UIColor greenColor]];
         [leftButton setShowsTouchWhenHighlighted: YES];
         [leftButton addTarget: self
                        action: @selector(_handleLeftButtonTappedEvent:)
@@ -39,7 +41,8 @@
                     forState: UIControlStateNormal];
         [self addSubview: leftButton];
         
-        UIButton *rightButton = [[UIButton alloc] initWithFrame: CGRectMake(80, 40, 40, 40)];
+        UIButton *rightButton = [[UIButton alloc] initWithFrame: CGRectMake(80, 40, 48, 48)];
+//        [rightButton setBackgroundColor: [UIColor blueColor]];
         [rightButton setShowsTouchWhenHighlighted: YES];
         [rightButton addTarget: self
                         action: @selector(_handleRightButtonTappedEvent:)
@@ -48,7 +51,7 @@
                      forState: UIControlStateNormal];
         [self addSubview: rightButton];
         
-        UIButton *downButton = [[UIButton alloc] initWithFrame: CGRectMake(40, 80, 40, 40)];
+        UIButton *downButton = [[UIButton alloc] initWithFrame: CGRectMake(40, 80, 48, 48)];
         [downButton setShowsTouchWhenHighlighted: YES];
         [downButton addTarget: self
                        action: @selector(_handleDownButtonTappedEvent:)

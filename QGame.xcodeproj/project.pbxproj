@@ -16,6 +16,7 @@
 		92273E6C18CFFB6D00EC2E25 /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 92273E6818CFFB6D00EC2E25 /* key.png */; };
 		92273E6D18CFFB6D00EC2E25 /* levels.json in Resources */ = {isa = PBXBuildFile; fileRef = 92273E6918CFFB6D00EC2E25 /* levels.json */; };
 		92273E6E18CFFB6D00EC2E25 /* violin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 92273E6A18CFFB6D00EC2E25 /* violin.m4a */; };
+		92273E8118D0342400EC2E25 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 92273E7F18D0342400EC2E25 /* message.png */; };
 		925B564318C9601800414F57 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5D18C8522E008BCA12 /* down.png */; };
 		925B564418C9601800414F57 /* down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5E18C8522E008BCA12 /* down@2x.png */; };
 		925B564518C9601800414F57 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5F18C8522E008BCA12 /* right.png */; };
@@ -90,6 +91,7 @@
 		92273E6818CFFB6D00EC2E25 /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key.png; sourceTree = "<group>"; };
 		92273E6918CFFB6D00EC2E25 /* levels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = levels.json; sourceTree = "<group>"; };
 		92273E6A18CFFB6D00EC2E25 /* violin.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = violin.m4a; sourceTree = "<group>"; };
+		92273E7F18D0342400EC2E25 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
 		927E613018CD4AD000AD120F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		92DC066618CEE5D80005C638 /* QGMusicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGMusicManager.h; sourceTree = "<group>"; };
 		92DC066718CEE5D80005C638 /* QGMusicManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGMusicManager.m; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		92273E6618CFFB6D00EC2E25 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				92273E7F18D0342400EC2E25 /* message.png */,
 				92273E6718CFFB6D00EC2E25 /* door.png */,
 				92273E6818CFFB6D00EC2E25 /* key.png */,
 				92273E6918CFFB6D00EC2E25 /* levels.json */,
@@ -511,6 +514,7 @@
 				92F52B8818C85886008BCA12 /* Main_iPhone.storyboard in Resources */,
 				92273E6D18CFFB6D00EC2E25 /* levels.json in Resources */,
 				92F52B7F18C85886008BCA12 /* InfoPlist.strings in Resources */,
+				92273E8118D0342400EC2E25 /* message.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

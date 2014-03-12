@@ -15,6 +15,9 @@
 - (void)didScene: (QGScene *)scene
     enteredLevel: (NSInteger)index;
 
+- (void)scene: (QGScene *)scene
+  showMessage: (NSString *)message;
+
 @end
 
 @interface QGScene : SKScene<QGControlViewDelegate>

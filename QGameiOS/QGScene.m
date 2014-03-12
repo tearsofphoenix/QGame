@@ -31,10 +31,12 @@
 }
 
 @property (nonatomic) QGDirection direction;
-@property (nonatomic, strong) SKTexture *texture;
 @property (nonatomic) BOOL doorOpenedInCurrentLevel;
 @property (nonatomic, weak) SKSpriteNode *keyNode;
 @property (nonatomic, strong) NSMutableSet *doorNodes;
+@property (nonatomic, strong) NSMutableDictionary *messageNodes;
+@property (nonatomic, strong) SKTexture *keyTexture;
+@property (nonatomic, strong) SKTexture *doorTexture;
 
 @end
 
@@ -60,8 +62,10 @@
         //[self setBackgroundColor: [SKColor colorWithRed:0.27 green:0.27 blue:0.27 alpha:1]];
         [self setBackgroundColor: [UIColor blackColor]];
         
-        _texture = [SKTexture textureWithImageNamed: @"sprites"];
         _doorNodes = [[NSMutableSet alloc] init];
+        _messageNodes = [[NSMutableDictionary alloc] init];
+        _keyTexture = [SKTexture textureWithImageNamed: @"key"];
+        _doorTexture = [SKTexture textureWithImageNamed: @"door"];
     }
     
     return self;
@@ -104,9 +108,24 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     }
 }
 
+- (void)_checkIfNeedShowMessageAtX: (NSInteger)x
+                                 y: (NSInteger)y
+{
+    [self setDirection: QGDirectionNone];
+
+    NSString *key = [NSString stringWithFormat: @"{%d,%d}", y, x];
+    NSDictionary *info = [_messageNodes objectForKey: key];
+    if (info)
+    {
+        [_delegate scene: self
+             showMessage: info[@"text"]];
+    }
+}
+
 - (void)_perform
 {
-    CGFloat tileWidth = QGTileWidth;
+    NSDictionary *info = [self levelInfoAtIndex: _currentLevel];
+    CGFloat tileWidth = [self widthForCurrentLevel: info];
     
     switch (_direction)
     {
@@ -128,7 +147,12 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     {
                         if (yLooper - 1 > _playerY)
                         {
-                            [_playerNode runAction: actionForXY(0, (yLooper - 1 - _playerY) * tileWidth)];
+                            [_playerNode runAction: actionForXY(0, (yLooper - 1 - _playerY) * tileWidth)
+                                        completion: (^
+                                                     {
+                                                         [self _checkIfNeedShowMessageAtX: _playerX
+                                                                                        y: yLooper - 1];
+                                                     })];
                             
                             _playerY = yLooper - 1;
                         }
@@ -177,7 +201,12 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                             //stop here
                             if (yLooper - 1 > _playerY)
                             {
-                                [_playerNode runAction: actionForXY(0, (yLooper - 1 - _playerY) * tileWidth)];
+                                [_playerNode runAction: actionForXY(0, (yLooper - 1 - _playerY) * tileWidth)
+                                            completion: (^
+                                                         {
+                                                             [self _checkIfNeedShowMessageAtX: _playerX
+                                                                                            y: yLooper - 1];
+                                                         })];
                                 
                                 _playerY = yLooper - 1;
                             }
@@ -219,7 +248,12 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     {
                         if (yLooper + 1 < _playerY)
                         {
-                            [_playerNode runAction: actionForXY(0, (yLooper + 1 - _playerY) * tileWidth)];
+                            [_playerNode runAction: actionForXY(0, (yLooper + 1 - _playerY) * tileWidth)
+                                        completion: (^
+                                                     {
+                                                         [self _checkIfNeedShowMessageAtX: _playerX
+                                                                                        y: yLooper + 1];
+                                                     })];
                             _playerY = yLooper + 1;
                         }
                         willBreak = YES;
@@ -265,7 +299,12 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                             //stop here
                             if (yLooper + 1 < _playerY)
                             {
-                                [_playerNode runAction: actionForXY(0, (yLooper + 1 - _playerY) * tileWidth)];
+                                [_playerNode runAction: actionForXY(0, (yLooper + 1 - _playerY) * tileWidth)
+                                            completion: (^
+                                                         {
+                                                             [self _checkIfNeedShowMessageAtX: _playerX
+                                                                                            y: yLooper + 1];
+                                                         })];
                                 _playerY = yLooper + 1;
                             }
                             willBreak = YES;
@@ -306,7 +345,8 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                             [_playerNode runAction: actionForXY((xLooper + 1 - _playerX) * tileWidth, 0)
                                         completion: (^
                                                      {
-                                                         
+                                                         [self _checkIfNeedShowMessageAtX: xLooper + 1
+                                                                                        y: _playerY];
                                                      })];
                             _playerX = xLooper + 1;
                         }
@@ -355,7 +395,8 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                 [_playerNode runAction: actionForXY((xLooper + 1 - _playerX) * tileWidth, 0)
                                             completion: (^
                                                          {
-                                                             
+                                                             [self _checkIfNeedShowMessageAtX: xLooper + 1
+                                                                                            y: _playerY];
                                                          })];
                                 _playerX = xLooper + 1;
                             }
@@ -397,7 +438,12 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                     {
                         if (xLooper - 1 > _playerX)
                         {
-                            [_playerNode runAction: actionForXY((xLooper - 1 - _playerX) * tileWidth, 0)];
+                            [_playerNode runAction: actionForXY((xLooper - 1 - _playerX) * tileWidth, 0)
+                                        completion: (^
+                                                     {
+                                                         [self _checkIfNeedShowMessageAtX: xLooper - 1
+                                                                                        y: _playerY];
+                                                     })];
                             _playerX = xLooper - 1;
                         }
                         willBreak = YES;
@@ -442,7 +488,12 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                             //stop here
                             if (xLooper - 1 > _playerX)
                             {
-                                [_playerNode runAction: actionForXY((xLooper - 1 - _playerX) * tileWidth, 0)];
+                                [_playerNode runAction: actionForXY((xLooper - 1 - _playerX) * tileWidth, 0)
+                                            completion: (^
+                                                         {
+                                                             [self _checkIfNeedShowMessageAtX: xLooper - 1
+                                                                                            y: _playerY];
+                                                         })];
                                 _playerX = xLooper - 1;
                             }
                             willBreak = YES;
@@ -469,8 +520,6 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
             break;
         }
     }
-    
-    [self setDirection: QGDirectionNone];
 }
 
 - (void)update: (CFTimeInterval)currentTime
@@ -481,14 +530,23 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 - (void)controlView: (QGControlView *)view
   changeToDirection: (QGDirection)d
 {
-    [self setDirection: d];
-    [self _perform];
+    if (_direction == QGDirectionNone)
+    {
+        [_delegate scene: self
+             showMessage: nil];
+    
+        [self setDirection: d];
+        [self _perform];
+    }
 }
 
 - (void)enterLevel: (NSInteger)index
 {
+    _direction = QGDirectionNone;
+    
     [self removeAllChildren];
     
+    [_messageNodes removeAllObjects];
     [_doorNodes removeAllObjects];
     _doorOpenedInCurrentLevel = NO;
     _keyNode = nil;
@@ -513,6 +571,18 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     [self enterLevel: _currentLevel];
 }
 
+- (CGFloat)widthForCurrentLevel: (NSDictionary *)info
+{
+    CGFloat width = QGTileWidth;
+    id number = info[@"size"];
+    if (number)
+    {
+        width = [number floatValue];
+    }
+    
+    return width;
+}
+
 - (void)buildWordForScene: (QGScene *)scene
                     level: (NSInteger)index
 {
@@ -526,7 +596,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     
     [scene setCurrentLevelMap: map];
     
-    CGFloat tileWidth = QGTileWidth;
+    CGFloat tileWidth = [self widthForCurrentLevel: info];
     
     [map enumerateObjectsUsingBlock: (^(NSString *iLooper, NSUInteger row, BOOL *stop)
                                       {
@@ -540,6 +610,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                               switch (cLooper)
                                               {
                                                   case QGEmptyType:
+                                                  case QGEndType:
                                                   {
                                                       //empty
                                                       break;
@@ -553,18 +624,12 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                                                                           size: size];
                                                       break;
                                                   }
-                                                  case QGEndType:
-                                                  {
-                                                      //out end
-                                                      break;
-                                                  }
                                                   case QGKeyType:
                                                   {
                                                       //key
                                                       CGSize size = CGSizeMake(tileWidth, tileWidth);
                                                       
-                                                      SKTexture *texture = [SKTexture textureWithImageNamed: @"key"];
-                                                      node = [SKSpriteNode spriteNodeWithTexture: texture
+                                                      node = [SKSpriteNode spriteNodeWithTexture: _keyTexture
                                                                                             size: size];
                                                       [self setKeyNode: node];
                                                       break;
@@ -573,8 +638,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                                   {
                                                       CGSize size = CGSizeMake(tileWidth, tileWidth);
                                                       
-                                                      SKTexture *texture = [SKTexture textureWithImageNamed: @"door"];
-                                                      node = [SKSpriteNode spriteNodeWithTexture: texture
+                                                      node = [SKSpriteNode spriteNodeWithTexture: _doorTexture
                                                                                             size: size];
                                                       [_doorNodes addObject: node];
                                                       //door solid
@@ -606,6 +670,8 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                           }
                                       })];
     
+    //initialize player
+    //
     NSDictionary *playerInfo = info[@"player_coords"];
     NSInteger px = [playerInfo[@"x"] integerValue];
     NSInteger py = [playerInfo[@"y"] integerValue];
@@ -631,6 +697,28 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     
     [scene addChild: playerNode];
     
+    //init message nodes
+    //
+    NSArray *messagesInfos = info[@"messages"];
+    SKTexture *messageTexture = [SKTexture textureWithImageNamed: @"message"];
+    
+    for (NSDictionary *mLooper in messagesInfos)
+    {
+        SKSpriteNode *node = [SKSpriteNode spriteNodeWithTexture: messageTexture
+                                                            size: CGSizeMake(tileWidth, tileWidth)];
+        NSString *str = mLooper[@"p"];
+        CGPoint p = CGPointFromString(str);
+        NSInteger row = p.x;
+        NSInteger col = p.y;
+        
+        [node setPosition: CGPointMake(originX + col * tileWidth, row * tileWidth + originY)];
+        [scene addChild: node];
+        
+        [_messageNodes setObject: mLooper
+                          forKey: str];
+    }
+    //play background music
+    //
     [[QGMusicManager manager] playAudio: @"violin"];
 }
 
