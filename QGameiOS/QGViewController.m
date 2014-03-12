@@ -51,7 +51,7 @@
     [[self view] addSubview: _contentLabel];
 
     //
-    _messageLabel = [[UILabel alloc] initWithFrame: CGRectMake(10, 400, 300, 60)];
+    _messageLabel = [[UILabel alloc] initWithFrame: CGRectMake(10, 300, 300, 160)];
     [_messageLabel setNumberOfLines: 0];
     [_messageLabel setBackgroundColor: [UIColor clearColor]];
     [_messageLabel setFont: [UIFont fontWithName: @"Baskerville-SemiBoldItalic"
@@ -73,7 +73,7 @@
 
     [scene setScaleMode: SKSceneScaleModeAspectFill];
     [scene setDelegate: self];
-    [scene enterLevel: 14];
+    [scene enterLevel: 15];
     
     // Present the scene.
     [skView presentScene: scene];
