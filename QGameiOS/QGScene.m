@@ -23,6 +23,8 @@
 
 #define QGTileWidth 16
 
+#define IsIPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+
 
 @interface QGScene ()<SKPhysicsContactDelegate>
 {
@@ -593,6 +595,10 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     CGFloat originX = [info[@"ox"] floatValue];
     
     CGFloat originY = [info[@"oy"] floatValue];
+    if (!IsIPhone5)
+    {
+        originY -= 88;
+    }
     
     [scene setCurrentLevelMap: map];
     

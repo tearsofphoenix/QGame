@@ -63,8 +63,8 @@
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
+//    skView.showsFPS = YES;
+//    skView.showsNodeCount = YES;
     
     // Create and configure the scene.
     QGScene * scene = [QGScene sceneWithSize: skView.bounds.size];
@@ -73,7 +73,7 @@
 
     [scene setScaleMode: SKSceneScaleModeAspectFill];
     [scene setDelegate: self];
-    [scene enterLevel: 15];
+    [scene enterLevel: 0];
     
     // Present the scene.
     [skView presentScene: scene];
