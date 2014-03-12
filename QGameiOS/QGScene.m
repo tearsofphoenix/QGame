@@ -9,6 +9,7 @@
 #import "QGScene.h"
 #import "QGLevels.h"
 #import "QGMusicManager.h"
+#import "SKTexture+RectSubtexture.h"
 
 #define QGWallColor [SKColor colorWithRed:0.8 green:0.99 blue:0.44 alpha:1]
 #define QGRiverColor [SKColor colorWithRed:0.24 green:0.44 blue:0.65 alpha:1]
@@ -16,6 +17,8 @@
 #define QGEmptyType '0'
 #define QGWallType  '1'
 #define QGEndType   '2'
+#define QGKeyType   '3'
+#define QGDoorType  '4'
 #define QGRiverType '5'
 
 #define QGTileWidth 16
@@ -28,6 +31,10 @@
 }
 
 @property (nonatomic) QGDirection direction;
+@property (nonatomic, strong) SKTexture *texture;
+@property (nonatomic) BOOL doorOpenedInCurrentLevel;
+@property (nonatomic, weak) SKSpriteNode *keyNode;
+@property (nonatomic, strong) NSMutableSet *doorNodes;
 
 @end
 
@@ -52,7 +59,11 @@
         
         //[self setBackgroundColor: [SKColor colorWithRed:0.27 green:0.27 blue:0.27 alpha:1]];
         [self setBackgroundColor: [UIColor blackColor]];
+        
+        _texture = [SKTexture textureWithImageNamed: @"sprites"];
+        _doorNodes = [[NSMutableSet alloc] init];
     }
+    
     return self;
 }
 
@@ -78,6 +89,19 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     return [SKAction moveByX: x
                            y: y
                     duration: time];
+}
+
+- (void)_goThroughKeyNode
+{
+    if (!_doorOpenedInCurrentLevel)
+    {
+        [_keyNode setHidden: YES];
+        _doorOpenedInCurrentLevel = YES;
+        [_doorNodes enumerateObjectsUsingBlock: (^(SKSpriteNode *obj, BOOL *stop)
+                                                 {
+                                                     [obj setHidden: YES];
+                                                 })];
+    }
 }
 
 - (void)_perform
@@ -124,8 +148,9 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                         willBreak = YES;
                         break;
                     }
-                    case '3':
+                    case QGKeyType:
                     {
+                        [self _goThroughKeyNode];
                         break;
                     }
                     case QGRiverType:
@@ -139,6 +164,25 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                         _playerY = yLooper;
                         
                         willBreak = YES;
+                        break;
+                    }
+                    case QGDoorType:
+                    {
+                        if (_doorOpenedInCurrentLevel)
+                        {
+                            //treat it as empty;
+                            //
+                        }else
+                        {
+                            //stop here
+                            if (yLooper - 1 > _playerY)
+                            {
+                                [_playerNode runAction: actionForXY(0, (yLooper - 1 - _playerY) * tileWidth)];
+                                
+                                _playerY = yLooper - 1;
+                            }
+                            willBreak = YES;
+                        }
                         break;
                     }
                     default:
@@ -195,8 +239,9 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                         willBreak = YES;
                         break;
                     }
-                    case '3':
+                    case QGKeyType:
                     {
+                        [self _goThroughKeyNode];
                         break;
                     }
                     case QGRiverType:
@@ -207,6 +252,24 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                                      [self _dieInRiver];
                                                  })];
                         willBreak = YES;
+                        break;
+                    }
+                    case QGDoorType:
+                    {
+                        if (_doorOpenedInCurrentLevel)
+                        {
+                            //treat it as empty;
+                            //
+                        }else
+                        {
+                            //stop here
+                            if (yLooper + 1 < _playerY)
+                            {
+                                [_playerNode runAction: actionForXY(0, (yLooper + 1 - _playerY) * tileWidth)];
+                                _playerY = yLooper + 1;
+                            }
+                            willBreak = YES;
+                        }
                         break;
                     }
                     default:
@@ -243,7 +306,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                             [_playerNode runAction: actionForXY((xLooper + 1 - _playerX) * tileWidth, 0)
                                         completion: (^
                                                      {
-                                
+                                                         
                                                      })];
                             _playerX = xLooper + 1;
                         }
@@ -262,8 +325,9 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                         
                         break;
                     }
-                    case '3':
+                    case QGKeyType:
                     {
+                        [self _goThroughKeyNode];
                         break;
                     }
                     case QGRiverType:
@@ -275,6 +339,28 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                                  })];
                         willBreak = YES;
                         
+                        break;
+                    }
+                    case QGDoorType:
+                    {
+                        if (_doorOpenedInCurrentLevel)
+                        {
+                            //treat it as empty;
+                            //
+                        }else
+                        {
+                            //stop here
+                            if (xLooper + 1 < _playerX)
+                            {
+                                [_playerNode runAction: actionForXY((xLooper + 1 - _playerX) * tileWidth, 0)
+                                            completion: (^
+                                                         {
+                                                             
+                                                         })];
+                                _playerX = xLooper + 1;
+                            }
+                            willBreak = YES;
+                        }
                         break;
                     }
                     default:
@@ -304,7 +390,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
             {
                 blockType = str[xLooper];
                 BOOL willBreak = NO;
-
+                
                 switch (blockType)
                 {
                     case QGWallType:
@@ -326,11 +412,12 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                                  })];
                         _playerX = xLooper;
                         willBreak = YES;
-
+                        
                         break;
                     }
-                    case '3':
+                    case QGKeyType:
                     {
+                        [self _goThroughKeyNode];
                         break;
                     }
                     case QGRiverType:
@@ -342,6 +429,24 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                                  })];
                         willBreak = YES;
                         
+                        break;
+                    }
+                    case QGDoorType:
+                    {
+                        if (_doorOpenedInCurrentLevel)
+                        {
+                            //treat it as empty;
+                            //
+                        }else
+                        {
+                            //stop here
+                            if (xLooper - 1 > _playerX)
+                            {
+                                [_playerNode runAction: actionForXY((xLooper - 1 - _playerX) * tileWidth, 0)];
+                                _playerX = xLooper - 1;
+                            }
+                            willBreak = YES;
+                        }
                         break;
                     }
                     default:
@@ -383,7 +488,12 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 - (void)enterLevel: (NSInteger)index
 {
     [self removeAllChildren];
+    
+    [_doorNodes removeAllObjects];
+    _doorOpenedInCurrentLevel = NO;
+    _keyNode = nil;
     _playerNode = nil;
+    
     _currentLevel = index;
     
     [self buildWordForScene: self
@@ -409,7 +519,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     NSDictionary *info = [self levelInfoAtIndex: index];
     NSString *wordInfo = info[@"map"];
     NSArray *map = [wordInfo componentsSeparatedByString: @"\n"];
-
+    
     CGFloat originX = [info[@"ox"] floatValue];
     
     CGFloat originY = [info[@"oy"] floatValue];
@@ -448,13 +558,25 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                                                       //out end
                                                       break;
                                                   }
-                                                  case '3':
+                                                  case QGKeyType:
                                                   {
                                                       //key
+                                                      CGSize size = CGSizeMake(tileWidth, tileWidth);
+                                                      
+                                                      SKTexture *texture = [SKTexture textureWithImageNamed: @"key"];
+                                                      node = [SKSpriteNode spriteNodeWithTexture: texture
+                                                                                            size: size];
+                                                      [self setKeyNode: node];
                                                       break;
                                                   }
-                                                  case '4':
+                                                  case QGDoorType:
                                                   {
+                                                      CGSize size = CGSizeMake(tileWidth, tileWidth);
+                                                      
+                                                      SKTexture *texture = [SKTexture textureWithImageNamed: @"door"];
+                                                      node = [SKSpriteNode spriteNodeWithTexture: texture
+                                                                                            size: size];
+                                                      [_doorNodes addObject: node];
                                                       //door solid
                                                       break;
                                                   }

@@ -10,6 +10,12 @@
 		60020F1318CB0F43004E6C6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0118C83BAC008BCA12 /* Foundation.framework */; };
 		60020F1618CB0F43004E6C6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 60020F1518CB0F43004E6C6A /* main.m */; };
 		60020F1A18CB0F43004E6C6A /* MapGenerator.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60020F1918CB0F43004E6C6A /* MapGenerator.1 */; };
+		92273E6018CFEC3200EC2E25 /* SKTexture+RectSubtexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 92273E5F18CFEC3200EC2E25 /* SKTexture+RectSubtexture.m */; };
+		92273E6118CFEE0900EC2E25 /* sprites.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5018C84311008BCA12 /* sprites.png */; };
+		92273E6B18CFFB6D00EC2E25 /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = 92273E6718CFFB6D00EC2E25 /* door.png */; };
+		92273E6C18CFFB6D00EC2E25 /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 92273E6818CFFB6D00EC2E25 /* key.png */; };
+		92273E6D18CFFB6D00EC2E25 /* levels.json in Resources */ = {isa = PBXBuildFile; fileRef = 92273E6918CFFB6D00EC2E25 /* levels.json */; };
+		92273E6E18CFFB6D00EC2E25 /* violin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 92273E6A18CFFB6D00EC2E25 /* violin.m4a */; };
 		925B564318C9601800414F57 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5D18C8522E008BCA12 /* down.png */; };
 		925B564418C9601800414F57 /* down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5E18C8522E008BCA12 /* down@2x.png */; };
 		925B564518C9601800414F57 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5F18C8522E008BCA12 /* right.png */; };
@@ -20,7 +26,6 @@
 		925B564A18C9601800414F57 /* up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B6418C8522E008BCA12 /* up@2x.png */; };
 		925B564C18C9648700414F57 /* QGControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F52B6E18C85252008BCA12 /* QGControlView.m */; };
 		927E613118CD4AD000AD120F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927E613018CD4AD000AD120F /* StoreKit.framework */; };
-		92DC066518CEE5AE0005C638 /* violin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 92DC066418CEE5AE0005C638 /* violin.m4a */; };
 		92DC066818CEE5D80005C638 /* QGMusicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DC066718CEE5D80005C638 /* QGMusicManager.m */; };
 		92F52B0218C83BAC008BCA12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0118C83BAC008BCA12 /* Foundation.framework */; };
 		92F52B0418C83BAC008BCA12 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0318C83BAC008BCA12 /* CoreGraphics.framework */; };
@@ -58,7 +63,6 @@
 		92F52B8E18C85886008BCA12 /* QGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F52B8D18C85886008BCA12 /* QGViewController.m */; };
 		92F52B9118C85886008BCA12 /* QGScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F52B9018C85886008BCA12 /* QGScene.m */; };
 		92F52B9518C85887008BCA12 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B9418C85887008BCA12 /* Images.xcassets */; };
-		92F52BAF18C85B71008BCA12 /* levels.json in Resources */ = {isa = PBXBuildFile; fileRef = 92F52BAE18C85B71008BCA12 /* levels.json */; };
 		92F52BB218C85C63008BCA12 /* QGLevels.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F52BB118C85C63008BCA12 /* QGLevels.m */; };
 /* End PBXBuildFile section */
 
@@ -80,8 +84,13 @@
 		60020F1518CB0F43004E6C6A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		60020F1818CB0F43004E6C6A /* MapGenerator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MapGenerator-Prefix.pch"; sourceTree = "<group>"; };
 		60020F1918CB0F43004E6C6A /* MapGenerator.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MapGenerator.1; sourceTree = "<group>"; };
+		92273E5E18CFEC3200EC2E25 /* SKTexture+RectSubtexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKTexture+RectSubtexture.h"; sourceTree = "<group>"; };
+		92273E5F18CFEC3200EC2E25 /* SKTexture+RectSubtexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKTexture+RectSubtexture.m"; sourceTree = "<group>"; };
+		92273E6718CFFB6D00EC2E25 /* door.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door.png; sourceTree = "<group>"; };
+		92273E6818CFFB6D00EC2E25 /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key.png; sourceTree = "<group>"; };
+		92273E6918CFFB6D00EC2E25 /* levels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = levels.json; sourceTree = "<group>"; };
+		92273E6A18CFFB6D00EC2E25 /* violin.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = violin.m4a; sourceTree = "<group>"; };
 		927E613018CD4AD000AD120F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		92DC066418CEE5AE0005C638 /* violin.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = violin.m4a; sourceTree = "<group>"; };
 		92DC066618CEE5D80005C638 /* QGMusicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGMusicManager.h; sourceTree = "<group>"; };
 		92DC066718CEE5D80005C638 /* QGMusicManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGMusicManager.m; sourceTree = "<group>"; };
 		92F52AFE18C83BAC008BCA12 /* QGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,7 +145,6 @@
 		92F52BA218C85887008BCA12 /* QGameiOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QGameiOSTests-Info.plist"; sourceTree = "<group>"; };
 		92F52BA418C85887008BCA12 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		92F52BA618C85887008BCA12 /* QGameiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QGameiOSTests.m; sourceTree = "<group>"; };
-		92F52BAE18C85B71008BCA12 /* levels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = levels.json; sourceTree = "<group>"; };
 		92F52BB018C85C63008BCA12 /* QGLevels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGLevels.h; sourceTree = "<group>"; };
 		92F52BB118C85C63008BCA12 /* QGLevels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGLevels.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,6 +199,17 @@
 				60020F1818CB0F43004E6C6A /* MapGenerator-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		92273E6618CFFB6D00EC2E25 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				92273E6718CFFB6D00EC2E25 /* door.png */,
+				92273E6818CFFB6D00EC2E25 /* key.png */,
+				92273E6918CFFB6D00EC2E25 /* levels.json */,
+				92273E6A18CFFB6D00EC2E25 /* violin.m4a */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		92F52AF518C83BAC008BCA12 = {
@@ -299,6 +318,7 @@
 		92F52B7A18C85886008BCA12 /* QGameiOS */ = {
 			isa = PBXGroup;
 			children = (
+				92273E6618CFFB6D00EC2E25 /* Resources */,
 				92F52B8318C85886008BCA12 /* QGAppDelegate.h */,
 				92F52B8418C85886008BCA12 /* QGAppDelegate.m */,
 				92F52B8618C85886008BCA12 /* Main_iPhone.storyboard */,
@@ -311,9 +331,10 @@
 				92F52BB118C85C63008BCA12 /* QGLevels.m */,
 				92DC066618CEE5D80005C638 /* QGMusicManager.h */,
 				92DC066718CEE5D80005C638 /* QGMusicManager.m */,
+				92273E5E18CFEC3200EC2E25 /* SKTexture+RectSubtexture.h */,
+				92273E5F18CFEC3200EC2E25 /* SKTexture+RectSubtexture.m */,
 				92F52B9418C85887008BCA12 /* Images.xcassets */,
 				92F52B7B18C85886008BCA12 /* Supporting Files */,
-				92F52BAE18C85B71008BCA12 /* levels.json */,
 			);
 			path = QGameiOS;
 			sourceTree = "<group>";
@@ -321,7 +342,6 @@
 		92F52B7B18C85886008BCA12 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				92DC066418CEE5AE0005C638 /* violin.m4a */,
 				92F52B7C18C85886008BCA12 /* QGameiOS-Info.plist */,
 				92F52B7D18C85886008BCA12 /* InfoPlist.strings */,
 				92F52B8018C85886008BCA12 /* main.m */,
@@ -409,7 +429,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = QG;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Mac003;
 				TargetAttributes = {
 					92F52B7318C85886008BCA12 = {
@@ -474,19 +494,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92273E6C18CFFB6D00EC2E25 /* key.png in Resources */,
+				92273E6118CFEE0900EC2E25 /* sprites.png in Resources */,
 				925B564318C9601800414F57 /* down.png in Resources */,
 				925B564418C9601800414F57 /* down@2x.png in Resources */,
 				925B564518C9601800414F57 /* right.png in Resources */,
 				925B564618C9601800414F57 /* right@2x.png in Resources */,
+				92273E6B18CFFB6D00EC2E25 /* door.png in Resources */,
 				925B564718C9601800414F57 /* left.png in Resources */,
 				925B564818C9601800414F57 /* left@2x.png in Resources */,
+				92273E6E18CFFB6D00EC2E25 /* violin.m4a in Resources */,
 				925B564918C9601800414F57 /* up.png in Resources */,
 				925B564A18C9601800414F57 /* up@2x.png in Resources */,
 				92F52B9518C85887008BCA12 /* Images.xcassets in Resources */,
-				92F52BAF18C85B71008BCA12 /* levels.json in Resources */,
 				92F52B8B18C85886008BCA12 /* Main_iPad.storyboard in Resources */,
-				92DC066518CEE5AE0005C638 /* violin.m4a in Resources */,
 				92F52B8818C85886008BCA12 /* Main_iPhone.storyboard in Resources */,
+				92273E6D18CFFB6D00EC2E25 /* levels.json in Resources */,
 				92F52B7F18C85886008BCA12 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,6 +540,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92273E6018CFEC3200EC2E25 /* SKTexture+RectSubtexture.m in Sources */,
 				92DC066818CEE5D80005C638 /* QGMusicManager.m in Sources */,
 				925B564C18C9648700414F57 /* QGControlView.m in Sources */,
 				92F52B8E18C85886008BCA12 /* QGViewController.m in Sources */,
@@ -614,7 +638,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -653,7 +676,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -715,7 +737,6 @@
 		92F52BA918C85887008BCA12 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "";
@@ -739,7 +760,6 @@
 		92F52BAA18C85887008BCA12 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "";
