@@ -10,6 +10,8 @@
 		60020F1318CB0F43004E6C6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0118C83BAC008BCA12 /* Foundation.framework */; };
 		60020F1618CB0F43004E6C6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 60020F1518CB0F43004E6C6A /* main.m */; };
 		60020F1A18CB0F43004E6C6A /* MapGenerator.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60020F1918CB0F43004E6C6A /* MapGenerator.1 */; };
+		60EFDC2E18D0A675005F13A9 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EFDC2B18D0A675005F13A9 /* IAPHelper.m */; };
+		60EFDC2F18D0A675005F13A9 /* RageIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EFDC2D18D0A675005F13A9 /* RageIAPHelper.m */; };
 		92273E6018CFEC3200EC2E25 /* SKTexture+RectSubtexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 92273E5F18CFEC3200EC2E25 /* SKTexture+RectSubtexture.m */; };
 		92273E6118CFEE0900EC2E25 /* sprites.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5018C84311008BCA12 /* sprites.png */; };
 		92273E6B18CFFB6D00EC2E25 /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = 92273E6718CFFB6D00EC2E25 /* door.png */; };
@@ -85,6 +87,10 @@
 		60020F1518CB0F43004E6C6A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		60020F1818CB0F43004E6C6A /* MapGenerator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MapGenerator-Prefix.pch"; sourceTree = "<group>"; };
 		60020F1918CB0F43004E6C6A /* MapGenerator.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MapGenerator.1; sourceTree = "<group>"; };
+		60EFDC2A18D0A675005F13A9 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
+		60EFDC2B18D0A675005F13A9 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
+		60EFDC2C18D0A675005F13A9 /* RageIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RageIAPHelper.h; sourceTree = "<group>"; };
+		60EFDC2D18D0A675005F13A9 /* RageIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RageIAPHelper.m; sourceTree = "<group>"; };
 		92273E5E18CFEC3200EC2E25 /* SKTexture+RectSubtexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKTexture+RectSubtexture.h"; sourceTree = "<group>"; };
 		92273E5F18CFEC3200EC2E25 /* SKTexture+RectSubtexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKTexture+RectSubtexture.m"; sourceTree = "<group>"; };
 		92273E6718CFFB6D00EC2E25 /* door.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door.png; sourceTree = "<group>"; };
@@ -109,9 +115,6 @@
 		92F52B1718C83BAC008BCA12 /* QGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QGViewController.m; sourceTree = "<group>"; };
 		92F52B1918C83BAC008BCA12 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		92F52B2018C83BAC008BCA12 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		92F52B2818C83BAC008BCA12 /* QGameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QGameTests-Info.plist"; sourceTree = "<group>"; };
-		92F52B2A18C83BAC008BCA12 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		92F52B2C18C83BAC008BCA12 /* QGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QGameTests.m; sourceTree = "<group>"; };
 		92F52B4A18C84311008BCA12 /* 1.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = 1.css; sourceTree = "<group>"; };
 		92F52B4B18C84311008BCA12 /* 2.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = 2.css; sourceTree = "<group>"; };
 		92F52B4C18C84311008BCA12 /* crafty-min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "crafty-min.js"; sourceTree = "<group>"; };
@@ -144,9 +147,6 @@
 		92F52B8F18C85886008BCA12 /* QGScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QGScene.h; sourceTree = "<group>"; };
 		92F52B9018C85886008BCA12 /* QGScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QGScene.m; sourceTree = "<group>"; };
 		92F52B9418C85887008BCA12 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		92F52BA218C85887008BCA12 /* QGameiOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QGameiOSTests-Info.plist"; sourceTree = "<group>"; };
-		92F52BA418C85887008BCA12 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		92F52BA618C85887008BCA12 /* QGameiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QGameiOSTests.m; sourceTree = "<group>"; };
 		92F52BB018C85C63008BCA12 /* QGLevels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGLevels.h; sourceTree = "<group>"; };
 		92F52BB118C85C63008BCA12 /* QGLevels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGLevels.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,6 +203,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		60EFDC2918D0A675005F13A9 /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				60EFDC2A18D0A675005F13A9 /* IAPHelper.h */,
+				60EFDC2B18D0A675005F13A9 /* IAPHelper.m */,
+				60EFDC2C18D0A675005F13A9 /* RageIAPHelper.h */,
+				60EFDC2D18D0A675005F13A9 /* RageIAPHelper.m */,
+			);
+			name = IAP;
+			path = ../IAP;
+			sourceTree = "<group>";
+		};
 		92273E6618CFFB6D00EC2E25 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,9 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				92F52B0718C83BAC008BCA12 /* QGame */,
-				92F52B2618C83BAC008BCA12 /* QGameTests */,
 				92F52B7A18C85886008BCA12 /* QGameiOS */,
-				92F52BA018C85887008BCA12 /* QGameiOSTests */,
 				60020F1418CB0F43004E6C6A /* MapGenerator */,
 				92F52B0018C83BAC008BCA12 /* Frameworks */,
 				92F52AFF18C83BAC008BCA12 /* Products */,
@@ -278,24 +288,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		92F52B2618C83BAC008BCA12 /* QGameTests */ = {
-			isa = PBXGroup;
-			children = (
-				92F52B2C18C83BAC008BCA12 /* QGameTests.m */,
-				92F52B2718C83BAC008BCA12 /* Supporting Files */,
-			);
-			path = QGameTests;
-			sourceTree = "<group>";
-		};
-		92F52B2718C83BAC008BCA12 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				92F52B2818C83BAC008BCA12 /* QGameTests-Info.plist */,
-				92F52B2918C83BAC008BCA12 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		92F52B4918C84311008BCA12 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +313,7 @@
 		92F52B7A18C85886008BCA12 /* QGameiOS */ = {
 			isa = PBXGroup;
 			children = (
+				60EFDC2918D0A675005F13A9 /* IAP */,
 				92273E6618CFFB6D00EC2E25 /* Resources */,
 				92F52B8318C85886008BCA12 /* QGAppDelegate.h */,
 				92F52B8418C85886008BCA12 /* QGAppDelegate.m */,
@@ -349,24 +342,6 @@
 				92F52B7D18C85886008BCA12 /* InfoPlist.strings */,
 				92F52B8018C85886008BCA12 /* main.m */,
 				92F52B8218C85886008BCA12 /* QGameiOS-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		92F52BA018C85887008BCA12 /* QGameiOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				92F52BA618C85887008BCA12 /* QGameiOSTests.m */,
-				92F52BA118C85887008BCA12 /* Supporting Files */,
-			);
-			path = QGameiOSTests;
-			sourceTree = "<group>";
-		};
-		92F52BA118C85887008BCA12 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				92F52BA218C85887008BCA12 /* QGameiOSTests-Info.plist */,
-				92F52BA318C85887008BCA12 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -551,7 +526,9 @@
 				92F52B8518C85886008BCA12 /* QGAppDelegate.m in Sources */,
 				92F52B9118C85886008BCA12 /* QGScene.m in Sources */,
 				92F52B8118C85886008BCA12 /* main.m in Sources */,
+				60EFDC2E18D0A675005F13A9 /* IAPHelper.m in Sources */,
 				92F52BB218C85C63008BCA12 /* QGLevels.m in Sources */,
+				60EFDC2F18D0A675005F13A9 /* RageIAPHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,14 +539,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				92F52B0B18C83BAC008BCA12 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		92F52B2918C83BAC008BCA12 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				92F52B2A18C83BAC008BCA12 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -596,14 +565,6 @@
 				92F52B8A18C85886008BCA12 /* Base */,
 			);
 			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
-		92F52BA318C85887008BCA12 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				92F52BA418C85887008BCA12 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -767,7 +728,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QGameiOS/QGameiOS-Prefix.pch";
 				INFOPLIST_FILE = "QGameiOS/QGameiOS-Info.plist";
