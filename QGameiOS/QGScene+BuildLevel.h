@@ -13,6 +13,7 @@
 - (CGFloat)widthForCurrentLevel: (NSDictionary *)info;
 
 - (void)buildWordForScene: (QGScene *)scene
-                    level: (NSInteger)index;
+                    level: (NSInteger)index
+             initLocation: (NSString *)str;
 
 @end

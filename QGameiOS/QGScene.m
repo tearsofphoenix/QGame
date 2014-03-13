@@ -95,6 +95,11 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     [self setDirection: QGDirectionNone];
 
     NSString *key = [NSString stringWithFormat: @"{%d,%d}", y, x];
+    
+    [[NSUserDefaults standardUserDefaults] setObject: key
+                                              forKey: QGCurrentLocation];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     NSDictionary *info = [_messageNodes objectForKey: key];
     if (info)
     {
@@ -522,7 +527,12 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 }
 
 - (void)enterLevel: (NSInteger)index
+    locationString: (NSString *)str
 {
+    [[NSUserDefaults standardUserDefaults] setObject: [NSString stringWithFormat: @"%d", _currentLevel]
+                                              forKey: QGCurrentLevel];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     _direction = QGDirectionNone;
     
     [self removeAllChildren];
@@ -536,7 +546,8 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     _currentLevel = index;
     
     [self buildWordForScene: self
-                      level: index];
+                      level: index
+               initLocation: str];
     
     //play background music
     //
@@ -553,7 +564,8 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 
 - (void)_dieInRiver
 {
-    [self enterLevel: _currentLevel];
+    [self enterLevel: _currentLevel
+      locationString: nil];
 }
 
 - (void)_findWayout

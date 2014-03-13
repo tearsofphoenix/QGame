@@ -24,6 +24,10 @@
 
 #define IsIPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 
+#define QGPrefix            @"com.veritas.application.ios.qgame."
+#define QGCurrentLevel      QGPrefix "current-level"
+#define QGCurrentLocation   QGPrefix ".current-location"
+
 @class QGScene;
 
 @protocol QGSceneDelegate <NSObject>
@@ -46,7 +50,8 @@
 @property (nonatomic, retain) NSArray *currentLevelMap;
 @property (nonatomic, weak) id<QGSceneDelegate> delegate;
 
-- (void)enterLevel: (NSInteger)index;
+- (void)enterLevel: (NSInteger)index
+    locationString: (NSString *)str;
 
 - (NSDictionary *)levelInfoAtIndex: (NSInteger)index;
 

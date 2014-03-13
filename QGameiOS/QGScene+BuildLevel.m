@@ -24,6 +24,7 @@
 
 - (void)buildWordForScene: (QGScene *)scene
                     level: (NSInteger)index
+             initLocation: (NSString *)locationString
 {
     NSDictionary *info = [self levelInfoAtIndex: index];
     NSString *wordInfo = info[@"map"];
@@ -118,6 +119,15 @@
     NSDictionary *playerInfo = info[@"player_coords"];
     NSInteger px = [playerInfo[@"x"] integerValue];
     NSInteger py = [playerInfo[@"y"] integerValue];
+
+    if (locationString)
+    {
+        //x, y is ex-changed
+        //
+        CGPoint point = CGPointFromString(locationString);
+        px = (NSInteger)point.y;
+        py = (NSInteger)point.x;
+    }
     
     [scene setPlayerX: px];
     [scene setPlayerY: py];

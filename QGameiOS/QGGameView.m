@@ -11,6 +11,7 @@
 #import "QGLevels.h"
 #import "QGControlView.h"
 #import "QGNoticeView.h"
+#import "QGAlertView.h"
 
 @interface QGGameView ()<QGSceneDelegate>
 {
@@ -74,7 +75,37 @@
         
         [scene setScaleMode: SKSceneScaleModeAspectFill];
         [scene setDelegate: self];
-        [scene enterLevel: 0];
+        
+        NSString *savedLevel = [[NSUserDefaults standardUserDefaults] objectForKey: QGCurrentLevel];
+        if (savedLevel)
+        {
+            [_controlView setAlpha: 0];
+            
+            QGAlertView *alertView = [[QGAlertView alloc] initWithFrame: CGRectMake(40, 180, 240, 190)];
+            [alertView setMessage: @"Load saved level state?"];
+            [self addSubview: alertView];
+            [self bringSubviewToFront: alertView];
+            [alertView setOkCallback: (^(BOOL isOK)
+                                       {
+                                           if (isOK)
+                                           {
+                                               NSInteger levelIndex = [savedLevel integerValue];
+                                               NSString *locationString = [[NSUserDefaults standardUserDefaults] objectForKey: QGCurrentLocation];
+                                               [scene enterLevel: levelIndex
+                                                  locationString: locationString];
+                                           }else
+                                           {
+                                               [scene enterLevel: 0
+                                                  locationString: nil];
+                                           }
+                                           
+                                           [_controlView setAlpha: 1];
+                                       })];
+        }else
+        {
+            [scene enterLevel: 0
+               locationString: nil];
+        }
         
         // Present the scene.
         [self presentScene: scene];
@@ -87,7 +118,7 @@
                                                  selector: @selector(_notificationForActive:)
                                                      name: UIApplicationDidBecomeActiveNotification
                                                    object: nil];
-
+        
         [[NSNotificationCenter defaultCenter] addObserver: self
                                                  selector: @selector(_notificationForEnactive)
                                                      name: UIApplicationDidEnterBackgroundNotification
