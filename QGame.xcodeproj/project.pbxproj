@@ -13,7 +13,7 @@
 		60EFDC2E18D0A675005F13A9 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EFDC2B18D0A675005F13A9 /* IAPHelper.m */; };
 		60EFDC2F18D0A675005F13A9 /* RageIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EFDC2D18D0A675005F13A9 /* RageIAPHelper.m */; };
 		9210218318D17D180071DE17 /* QGMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9210218218D17D180071DE17 /* QGMainViewController.m */; };
-		9210218618D17D590071DE17 /* QGAboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9210218518D17D590071DE17 /* QGAboutView.m */; };
+		9210218618D17D590071DE17 /* QGSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9210218518D17D590071DE17 /* QGSettingsView.m */; };
 		92273E6018CFEC3200EC2E25 /* SKTexture+RectSubtexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 92273E5F18CFEC3200EC2E25 /* SKTexture+RectSubtexture.m */; };
 		92273E6118CFEE0900EC2E25 /* sprites.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5018C84311008BCA12 /* sprites.png */; };
 		92273E6B18CFFB6D00EC2E25 /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = 92273E6718CFFB6D00EC2E25 /* door.png */; };
@@ -30,6 +30,9 @@
 		925B564918C9601800414F57 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B6318C8522E008BCA12 /* up.png */; };
 		925B564A18C9601800414F57 /* up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B6418C8522E008BCA12 /* up@2x.png */; };
 		9276280A18D17DE00054CE64 /* QGControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9276280918D17DE00054CE64 /* QGControlView.m */; };
+		9276281418D1855B0054CE64 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 9276281018D1855B0054CE64 /* back.png */; };
+		9276281518D1855B0054CE64 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9276281118D1855B0054CE64 /* back@2x.png */; };
+		9276281D18D19AAE0054CE64 /* QGScene+BuildLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9276281C18D19AAE0054CE64 /* QGScene+BuildLevel.m */; };
 		927E613118CD4AD000AD120F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927E613018CD4AD000AD120F /* StoreKit.framework */; };
 		92DC066818CEE5D80005C638 /* QGMusicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DC066718CEE5D80005C638 /* QGMusicManager.m */; };
 		92F52B7518C85886008BCA12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0118C83BAC008BCA12 /* Foundation.framework */; };
@@ -39,7 +42,7 @@
 		92F52B7F18C85886008BCA12 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B7D18C85886008BCA12 /* InfoPlist.strings */; };
 		92F52B8118C85886008BCA12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F52B8018C85886008BCA12 /* main.m */; };
 		92F52B8518C85886008BCA12 /* QGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F52B8418C85886008BCA12 /* QGAppDelegate.m */; };
-		92F52B8E18C85886008BCA12 /* QGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F52B8D18C85886008BCA12 /* QGViewController.m */; };
+		92F52B8E18C85886008BCA12 /* QGGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F52B8D18C85886008BCA12 /* QGGameView.m */; };
 		92F52B9118C85886008BCA12 /* QGScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F52B9018C85886008BCA12 /* QGScene.m */; };
 		92F52B9518C85887008BCA12 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B9418C85887008BCA12 /* Images.xcassets */; };
 		92F52BB218C85C63008BCA12 /* QGLevels.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F52BB118C85C63008BCA12 /* QGLevels.m */; };
@@ -69,8 +72,8 @@
 		60EFDC2D18D0A675005F13A9 /* RageIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RageIAPHelper.m; sourceTree = "<group>"; };
 		9210218118D17D180071DE17 /* QGMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGMainViewController.h; sourceTree = "<group>"; };
 		9210218218D17D180071DE17 /* QGMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGMainViewController.m; sourceTree = "<group>"; };
-		9210218418D17D590071DE17 /* QGAboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGAboutView.h; sourceTree = "<group>"; };
-		9210218518D17D590071DE17 /* QGAboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGAboutView.m; sourceTree = "<group>"; };
+		9210218418D17D590071DE17 /* QGSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGSettingsView.h; sourceTree = "<group>"; };
+		9210218518D17D590071DE17 /* QGSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGSettingsView.m; sourceTree = "<group>"; };
 		92273E5E18CFEC3200EC2E25 /* SKTexture+RectSubtexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKTexture+RectSubtexture.h"; sourceTree = "<group>"; };
 		92273E5F18CFEC3200EC2E25 /* SKTexture+RectSubtexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKTexture+RectSubtexture.m"; sourceTree = "<group>"; };
 		92273E6718CFFB6D00EC2E25 /* door.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door.png; sourceTree = "<group>"; };
@@ -80,6 +83,10 @@
 		92273E7F18D0342400EC2E25 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
 		9276280818D17DE00054CE64 /* QGControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGControlView.h; sourceTree = "<group>"; };
 		9276280918D17DE00054CE64 /* QGControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGControlView.m; sourceTree = "<group>"; };
+		9276281018D1855B0054CE64 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		9276281118D1855B0054CE64 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		9276281B18D19AAE0054CE64 /* QGScene+BuildLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QGScene+BuildLevel.h"; sourceTree = "<group>"; };
+		9276281C18D19AAE0054CE64 /* QGScene+BuildLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QGScene+BuildLevel.m"; sourceTree = "<group>"; };
 		927E613018CD4AD000AD120F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		92DC066618CEE5D80005C638 /* QGMusicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGMusicManager.h; sourceTree = "<group>"; };
 		92DC066718CEE5D80005C638 /* QGMusicManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGMusicManager.m; sourceTree = "<group>"; };
@@ -110,8 +117,8 @@
 		92F52B8218C85886008BCA12 /* QGameiOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QGameiOS-Prefix.pch"; sourceTree = "<group>"; };
 		92F52B8318C85886008BCA12 /* QGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QGAppDelegate.h; sourceTree = "<group>"; };
 		92F52B8418C85886008BCA12 /* QGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QGAppDelegate.m; sourceTree = "<group>"; };
-		92F52B8C18C85886008BCA12 /* QGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QGViewController.h; sourceTree = "<group>"; };
-		92F52B8D18C85886008BCA12 /* QGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QGViewController.m; sourceTree = "<group>"; };
+		92F52B8C18C85886008BCA12 /* QGGameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QGGameView.h; sourceTree = "<group>"; };
+		92F52B8D18C85886008BCA12 /* QGGameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QGGameView.m; sourceTree = "<group>"; };
 		92F52B8F18C85886008BCA12 /* QGScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QGScene.h; sourceTree = "<group>"; };
 		92F52B9018C85886008BCA12 /* QGScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QGScene.m; sourceTree = "<group>"; };
 		92F52B9418C85887008BCA12 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -176,6 +183,8 @@
 		92273E6618CFFB6D00EC2E25 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9276281018D1855B0054CE64 /* back.png */,
+				9276281118D1855B0054CE64 /* back@2x.png */,
 				92273E7F18D0342400EC2E25 /* message.png */,
 				92273E6718CFFB6D00EC2E25 /* door.png */,
 				92273E6818CFFB6D00EC2E25 /* key.png */,
@@ -257,12 +266,14 @@
 				9210218218D17D180071DE17 /* QGMainViewController.m */,
 				9276280818D17DE00054CE64 /* QGControlView.h */,
 				9276280918D17DE00054CE64 /* QGControlView.m */,
-				9210218418D17D590071DE17 /* QGAboutView.h */,
-				9210218518D17D590071DE17 /* QGAboutView.m */,
-				92F52B8C18C85886008BCA12 /* QGViewController.h */,
-				92F52B8D18C85886008BCA12 /* QGViewController.m */,
+				9210218418D17D590071DE17 /* QGSettingsView.h */,
+				9210218518D17D590071DE17 /* QGSettingsView.m */,
+				92F52B8C18C85886008BCA12 /* QGGameView.h */,
+				92F52B8D18C85886008BCA12 /* QGGameView.m */,
 				92F52B8F18C85886008BCA12 /* QGScene.h */,
 				92F52B9018C85886008BCA12 /* QGScene.m */,
+				9276281B18D19AAE0054CE64 /* QGScene+BuildLevel.h */,
+				9276281C18D19AAE0054CE64 /* QGScene+BuildLevel.m */,
 				92F52BB018C85C63008BCA12 /* QGLevels.h */,
 				92F52BB118C85C63008BCA12 /* QGLevels.m */,
 				92DC066618CEE5D80005C638 /* QGMusicManager.h */,
@@ -382,10 +393,12 @@
 				925B564718C9601800414F57 /* left.png in Resources */,
 				925B564818C9601800414F57 /* left@2x.png in Resources */,
 				92273E6E18CFFB6D00EC2E25 /* violin.m4a in Resources */,
+				9276281418D1855B0054CE64 /* back.png in Resources */,
 				925B564918C9601800414F57 /* up.png in Resources */,
 				925B564A18C9601800414F57 /* up@2x.png in Resources */,
 				92F52B9518C85887008BCA12 /* Images.xcassets in Resources */,
 				92273E6D18CFFB6D00EC2E25 /* levels.json in Resources */,
+				9276281518D1855B0054CE64 /* back@2x.png in Resources */,
 				92F52B7F18C85886008BCA12 /* InfoPlist.strings in Resources */,
 				92273E8118D0342400EC2E25 /* message.png in Resources */,
 			);
@@ -408,14 +421,15 @@
 			files = (
 				92273E6018CFEC3200EC2E25 /* SKTexture+RectSubtexture.m in Sources */,
 				92DC066818CEE5D80005C638 /* QGMusicManager.m in Sources */,
-				92F52B8E18C85886008BCA12 /* QGViewController.m in Sources */,
+				92F52B8E18C85886008BCA12 /* QGGameView.m in Sources */,
 				92F52B8518C85886008BCA12 /* QGAppDelegate.m in Sources */,
 				92F52B9118C85886008BCA12 /* QGScene.m in Sources */,
-				9210218618D17D590071DE17 /* QGAboutView.m in Sources */,
+				9210218618D17D590071DE17 /* QGSettingsView.m in Sources */,
 				9276280A18D17DE00054CE64 /* QGControlView.m in Sources */,
 				9210218318D17D180071DE17 /* QGMainViewController.m in Sources */,
 				92F52B8118C85886008BCA12 /* main.m in Sources */,
 				60EFDC2E18D0A675005F13A9 /* IAPHelper.m in Sources */,
+				9276281D18D19AAE0054CE64 /* QGScene+BuildLevel.m in Sources */,
 				92F52BB218C85C63008BCA12 /* QGLevels.m in Sources */,
 				60EFDC2F18D0A675005F13A9 /* RageIAPHelper.m in Sources */,
 			);

@@ -10,21 +10,7 @@
 #import "QGLevels.h"
 #import "QGMusicManager.h"
 #import "SKTexture+RectSubtexture.h"
-
-#define QGWallColor [SKColor colorWithRed:0.8 green:0.99 blue:0.44 alpha:1]
-#define QGRiverColor [SKColor colorWithRed:0.24 green:0.44 blue:0.65 alpha:1]
-
-#define QGEmptyType '0'
-#define QGWallType  '1'
-#define QGEndType   '2'
-#define QGKeyType   '3'
-#define QGDoorType  '4'
-#define QGRiverType '5'
-
-#define QGTileWidth 16
-
-#define IsIPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
-
+#import "QGScene+BuildLevel.h"
 
 @interface QGScene ()<SKPhysicsContactDelegate>
 {
@@ -32,13 +18,6 @@
     NSInteger _currentLevel;
 }
 
-@property (nonatomic) QGDirection direction;
-@property (nonatomic) BOOL doorOpenedInCurrentLevel;
-@property (nonatomic, weak) SKSpriteNode *keyNode;
-@property (nonatomic, strong) NSMutableSet *doorNodes;
-@property (nonatomic, strong) NSMutableDictionary *messageNodes;
-@property (nonatomic, strong) SKTexture *keyTexture;
-@property (nonatomic, strong) SKTexture *doorTexture;
 
 @end
 
@@ -166,7 +145,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                         [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * tileWidth)
                                     completion: (^
                                                  {
-                                                     [self enterLevel: _currentLevel + 1];
+                                                     [self _findWayout];
                                                  })];
                         
                         _playerY = yLooper;
@@ -267,7 +246,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                         [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * tileWidth)
                                     completion: (^
                                                  {
-                                                     [self enterLevel: _currentLevel + 1];
+                                                     [self _findWayout];
                                                  })];
                         
                         _playerY = yLooper;
@@ -360,7 +339,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                         [_playerNode runAction: actionForXY((xLooper - _playerX) * tileWidth, 0)
                                     completion: (^
                                                  {
-                                                     [self enterLevel: _currentLevel + 1];
+                                                     [self _findWayout];
                                                  })];
                         _playerX = xLooper;
                         willBreak = YES;
@@ -456,7 +435,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
                         [_playerNode runAction: actionForXY((xLooper - _playerX) * tileWidth, 0)
                                     completion: (^
                                                  {
-                                                     [self enterLevel: _currentLevel + 1];
+                                                     [self _findWayout];
                                                  })];
                         _playerX = xLooper;
                         willBreak = YES;
@@ -559,6 +538,10 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     [self buildWordForScene: self
                       level: index];
     
+    //play background music
+    //
+    [[QGMusicManager manager] playAudio: @"violin"];
+
     [_delegate didScene: self
            enteredLevel: _currentLevel];
 }
@@ -573,159 +556,9 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     [self enterLevel: _currentLevel];
 }
 
-- (CGFloat)widthForCurrentLevel: (NSDictionary *)info
+- (void)_findWayout
 {
-    CGFloat width = QGTileWidth;
-    id number = info[@"size"];
-    if (number)
-    {
-        width = [number floatValue];
-    }
-    
-    return width;
-}
-
-- (void)buildWordForScene: (QGScene *)scene
-                    level: (NSInteger)index
-{
-    NSDictionary *info = [self levelInfoAtIndex: index];
-    NSString *wordInfo = info[@"map"];
-    NSArray *map = [wordInfo componentsSeparatedByString: @"\n"];
-    
-    CGFloat originX = [info[@"ox"] floatValue];
-    
-    CGFloat originY = [info[@"oy"] floatValue];
-    if (!IsIPhone5)
-    {
-        originY -= 88;
-    }
-    
-    [scene setCurrentLevelMap: map];
-    
-    CGFloat tileWidth = [self widthForCurrentLevel: info];
-    
-    [map enumerateObjectsUsingBlock: (^(NSString *iLooper, NSUInteger row, BOOL *stop)
-                                      {
-                                          const char *pChar = [iLooper cStringUsingEncoding: NSUTF8StringEncoding];
-                                          char cLooper = '\0';
-                                          NSInteger col = 0;
-                                          
-                                          while ((cLooper = *pChar))
-                                          {
-                                              SKSpriteNode *node = nil;
-                                              switch (cLooper)
-                                              {
-                                                  case QGEmptyType:
-                                                  case QGEndType:
-                                                  {
-                                                      //empty
-                                                      break;
-                                                  }
-                                                  case QGWallType:
-                                                  {
-                                                      //wall solid
-                                                      //
-                                                      CGSize size = CGSizeMake(tileWidth, tileWidth);
-                                                      node = [SKSpriteNode spriteNodeWithColor: QGWallColor
-                                                                                          size: size];
-                                                      break;
-                                                  }
-                                                  case QGKeyType:
-                                                  {
-                                                      //key
-                                                      CGSize size = CGSizeMake(tileWidth, tileWidth);
-                                                      
-                                                      node = [SKSpriteNode spriteNodeWithTexture: _keyTexture
-                                                                                            size: size];
-                                                      [self setKeyNode: node];
-                                                      break;
-                                                  }
-                                                  case QGDoorType:
-                                                  {
-                                                      CGSize size = CGSizeMake(tileWidth, tileWidth);
-                                                      
-                                                      node = [SKSpriteNode spriteNodeWithTexture: _doorTexture
-                                                                                            size: size];
-                                                      [_doorNodes addObject: node];
-                                                      //door solid
-                                                      break;
-                                                  }
-                                                  case QGRiverType:
-                                                  {
-                                                      //river
-                                                      CGSize size = CGSizeMake(tileWidth, tileWidth);
-                                                      node = [SKSpriteNode spriteNodeWithColor: QGRiverColor
-                                                                                          size: size];
-                                                      break;
-                                                  }
-                                                  default:
-                                                  {
-                                                      //pink
-                                                      break;
-                                                  }
-                                              }
-                                              
-                                              if (node)
-                                              {
-                                                  [node setPosition: CGPointMake(originX + col * tileWidth, row * tileWidth + originY)];
-                                                  [scene addChild: node];
-                                              }
-                                              
-                                              ++pChar;
-                                              ++col;
-                                          }
-                                      })];
-    
-    //initialize player
-    //
-    NSDictionary *playerInfo = info[@"player_coords"];
-    NSInteger px = [playerInfo[@"x"] integerValue];
-    NSInteger py = [playerInfo[@"y"] integerValue];
-    
-    [scene setPlayerX: px];
-    [scene setPlayerY: py];
-    
-    SKSpriteNode *playerNode = [scene playerNode];
-    if (!playerNode)
-    {
-        CGSize size = CGSizeMake(tileWidth - 4, tileWidth - 4);
-        playerNode =  [SKSpriteNode spriteNodeWithColor: [UIColor whiteColor]
-                                                   size: size];
-        [playerNode setName: @"player"];
-        [scene setPlayerNode: playerNode];
-    }
-    
-    [playerNode setPosition: CGPointMake(originX + px * tileWidth, originY + py * tileWidth)];
-    
-    SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize: [playerNode size]];
-    [body setAffectedByGravity: NO];
-    [playerNode setPhysicsBody: body];
-    
-    [scene addChild: playerNode];
-    
-    //init message nodes
-    //
-    NSArray *messagesInfos = info[@"messages"];
-    SKTexture *messageTexture = [SKTexture textureWithImageNamed: @"message"];
-    
-    for (NSDictionary *mLooper in messagesInfos)
-    {
-        SKSpriteNode *node = [SKSpriteNode spriteNodeWithTexture: messageTexture
-                                                            size: CGSizeMake(tileWidth, tileWidth)];
-        NSString *str = mLooper[@"p"];
-        CGPoint p = CGPointFromString(str);
-        NSInteger row = p.x;
-        NSInteger col = p.y;
-        
-        [node setPosition: CGPointMake(originX + col * tileWidth, row * tileWidth + originY)];
-        [scene addChild: node];
-        
-        [_messageNodes setObject: mLooper
-                          forKey: str];
-    }
-    //play background music
-    //
-    [[QGMusicManager manager] playAudio: @"violin"];
+    [self enterLevel: _currentLevel + 1];
 }
 
 @end

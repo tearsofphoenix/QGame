@@ -6,15 +6,16 @@
 //  Copyright (c) 2014年 Mac003. All rights reserved.
 //
 
-#import "QGAboutView.h"
+#import "QGSettingsView.h"
 
-@implementation QGAboutView
+@implementation QGSettingsView
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)
     {
+        [self setBackgroundColor: [UIColor blackColor]];
         
     }
     return self;

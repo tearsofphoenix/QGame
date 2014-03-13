@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QGAboutView : UIView
+@interface QGSettingsView : UIView
 
 @end

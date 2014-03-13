@@ -7,7 +7,7 @@
 //
 
 #import "QGAppDelegate.h"
-#import "QGViewController.h"
+#import "QGGameView.h"
 #import "RageIAPHelper.h"
 #import "QGMainViewController.h"
 
