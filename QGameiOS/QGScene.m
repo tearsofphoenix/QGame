@@ -558,7 +558,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 
 - (void)_findWayout
 {
-    [self enterLevel: _currentLevel + 1];
+    [_delegate sceneFoundWayOutInCurrentLevel: self];
 }
 
 @end

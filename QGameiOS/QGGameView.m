@@ -10,6 +10,7 @@
 #import "QGScene.h"
 #import "QGLevels.h"
 #import "QGControlView.h"
+#import "QGNoticeView.h"
 
 @interface QGGameView ()<QGSceneDelegate>
 {
@@ -18,6 +19,9 @@
     UILabel *_contentLabel;
     UILabel *_messageLabel;
 }
+
+@property (nonatomic, strong) QGNoticeView *noticeView;
+
 @end
 
 @implementation QGGameView
@@ -156,6 +160,24 @@
   showMessage: (NSString *)message
 {
     [_messageLabel setText: message];
+}
+
+- (void)sceneFoundWayOutInCurrentLevel: (QGScene *)scene
+{
+    if (!_noticeView)
+    {
+        _noticeView = [[QGNoticeView alloc] initWithFrame: CGRectMake(40, 180, 240, 190)];
+        [self addSubview: _noticeView];
+    }
+    
+    [self bringSubviewToFront: _noticeView];
+    [_noticeView setAlpha: 0];
+    
+    [UIView animateWithDuration: 0.3
+                     animations: (^
+                                  {
+                                      [_noticeView setAlpha: 1];
+                                  })];
 }
 
 @end

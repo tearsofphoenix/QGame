@@ -34,6 +34,8 @@
 - (void)scene: (QGScene *)scene
   showMessage: (NSString *)message;
 
+- (void)sceneFoundWayOutInCurrentLevel: (QGScene *)scene;
+
 @end
 
 @interface QGScene : SKScene<QGControlViewDelegate>

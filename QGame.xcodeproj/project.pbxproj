@@ -33,6 +33,7 @@
 		9276281418D1855B0054CE64 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 9276281018D1855B0054CE64 /* back.png */; };
 		9276281518D1855B0054CE64 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9276281118D1855B0054CE64 /* back@2x.png */; };
 		9276281D18D19AAE0054CE64 /* QGScene+BuildLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9276281C18D19AAE0054CE64 /* QGScene+BuildLevel.m */; };
+		9276282018D19BF10054CE64 /* QGNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9276281F18D19BF10054CE64 /* QGNoticeView.m */; };
 		927E613118CD4AD000AD120F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927E613018CD4AD000AD120F /* StoreKit.framework */; };
 		92DC066818CEE5D80005C638 /* QGMusicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DC066718CEE5D80005C638 /* QGMusicManager.m */; };
 		92F52B7518C85886008BCA12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0118C83BAC008BCA12 /* Foundation.framework */; };
@@ -87,6 +88,8 @@
 		9276281118D1855B0054CE64 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		9276281B18D19AAE0054CE64 /* QGScene+BuildLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QGScene+BuildLevel.h"; sourceTree = "<group>"; };
 		9276281C18D19AAE0054CE64 /* QGScene+BuildLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QGScene+BuildLevel.m"; sourceTree = "<group>"; };
+		9276281E18D19BF10054CE64 /* QGNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGNoticeView.h; sourceTree = "<group>"; };
+		9276281F18D19BF10054CE64 /* QGNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGNoticeView.m; sourceTree = "<group>"; };
 		927E613018CD4AD000AD120F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		92DC066618CEE5D80005C638 /* QGMusicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGMusicManager.h; sourceTree = "<group>"; };
 		92DC066718CEE5D80005C638 /* QGMusicManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGMusicManager.m; sourceTree = "<group>"; };
@@ -270,6 +273,8 @@
 				9210218518D17D590071DE17 /* QGSettingsView.m */,
 				92F52B8C18C85886008BCA12 /* QGGameView.h */,
 				92F52B8D18C85886008BCA12 /* QGGameView.m */,
+				9276281E18D19BF10054CE64 /* QGNoticeView.h */,
+				9276281F18D19BF10054CE64 /* QGNoticeView.m */,
 				92F52B8F18C85886008BCA12 /* QGScene.h */,
 				92F52B9018C85886008BCA12 /* QGScene.m */,
 				9276281B18D19AAE0054CE64 /* QGScene+BuildLevel.h */,
@@ -421,6 +426,7 @@
 			files = (
 				92273E6018CFEC3200EC2E25 /* SKTexture+RectSubtexture.m in Sources */,
 				92DC066818CEE5D80005C638 /* QGMusicManager.m in Sources */,
+				9276282018D19BF10054CE64 /* QGNoticeView.m in Sources */,
 				92F52B8E18C85886008BCA12 /* QGGameView.m in Sources */,
 				92F52B8518C85886008BCA12 /* QGAppDelegate.m in Sources */,
 				92F52B9118C85886008BCA12 /* QGScene.m in Sources */,
