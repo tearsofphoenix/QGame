@@ -16,7 +16,6 @@
 
 @interface QGScene ()<SKPhysicsContactDelegate>
 
-
 @end
 
 @implementation QGScene
@@ -32,6 +31,8 @@
         _messageNodes = [[NSMutableDictionary alloc] init];
         _keyTexture = [SKTexture textureWithImageNamed: @"key"];
         _doorTexture = [SKTexture textureWithImageNamed: @"door"];
+        
+        _currentGameInfo = [[NSMutableDictionary alloc] init];
     }
     
     return self;
@@ -83,9 +84,8 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 
     NSString *key = [NSString stringWithFormat: @"{%d,%d}", y, x];
     
-    [[NSUserDefaults standardUserDefaults] setObject: key
-                                              forKey: QGCurrentLocation];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [_currentGameInfo setObject: key
+                         forKey: QGPlayerLocationKey];
     
     NSDictionary *info = [_messageNodes objectForKey: key];
     
@@ -530,11 +530,14 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 }
 
 - (void)enterLevel: (NSInteger)index
-    locationString: (NSString *)str
+              info: (NSDictionary *)info
 {
-    [[NSUserDefaults standardUserDefaults] setObject: [NSString stringWithFormat: @"%d", _currentLevel]
-                                              forKey: QGCurrentLevel];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    NSString *str = info[QGPlayerLocationKey];
+    NSInteger savedMoves = [info[QGMovesKey] integerValue];
+    NSInteger seconds = [info[QGTimeSecondsKey] integerValue];
+    
+    [_currentGameInfo setObject: [NSString stringWithFormat: @"%d", _currentLevel]
+                         forKey: QGLevelKey];
     
     _direction = QGDirectionNone;
     
@@ -559,11 +562,11 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     [_delegate didScene: self
            enteredLevel: _currentLevel];
     
-    _currentLevelMoveCount = 0;
+    _currentLevelMoveCount = savedMoves;
     //record time
 //    if (_timeLimitMode)
     {
-        [self setCurrentLevelStartTime: [NSDate date]];
+        [self setCurrentLevelStartTime: [NSDate dateWithTimeIntervalSinceNow: -seconds]];
     }
 }
 
@@ -575,13 +578,17 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 - (void)_dieInRiver
 {
     [self enterLevel: _currentLevel
-      locationString: nil];
+                info: nil];
 }
 
 - (void)_findWayout
 {
     ++_currentLevelMoveCount;
     [_delegate sceneFoundWayOutInCurrentLevel: self];
+    
+    //clear saved info
+    //
+    [_currentGameInfo removeAllObjects];
 }
 
 @end

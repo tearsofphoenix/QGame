@@ -81,7 +81,7 @@
     [[self view] addSubview: feedbackButton];
 }
 
-- (void)_pushContentView: (UIView *)view
+- (void)_pushContentView: (UIView<QGContentView> *)view
 {
     [[self view] addSubview: view];
     [view setAlpha: 0];
@@ -135,7 +135,11 @@
 
 - (void)_handleBackEvent: (id)sender
 {
-    UIView *currentView = [_viewStack lastObject];
+    UIView<QGContentView> *currentView = [_viewStack lastObject];
+    if ([currentView respondsToSelector: @selector(contentViewWillDisappear)])
+    {
+        [currentView contentViewWillDisappear];
+    }
     
     [UIView animateWithDuration: 0.3
                      animations: (^

@@ -10,7 +10,6 @@
 #import "QGScene.h"
 
 #import "QGControlView.h"
-#import "QGNoticeView.h"
 #import "QGAlertView.h"
 
 @interface QGGameView ()<QGSceneDelegate>
@@ -20,8 +19,6 @@
     UILabel *_contentLabel;
     UILabel *_messageLabel;
 }
-
-@property (nonatomic, strong) QGNoticeView *noticeView;
 
 @end
 
@@ -76,8 +73,9 @@
         [scene setScaleMode: SKSceneScaleModeAspectFill];
         [scene setDelegate: self];
         
-        NSString *savedLevel = [[NSUserDefaults standardUserDefaults] objectForKey: QGCurrentLevel];
-        NSString *locationString = [[NSUserDefaults standardUserDefaults] objectForKey: QGCurrentLocation];
+        NSDictionary *savedGameInfo = [[NSUserDefaults standardUserDefaults] objectForKey: QGCurrentGameInfo];
+        NSString *savedLevel = savedGameInfo[QGLevelKey];
+        NSString *locationString = savedGameInfo[QGPlayerLocationKey];
         
         if (savedLevel && locationString)
         {
@@ -93,11 +91,11 @@
                                            {
                                                NSInteger levelIndex = [savedLevel integerValue];
                                                [scene enterLevel: levelIndex
-                                                  locationString: locationString];
+                                                            info: savedGameInfo];
                                            }else
                                            {
                                                [scene enterLevel: 0
-                                                  locationString: nil];
+                                                            info: nil];
                                            }
                                            
                                            [_controlView setAlpha: 1];
@@ -105,7 +103,7 @@
         }else
         {
             [scene enterLevel: 0
-               locationString: nil];
+                         info: nil];
         }
         
         // Present the scene.
@@ -196,24 +194,37 @@
 
 - (void)sceneFoundWayOutInCurrentLevel: (QGScene *)scene
 {
-    if (!_noticeView)
-    {
-        _noticeView = [[QGNoticeView alloc] initWithFrame: CGRectMake(40, 180, 240, 190)];
-        [self addSubview: _noticeView];
-    }
     
     NSInteger seconds = [[NSDate date] timeIntervalSinceDate: [scene currentLevelStartTime]];
     
-    [_noticeView setContent: [NSString stringWithFormat: @"You finished current level with %d moves in %d seconds!", [scene currentLevelMoveCount], seconds]];
+    NSString *message = [NSString stringWithFormat: @"You finished current level with %d moves in %d seconds!", [scene currentLevelMoveCount], seconds];
     
-    [self bringSubviewToFront: _noticeView];
-    [_noticeView setAlpha: 0];
+    QGAlertView *alertView = [[QGAlertView alloc] initWithFrame: CGRectMake(40, 180, 240, 190)];
+    [alertView setMessage: message];
+    [alertView setTitle: @"Congratulations!"];
     
-    [UIView animateWithDuration: 0.3
-                     animations: (^
-                                  {
-                                      [_noticeView setAlpha: 1];
-                                  })];
+    [self addSubview: alertView];
+    [self bringSubviewToFront: alertView];
+
+    [alertView setOkCallback: (^(BOOL isOK)
+                               {
+                                   if (isOK)
+                                   {
+                                       [scene enterLevel: [scene currentLevel] + 1
+                                                    info: nil];
+                                   }else
+                                   {
+                                   }
+                               })];
+}
+
+- (void)contentViewWillDisappear
+{
+    QGScene *scene = (QGScene *)[self scene];
+    
+    [[NSUserDefaults standardUserDefaults] setObject: [scene currentGameInfo]
+                                              forKey: QGCurrentGameInfo];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

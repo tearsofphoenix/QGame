@@ -79,6 +79,11 @@
     NSLog(@"%s", __func__);
 }
 
+- (void)setTitle: (NSString *)title
+{
+    [_titleLabel setText: title];
+}
+
 - (void)setMessage: (NSString *)message
 {
     [_contentLabel setText: message];

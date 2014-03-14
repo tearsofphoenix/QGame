@@ -13,6 +13,8 @@ typedef void (^ QGAlertCallback)(BOOL okTapped);
 
 @property (nonatomic, copy) QGAlertCallback okCallback;
 
+- (void)setTitle: (NSString *)title;
+
 - (void)setMessage: (NSString *)message;
 
 @end

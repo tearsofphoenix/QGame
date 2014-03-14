@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 
-@interface QGGameView : SKView
+@protocol QGContentView <NSObject>
+
+- (void)contentViewWillDisappear;
+
+@end
+
+@interface QGGameView : SKView<QGContentView>
 
 @end
