@@ -7,17 +7,16 @@
 //
 
 #import "QGScene.h"
-#import "QGLevels.h"
+
 #import "QGMusicManager.h"
 #import "SKTexture+RectSubtexture.h"
 #import "QGScene+BuildLevel.h"
 
-@interface QGScene ()<SKPhysicsContactDelegate>
-{
-    QGLevels *_levels;
-    NSInteger _currentLevel;
-}
+#import "QGDataService.h"
 
+@interface QGScene ()<SKPhysicsContactDelegate>
+
+@property (nonatomic) NSInteger currentLevel;
 
 @end
 
@@ -27,19 +26,6 @@
 {
     if (self = [super initWithSize:size])
     {
-        /* Setup your scene here */
-        NSError *error = nil;
-        NSString *str = [NSString stringWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"levels"
-                                                                                            ofType: @"json"]
-                                                  encoding: NSUTF8StringEncoding
-                                                     error: &error];
-        if (error)
-        {
-            NSLog(@"%@", error);
-        }
-        
-        _levels = [[QGLevels alloc] initWithString: str];
-        
         //[self setBackgroundColor: [SKColor colorWithRed:0.27 green:0.27 blue:0.27 alpha:1]];
         [self setBackgroundColor: [UIColor blackColor]];
         
@@ -559,7 +545,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 
 - (NSDictionary *)levelInfoAtIndex: (NSInteger)index
 {
-    return [_levels levelInfoAtIndex: index];
+    return [[QGDataService service] levelWithIndex: index];
 }
 
 - (void)_dieInRiver

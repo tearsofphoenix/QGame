@@ -21,6 +21,7 @@
 		92273E6D18CFFB6D00EC2E25 /* levels.json in Resources */ = {isa = PBXBuildFile; fileRef = 92273E6918CFFB6D00EC2E25 /* levels.json */; };
 		92273E6E18CFFB6D00EC2E25 /* violin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 92273E6A18CFFB6D00EC2E25 /* violin.m4a */; };
 		92273E8118D0342400EC2E25 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 92273E7F18D0342400EC2E25 /* message.png */; };
+		9252DD4018D2B11C00C8FDAF /* QGDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9252DD3F18D2B11C00C8FDAF /* QGDataService.m */; };
 		925B564318C9601800414F57 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5D18C8522E008BCA12 /* down.png */; };
 		925B564418C9601800414F57 /* down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5E18C8522E008BCA12 /* down@2x.png */; };
 		925B564518C9601800414F57 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5F18C8522E008BCA12 /* right.png */; };
@@ -47,7 +48,6 @@
 		92F52B8E18C85886008BCA12 /* QGGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F52B8D18C85886008BCA12 /* QGGameView.m */; };
 		92F52B9118C85886008BCA12 /* QGScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F52B9018C85886008BCA12 /* QGScene.m */; };
 		92F52B9518C85887008BCA12 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B9418C85887008BCA12 /* Images.xcassets */; };
-		92F52BB218C85C63008BCA12 /* QGLevels.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F52BB118C85C63008BCA12 /* QGLevels.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +83,8 @@
 		92273E6918CFFB6D00EC2E25 /* levels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = levels.json; sourceTree = "<group>"; };
 		92273E6A18CFFB6D00EC2E25 /* violin.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = violin.m4a; sourceTree = "<group>"; };
 		92273E7F18D0342400EC2E25 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
+		9252DD3E18D2B11C00C8FDAF /* QGDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGDataService.h; sourceTree = "<group>"; };
+		9252DD3F18D2B11C00C8FDAF /* QGDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGDataService.m; sourceTree = "<group>"; };
 		9276280818D17DE00054CE64 /* QGControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGControlView.h; sourceTree = "<group>"; };
 		9276280918D17DE00054CE64 /* QGControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGControlView.m; sourceTree = "<group>"; };
 		9276281018D1855B0054CE64 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
@@ -128,8 +130,6 @@
 		92F52B8F18C85886008BCA12 /* QGScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QGScene.h; sourceTree = "<group>"; };
 		92F52B9018C85886008BCA12 /* QGScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QGScene.m; sourceTree = "<group>"; };
 		92F52B9418C85887008BCA12 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		92F52BB018C85C63008BCA12 /* QGLevels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGLevels.h; sourceTree = "<group>"; };
-		92F52BB118C85C63008BCA12 /* QGLevels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGLevels.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +198,38 @@
 				92273E6A18CFFB6D00EC2E25 /* violin.m4a */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		9252DD4118D2B12E00C8FDAF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				92DC066618CEE5D80005C638 /* QGMusicManager.h */,
+				92DC066718CEE5D80005C638 /* QGMusicManager.m */,
+				9252DD3E18D2B11C00C8FDAF /* QGDataService.h */,
+				9252DD3F18D2B11C00C8FDAF /* QGDataService.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		9252DD4218D2B13800C8FDAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9276280818D17DE00054CE64 /* QGControlView.h */,
+				9276280918D17DE00054CE64 /* QGControlView.m */,
+				9210218418D17D590071DE17 /* QGSettingsView.h */,
+				9210218518D17D590071DE17 /* QGSettingsView.m */,
+				92F52B8C18C85886008BCA12 /* QGGameView.h */,
+				92F52B8D18C85886008BCA12 /* QGGameView.m */,
+				9276281E18D19BF10054CE64 /* QGNoticeView.h */,
+				9276281F18D19BF10054CE64 /* QGNoticeView.m */,
+				9276282118D1A3F80054CE64 /* QGAlertView.h */,
+				9276282218D1A3F80054CE64 /* QGAlertView.m */,
+				92F52B8F18C85886008BCA12 /* QGScene.h */,
+				92F52B9018C85886008BCA12 /* QGScene.m */,
+				9276281B18D19AAE0054CE64 /* QGScene+BuildLevel.h */,
+				9276281C18D19AAE0054CE64 /* QGScene+BuildLevel.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		92F52AF518C83BAC008BCA12 = {
@@ -270,24 +302,8 @@
 				92F52B8418C85886008BCA12 /* QGAppDelegate.m */,
 				9210218118D17D180071DE17 /* QGMainViewController.h */,
 				9210218218D17D180071DE17 /* QGMainViewController.m */,
-				9276280818D17DE00054CE64 /* QGControlView.h */,
-				9276280918D17DE00054CE64 /* QGControlView.m */,
-				9210218418D17D590071DE17 /* QGSettingsView.h */,
-				9210218518D17D590071DE17 /* QGSettingsView.m */,
-				92F52B8C18C85886008BCA12 /* QGGameView.h */,
-				92F52B8D18C85886008BCA12 /* QGGameView.m */,
-				9276281E18D19BF10054CE64 /* QGNoticeView.h */,
-				9276281F18D19BF10054CE64 /* QGNoticeView.m */,
-				9276282118D1A3F80054CE64 /* QGAlertView.h */,
-				9276282218D1A3F80054CE64 /* QGAlertView.m */,
-				92F52B8F18C85886008BCA12 /* QGScene.h */,
-				92F52B9018C85886008BCA12 /* QGScene.m */,
-				9276281B18D19AAE0054CE64 /* QGScene+BuildLevel.h */,
-				9276281C18D19AAE0054CE64 /* QGScene+BuildLevel.m */,
-				92F52BB018C85C63008BCA12 /* QGLevels.h */,
-				92F52BB118C85C63008BCA12 /* QGLevels.m */,
-				92DC066618CEE5D80005C638 /* QGMusicManager.h */,
-				92DC066718CEE5D80005C638 /* QGMusicManager.m */,
+				9252DD4218D2B13800C8FDAF /* View */,
+				9252DD4118D2B12E00C8FDAF /* Data */,
 				92273E5E18CFEC3200EC2E25 /* SKTexture+RectSubtexture.h */,
 				92273E5F18CFEC3200EC2E25 /* SKTexture+RectSubtexture.m */,
 				92F52B9418C85887008BCA12 /* Images.xcassets */,
@@ -442,7 +458,7 @@
 				92F52B8118C85886008BCA12 /* main.m in Sources */,
 				60EFDC2E18D0A675005F13A9 /* IAPHelper.m in Sources */,
 				9276281D18D19AAE0054CE64 /* QGScene+BuildLevel.m in Sources */,
-				92F52BB218C85C63008BCA12 /* QGLevels.m in Sources */,
+				9252DD4018D2B11C00C8FDAF /* QGDataService.m in Sources */,
 				60EFDC2F18D0A675005F13A9 /* RageIAPHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

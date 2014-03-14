@@ -10,11 +10,18 @@
 #import "QGGameView.h"
 #import "RageIAPHelper.h"
 #import "QGMainViewController.h"
+#import "QGDataService.h"
 
 @implementation QGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
+                   (^
+                    {
+                        [QGDataService service];                        
+                    }));
+    
     _window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
     QGMainViewController *viewController = [[QGMainViewController alloc] init];
     [_window setRootViewController: viewController];

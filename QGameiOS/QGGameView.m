@@ -8,7 +8,7 @@
 
 #import "QGGameView.h"
 #import "QGScene.h"
-#import "QGLevels.h"
+
 #import "QGControlView.h"
 #import "QGNoticeView.h"
 #import "QGAlertView.h"
@@ -77,7 +77,9 @@
         [scene setDelegate: self];
         
         NSString *savedLevel = [[NSUserDefaults standardUserDefaults] objectForKey: QGCurrentLevel];
-        if (savedLevel)
+        NSString *locationString = [[NSUserDefaults standardUserDefaults] objectForKey: QGCurrentLocation];
+        
+        if (savedLevel && locationString)
         {
             [_controlView setAlpha: 0];
             
@@ -90,7 +92,6 @@
                                            if (isOK)
                                            {
                                                NSInteger levelIndex = [savedLevel integerValue];
-                                               NSString *locationString = [[NSUserDefaults standardUserDefaults] objectForKey: QGCurrentLocation];
                                                [scene enterLevel: levelIndex
                                                   locationString: locationString];
                                            }else
