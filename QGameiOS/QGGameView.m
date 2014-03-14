@@ -202,6 +202,10 @@
         [self addSubview: _noticeView];
     }
     
+    NSInteger seconds = [[NSDate date] timeIntervalSinceDate: [scene currentLevelStartTime]];
+    
+    [_noticeView setContent: [NSString stringWithFormat: @"You finished current level with %d moves in %d seconds!", [scene currentLevelMoveCount], seconds]];
+    
     [self bringSubviewToFront: _noticeView];
     [_noticeView setAlpha: 0];
     

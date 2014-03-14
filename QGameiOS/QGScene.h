@@ -63,4 +63,10 @@
 @property (nonatomic, strong) SKTexture *keyTexture;
 @property (nonatomic, strong) SKTexture *doorTexture;
 
+@property (nonatomic) BOOL timeLimitMode;
+
+@property (nonatomic) NSInteger currentLevel;
+@property (nonatomic) NSInteger currentLevelMoveCount;
+@property (nonatomic, strong) NSDate *currentLevelStartTime;
+
 @end

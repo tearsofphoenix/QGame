@@ -16,7 +16,6 @@
 
 @interface QGScene ()<SKPhysicsContactDelegate>
 
-@property (nonatomic) NSInteger currentLevel;
 
 @end
 
@@ -78,6 +77,8 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 - (void)_checkIfNeedShowMessageAtX: (NSInteger)x
                                  y: (NSInteger)y
 {
+    ++_currentLevelMoveCount;
+
     [self setDirection: QGDirectionNone];
 
     NSString *key = [NSString stringWithFormat: @"{%d,%d}", y, x];
@@ -87,10 +88,392 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSDictionary *info = [_messageNodes objectForKey: key];
+    
     if (info)
     {
         [_delegate scene: self
              showMessage: info[@"text"]];
+    }
+}
+
+- (void)_tryMoveUpWithTileWidth: (CGFloat)tileWidth
+{
+    NSInteger yLooper = _playerY;
+    char blockType = '\0';
+    
+    for (yLooper = _playerY + 1; yLooper < [_currentLevelMap count]; ++yLooper)
+    {
+        const char *str = [_currentLevelMap[yLooper] cStringUsingEncoding: NSUTF8StringEncoding];
+        blockType = str[_playerX];
+        BOOL willBreak = NO;
+        //check the block
+        //
+        switch (blockType)
+        {
+            case QGWallType:
+            {
+                if (yLooper - 1 > _playerY)
+                {
+                    [_playerNode runAction: actionForXY(0, (yLooper - 1 - _playerY) * tileWidth)
+                                completion: (^
+                                             {
+                                                 [self _checkIfNeedShowMessageAtX: _playerX
+                                                                                y: yLooper - 1];
+                                             })];
+                    
+                    _playerY = yLooper - 1;
+                }
+                willBreak = YES;
+                break;
+            }
+            case QGEndType:
+            {
+                [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * tileWidth)
+                            completion: (^
+                                         {
+                                             [self _findWayout];
+                                         })];
+                
+                _playerY = yLooper;
+                
+                willBreak = YES;
+                break;
+            }
+            case QGKeyType:
+            {
+                [self _goThroughKeyNode];
+                break;
+            }
+            case QGRiverType:
+            {
+                [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * tileWidth)
+                            completion: (^
+                                         {
+                                             [self _dieInRiver];
+                                         })];
+                
+                _playerY = yLooper;
+                
+                willBreak = YES;
+                break;
+            }
+            case QGDoorType:
+            {
+                if (_doorOpenedInCurrentLevel)
+                {
+                    //treat it as empty;
+                    //
+                }else
+                {
+                    //stop here
+                    if (yLooper - 1 > _playerY)
+                    {
+                        [_playerNode runAction: actionForXY(0, (yLooper - 1 - _playerY) * tileWidth)
+                                    completion: (^
+                                                 {
+                                                     [self _checkIfNeedShowMessageAtX: _playerX
+                                                                                    y: yLooper - 1];
+                                                 })];
+                        
+                        _playerY = yLooper - 1;
+                    }
+                    willBreak = YES;
+                }
+                break;
+            }
+            default:
+            {
+                break;
+            }
+        }
+        
+        if (willBreak)
+        {
+            break;
+        }
+    }
+}
+
+- (void)_tryToMoveDownWithTileWidth: (CGFloat)tileWidth
+{
+    NSInteger yLooper = _playerY;
+    char blockType = '\0';
+    
+    for (yLooper = _playerY; yLooper >= 0; --yLooper)
+    {
+        const char *str = [_currentLevelMap[yLooper] cStringUsingEncoding: NSUTF8StringEncoding];
+        blockType = str[_playerX];
+        
+        BOOL willBreak = NO;
+        //check the block
+        //
+        switch (blockType)
+        {
+            case QGWallType:
+            {
+                if (yLooper + 1 < _playerY)
+                {
+                    [_playerNode runAction: actionForXY(0, (yLooper + 1 - _playerY) * tileWidth)
+                                completion: (^
+                                             {
+                                                 [self _checkIfNeedShowMessageAtX: _playerX
+                                                                                y: yLooper + 1];
+                                             })];
+                    _playerY = yLooper + 1;
+                }
+                willBreak = YES;
+                
+                break;
+            }
+            case QGEndType:
+            {
+                [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * tileWidth)
+                            completion: (^
+                                         {
+                                             [self _findWayout];
+                                         })];
+                
+                _playerY = yLooper;
+                
+                willBreak = YES;
+                break;
+            }
+            case QGKeyType:
+            {
+                [self _goThroughKeyNode];
+                break;
+            }
+            case QGRiverType:
+            {
+                [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * tileWidth)
+                            completion: (^
+                                         {
+                                             [self _dieInRiver];
+                                         })];
+                willBreak = YES;
+                break;
+            }
+            case QGDoorType:
+            {
+                if (_doorOpenedInCurrentLevel)
+                {
+                    //treat it as empty;
+                    //
+                }else
+                {
+                    //stop here
+                    if (yLooper + 1 < _playerY)
+                    {
+                        [_playerNode runAction: actionForXY(0, (yLooper + 1 - _playerY) * tileWidth)
+                                    completion: (^
+                                                 {
+                                                     [self _checkIfNeedShowMessageAtX: _playerX
+                                                                                    y: yLooper + 1];
+                                                 })];
+                        _playerY = yLooper + 1;
+                    }
+                    willBreak = YES;
+                }
+                break;
+            }
+            default:
+            {
+                break;
+            }
+        }
+        
+        if (willBreak)
+        {
+            break;
+        }
+    }
+}
+
+- (void)_tryToMoveLeftWithTileWidth: (CGFloat)tileWidth
+{
+    const char *str = [_currentLevelMap[_playerY] cStringUsingEncoding: NSUTF8StringEncoding];
+    NSInteger xLooper = _playerX;
+    char blockType = '\0';
+    
+    while (xLooper >= 0)
+    {
+        blockType = str[xLooper];
+        BOOL willBreak = NO;
+        
+        switch (blockType)
+        {
+            case QGWallType:
+            {
+                if (xLooper + 1 < _playerX)
+                {
+                    [_playerNode runAction: actionForXY((xLooper + 1 - _playerX) * tileWidth, 0)
+                                completion: (^
+                                             {
+                                                 [self _checkIfNeedShowMessageAtX: xLooper + 1
+                                                                                y: _playerY];
+                                             })];
+                    _playerX = xLooper + 1;
+                }
+                willBreak = YES;
+                break;
+            }
+            case QGEndType:
+            {
+                [_playerNode runAction: actionForXY((xLooper - _playerX) * tileWidth, 0)
+                            completion: (^
+                                         {
+                                             [self _findWayout];
+                                         })];
+                _playerX = xLooper;
+                willBreak = YES;
+                
+                break;
+            }
+            case QGKeyType:
+            {
+                [self _goThroughKeyNode];
+                break;
+            }
+            case QGRiverType:
+            {
+                [_playerNode runAction: actionForXY((xLooper - _playerX) * tileWidth, 0)
+                            completion: (^
+                                         {
+                                             [self _dieInRiver];
+                                         })];
+                willBreak = YES;
+                
+                break;
+            }
+            case QGDoorType:
+            {
+                if (_doorOpenedInCurrentLevel)
+                {
+                    //treat it as empty;
+                    //
+                }else
+                {
+                    //stop here
+                    if (xLooper + 1 < _playerX)
+                    {
+                        [_playerNode runAction: actionForXY((xLooper + 1 - _playerX) * tileWidth, 0)
+                                    completion: (^
+                                                 {
+                                                     [self _checkIfNeedShowMessageAtX: xLooper + 1
+                                                                                    y: _playerY];
+                                                 })];
+                        _playerX = xLooper + 1;
+                    }
+                    willBreak = YES;
+                }
+                break;
+            }
+            default:
+            {
+                break;
+            }
+        }
+        
+        if (willBreak)
+        {
+            break;
+        }
+        
+        --xLooper;
+    }
+}
+
+- (void)_tryToMoveRightWithTileWidth: (CGFloat)tileWidth
+{
+    const char *str = [_currentLevelMap[_playerY] cStringUsingEncoding: NSUTF8StringEncoding];
+    NSInteger xLooper = _playerX;
+    NSInteger max = strlen(str);
+    char blockType = '\0';
+    
+    while (xLooper < max)
+    {
+        blockType = str[xLooper];
+        BOOL willBreak = NO;
+        
+        switch (blockType)
+        {
+            case QGWallType:
+            {
+                if (xLooper - 1 > _playerX)
+                {
+                    [_playerNode runAction: actionForXY((xLooper - 1 - _playerX) * tileWidth, 0)
+                                completion: (^
+                                             {
+                                                 [self _checkIfNeedShowMessageAtX: xLooper - 1
+                                                                                y: _playerY];
+                                             })];
+                    _playerX = xLooper - 1;
+                }
+                willBreak = YES;
+                break;
+            }
+            case QGEndType:
+            {
+                [_playerNode runAction: actionForXY((xLooper - _playerX) * tileWidth, 0)
+                            completion: (^
+                                         {
+                                             [self _findWayout];
+                                         })];
+                _playerX = xLooper;
+                willBreak = YES;
+                
+                break;
+            }
+            case QGKeyType:
+            {
+                [self _goThroughKeyNode];
+                break;
+            }
+            case QGRiverType:
+            {
+                [_playerNode runAction: actionForXY((xLooper - _playerX) * tileWidth, 0)
+                            completion: (^
+                                         {
+                                             [self _dieInRiver];
+                                         })];
+                willBreak = YES;
+                
+                break;
+            }
+            case QGDoorType:
+            {
+                if (_doorOpenedInCurrentLevel)
+                {
+                    //treat it as empty;
+                    //
+                }else
+                {
+                    //stop here
+                    if (xLooper - 1 > _playerX)
+                    {
+                        [_playerNode runAction: actionForXY((xLooper - 1 - _playerX) * tileWidth, 0)
+                                    completion: (^
+                                                 {
+                                                     [self _checkIfNeedShowMessageAtX: xLooper - 1
+                                                                                    y: _playerY];
+                                                 })];
+                        _playerX = xLooper - 1;
+                    }
+                    willBreak = YES;
+                }
+                break;
+            }
+            default:
+            {
+                break;
+            }
+        }
+        
+        if (willBreak)
+        {
+            break;
+        }
+        ++xLooper;
     }
 }
 
@@ -103,388 +486,22 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     {
         case QGDirectionUp:
         {
-            NSInteger yLooper = _playerY;
-            char blockType = '\0';
-            
-            for (yLooper = _playerY + 1; yLooper < [_currentLevelMap count]; ++yLooper)
-            {
-                const char *str = [_currentLevelMap[yLooper] cStringUsingEncoding: NSUTF8StringEncoding];
-                blockType = str[_playerX];
-                BOOL willBreak = NO;
-                //check the block
-                //
-                switch (blockType)
-                {
-                    case QGWallType:
-                    {
-                        if (yLooper - 1 > _playerY)
-                        {
-                            [_playerNode runAction: actionForXY(0, (yLooper - 1 - _playerY) * tileWidth)
-                                        completion: (^
-                                                     {
-                                                         [self _checkIfNeedShowMessageAtX: _playerX
-                                                                                        y: yLooper - 1];
-                                                     })];
-                            
-                            _playerY = yLooper - 1;
-                        }
-                        willBreak = YES;
-                        break;
-                    }
-                    case QGEndType:
-                    {
-                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * tileWidth)
-                                    completion: (^
-                                                 {
-                                                     [self _findWayout];
-                                                 })];
-                        
-                        _playerY = yLooper;
-                        
-                        willBreak = YES;
-                        break;
-                    }
-                    case QGKeyType:
-                    {
-                        [self _goThroughKeyNode];
-                        break;
-                    }
-                    case QGRiverType:
-                    {
-                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * tileWidth)
-                                    completion: (^
-                                                 {
-                                                     [self _dieInRiver];
-                                                 })];
-                        
-                        _playerY = yLooper;
-                        
-                        willBreak = YES;
-                        break;
-                    }
-                    case QGDoorType:
-                    {
-                        if (_doorOpenedInCurrentLevel)
-                        {
-                            //treat it as empty;
-                            //
-                        }else
-                        {
-                            //stop here
-                            if (yLooper - 1 > _playerY)
-                            {
-                                [_playerNode runAction: actionForXY(0, (yLooper - 1 - _playerY) * tileWidth)
-                                            completion: (^
-                                                         {
-                                                             [self _checkIfNeedShowMessageAtX: _playerX
-                                                                                            y: yLooper - 1];
-                                                         })];
-                                
-                                _playerY = yLooper - 1;
-                            }
-                            willBreak = YES;
-                        }
-                        break;
-                    }
-                    default:
-                    {
-                        break;
-                    }
-                }
-                
-                if (willBreak)
-                {
-                    break;
-                }
-            }
-            
-            
+            [self _tryMoveUpWithTileWidth: tileWidth];
             break;
         }
         case QGDirectionDown:
         {
-            NSInteger yLooper = _playerY;
-            char blockType = '\0';
-            
-            for (yLooper = _playerY; yLooper >= 0; --yLooper)
-            {
-                const char *str = [_currentLevelMap[yLooper] cStringUsingEncoding: NSUTF8StringEncoding];
-                blockType = str[_playerX];
-                
-                BOOL willBreak = NO;
-                //check the block
-                //
-                switch (blockType)
-                {
-                    case QGWallType:
-                    {
-                        if (yLooper + 1 < _playerY)
-                        {
-                            [_playerNode runAction: actionForXY(0, (yLooper + 1 - _playerY) * tileWidth)
-                                        completion: (^
-                                                     {
-                                                         [self _checkIfNeedShowMessageAtX: _playerX
-                                                                                        y: yLooper + 1];
-                                                     })];
-                            _playerY = yLooper + 1;
-                        }
-                        willBreak = YES;
-                        
-                        break;
-                    }
-                    case QGEndType:
-                    {
-                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * tileWidth)
-                                    completion: (^
-                                                 {
-                                                     [self _findWayout];
-                                                 })];
-                        
-                        _playerY = yLooper;
-                        
-                        willBreak = YES;
-                        break;
-                    }
-                    case QGKeyType:
-                    {
-                        [self _goThroughKeyNode];
-                        break;
-                    }
-                    case QGRiverType:
-                    {
-                        [_playerNode runAction: actionForXY(0, (yLooper - _playerY) * tileWidth)
-                                    completion: (^
-                                                 {
-                                                     [self _dieInRiver];
-                                                 })];
-                        willBreak = YES;
-                        break;
-                    }
-                    case QGDoorType:
-                    {
-                        if (_doorOpenedInCurrentLevel)
-                        {
-                            //treat it as empty;
-                            //
-                        }else
-                        {
-                            //stop here
-                            if (yLooper + 1 < _playerY)
-                            {
-                                [_playerNode runAction: actionForXY(0, (yLooper + 1 - _playerY) * tileWidth)
-                                            completion: (^
-                                                         {
-                                                             [self _checkIfNeedShowMessageAtX: _playerX
-                                                                                            y: yLooper + 1];
-                                                         })];
-                                _playerY = yLooper + 1;
-                            }
-                            willBreak = YES;
-                        }
-                        break;
-                    }
-                    default:
-                    {
-                        break;
-                    }
-                }
-                
-                if (willBreak)
-                {
-                    break;
-                }
-            }
-            
+            [self _tryToMoveDownWithTileWidth: tileWidth];
             break;
         }
         case QGDirectionLeft:
         {
-            const char *str = [_currentLevelMap[_playerY] cStringUsingEncoding: NSUTF8StringEncoding];
-            NSInteger xLooper = _playerX;
-            char blockType = '\0';
-            
-            while (xLooper >= 0)
-            {
-                blockType = str[xLooper];
-                BOOL willBreak = NO;
-                
-                switch (blockType)
-                {
-                    case QGWallType:
-                    {
-                        if (xLooper + 1 < _playerX)
-                        {
-                            [_playerNode runAction: actionForXY((xLooper + 1 - _playerX) * tileWidth, 0)
-                                        completion: (^
-                                                     {
-                                                         [self _checkIfNeedShowMessageAtX: xLooper + 1
-                                                                                        y: _playerY];
-                                                     })];
-                            _playerX = xLooper + 1;
-                        }
-                        willBreak = YES;
-                        break;
-                    }
-                    case QGEndType:
-                    {
-                        [_playerNode runAction: actionForXY((xLooper - _playerX) * tileWidth, 0)
-                                    completion: (^
-                                                 {
-                                                     [self _findWayout];
-                                                 })];
-                        _playerX = xLooper;
-                        willBreak = YES;
-                        
-                        break;
-                    }
-                    case QGKeyType:
-                    {
-                        [self _goThroughKeyNode];
-                        break;
-                    }
-                    case QGRiverType:
-                    {
-                        [_playerNode runAction: actionForXY((xLooper - _playerX) * tileWidth, 0)
-                                    completion: (^
-                                                 {
-                                                     [self _dieInRiver];
-                                                 })];
-                        willBreak = YES;
-                        
-                        break;
-                    }
-                    case QGDoorType:
-                    {
-                        if (_doorOpenedInCurrentLevel)
-                        {
-                            //treat it as empty;
-                            //
-                        }else
-                        {
-                            //stop here
-                            if (xLooper + 1 < _playerX)
-                            {
-                                [_playerNode runAction: actionForXY((xLooper + 1 - _playerX) * tileWidth, 0)
-                                            completion: (^
-                                                         {
-                                                             [self _checkIfNeedShowMessageAtX: xLooper + 1
-                                                                                            y: _playerY];
-                                                         })];
-                                _playerX = xLooper + 1;
-                            }
-                            willBreak = YES;
-                        }
-                        break;
-                    }
-                    default:
-                    {
-                        break;
-                    }
-                }
-                
-                if (willBreak)
-                {
-                    break;
-                }
-                
-                --xLooper;
-            }
-            
+            [self _tryToMoveLeftWithTileWidth: tileWidth];
             break;
         }
         case QGDirectionRight:
         {
-            const char *str = [_currentLevelMap[_playerY] cStringUsingEncoding: NSUTF8StringEncoding];
-            NSInteger xLooper = _playerX;
-            NSInteger max = strlen(str);
-            char blockType = '\0';
-            
-            while (xLooper < max)
-            {
-                blockType = str[xLooper];
-                BOOL willBreak = NO;
-                
-                switch (blockType)
-                {
-                    case QGWallType:
-                    {
-                        if (xLooper - 1 > _playerX)
-                        {
-                            [_playerNode runAction: actionForXY((xLooper - 1 - _playerX) * tileWidth, 0)
-                                        completion: (^
-                                                     {
-                                                         [self _checkIfNeedShowMessageAtX: xLooper - 1
-                                                                                        y: _playerY];
-                                                     })];
-                            _playerX = xLooper - 1;
-                        }
-                        willBreak = YES;
-                        break;
-                    }
-                    case QGEndType:
-                    {
-                        [_playerNode runAction: actionForXY((xLooper - _playerX) * tileWidth, 0)
-                                    completion: (^
-                                                 {
-                                                     [self _findWayout];
-                                                 })];
-                        _playerX = xLooper;
-                        willBreak = YES;
-                        
-                        break;
-                    }
-                    case QGKeyType:
-                    {
-                        [self _goThroughKeyNode];
-                        break;
-                    }
-                    case QGRiverType:
-                    {
-                        [_playerNode runAction: actionForXY((xLooper - _playerX) * tileWidth, 0)
-                                    completion: (^
-                                                 {
-                                                     [self _dieInRiver];
-                                                 })];
-                        willBreak = YES;
-                        
-                        break;
-                    }
-                    case QGDoorType:
-                    {
-                        if (_doorOpenedInCurrentLevel)
-                        {
-                            //treat it as empty;
-                            //
-                        }else
-                        {
-                            //stop here
-                            if (xLooper - 1 > _playerX)
-                            {
-                                [_playerNode runAction: actionForXY((xLooper - 1 - _playerX) * tileWidth, 0)
-                                            completion: (^
-                                                         {
-                                                             [self _checkIfNeedShowMessageAtX: xLooper - 1
-                                                                                            y: _playerY];
-                                                         })];
-                                _playerX = xLooper - 1;
-                            }
-                            willBreak = YES;
-                        }
-                        break;
-                    }
-                    default:
-                    {
-                        break;
-                    }
-                }
-                
-                if (willBreak)
-                {
-                    break;
-                }
-                ++xLooper;
-            }
-            
+            [self _tryToMoveRightWithTileWidth: tileWidth];
             break;
         }
         default:
@@ -541,6 +558,13 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 
     [_delegate didScene: self
            enteredLevel: _currentLevel];
+    
+    _currentLevelMoveCount = 0;
+    //record time
+//    if (_timeLimitMode)
+    {
+        [self setCurrentLevelStartTime: [NSDate date]];
+    }
 }
 
 - (NSDictionary *)levelInfoAtIndex: (NSInteger)index
@@ -556,6 +580,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 
 - (void)_findWayout
 {
+    ++_currentLevelMoveCount;
     [_delegate sceneFoundWayOutInCurrentLevel: self];
 }
 

@@ -67,4 +67,15 @@
     
 }
 
+- (void)setTitle: (NSString *)title
+{
+    [_titleLabel setText: title];
+}
+
+- (void)setContent: (NSString *)content
+{
+    [_contentLabel setText: content];
+}
+
+
 @end

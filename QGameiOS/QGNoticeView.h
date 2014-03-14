@@ -10,4 +10,8 @@
 
 @interface QGNoticeView : UIView
 
+- (void)setTitle: (NSString *)title;
+
+- (void)setContent: (NSString *)content;
+
 @end
