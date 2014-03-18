@@ -17,4 +17,7 @@
 
 @interface QGGameView : SKView<QGContentView>
 
+- (void)enterLevel: (NSInteger)index
+              info: (NSDictionary *)info;
+
 @end

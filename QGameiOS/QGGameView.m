@@ -130,6 +130,10 @@
                                                  selector: @selector(_notificationForEnactive)
                                                      name: UIApplicationWillTerminateNotification
                                                    object: nil];
+        [[NSNotificationCenter defaultCenter] addObserver: self
+                                                 selector: @selector(_notificationForTerminate)
+                                                     name: UIApplicationWillTerminateNotification
+                                                   object: nil];
     }
     
     return self;
@@ -218,13 +222,33 @@
                                })];
 }
 
-- (void)contentViewWillDisappear
+- (void)_saveCurrentGameInfo
 {
     QGScene *scene = (QGScene *)[self scene];
     
     [[NSUserDefaults standardUserDefaults] setObject: [scene currentGameInfo]
                                               forKey: QGCurrentGameInfo];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)contentViewWillDisappear
+{
+    [self _saveCurrentGameInfo];
+}
+
+- (void)_notificationForTerminate
+{
+    NSLog(@"%s %d", __func__, __LINE__);
+    
+    [self _saveCurrentGameInfo];
+}
+
+- (void)enterLevel: (NSInteger)index
+              info: (NSDictionary *)info
+{
+    QGScene * scene = (QGScene *)[self scene];
+    [scene enterLevel: index
+                 info: info];
 }
 
 @end

@@ -9,9 +9,13 @@
 #import "QGMainViewController.h"
 #import "QGSettingsView.h"
 #import "QGGameView.h"
+#import "QGLevelsView.h"
+#import "APPChildViewController.h"
+#import "QGDataService.h"
 
-@interface QGMainViewController ()
+@interface QGMainViewController ()<UIPageViewControllerDataSource, APPChildViewControllerDelegate>
 
+@property (nonatomic, strong) UIPageViewController *pageController;
 @property (nonatomic, strong) UIButton *backButton;
 @property (nonatomic, strong) NSMutableArray *viewStack;
 
@@ -81,6 +85,28 @@
     [[self view] addSubview: feedbackButton];
 }
 
+- (void)_showLevelViewController
+{
+    _pageController = [[UIPageViewController alloc] initWithTransitionStyle: UIPageViewControllerTransitionStyleScroll
+                                                      navigationOrientation: UIPageViewControllerNavigationOrientationHorizontal
+                                                                    options: nil];
+    
+    self.pageController.dataSource = self;
+    [[self.pageController view] setFrame:[[self view] bounds]];
+    
+    APPChildViewController *initialViewController = [self viewControllerAtIndex: 0];
+
+    NSArray *viewControllers = [NSArray arrayWithObject: initialViewController];
+    
+    [self.pageController setViewControllers: viewControllers
+                                  direction: UIPageViewControllerNavigationDirectionForward
+                                   animated: NO
+                                 completion: nil];
+    
+    [self addChildViewController: self.pageController];
+    [[self view] addSubview: [self.pageController view]];
+}
+
 - (void)_pushContentView: (UIView<QGContentView> *)view
 {
     [[self view] addSubview: view];
@@ -100,8 +126,9 @@
 
 - (void)_handlePlayEvent: (id)sender
 {
-    QGGameView *gameView = [[QGGameView alloc] initWithFrame: [[self view] bounds]];
-    [self _pushContentView: gameView];
+    [self _showLevelViewController];
+//    QGLevelsView *levelView = [[QGLevelsView alloc] initWithFrame: [[self view] bounds]];
+//    [self _pushContentView: levelView];
 }
 
 - (void)_handleSettingsButtonEvent: (id)sender
@@ -180,6 +207,76 @@
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+#pragma mark - page control
+
+- (APPChildViewController *)viewControllerAtIndex: (NSUInteger)index
+{
+    APPChildViewController *childViewController = [[APPChildViewController alloc] initWithNibName: @"APPChildViewController"
+                                                                                           bundle: nil];
+    childViewController.index = index;
+    [childViewController setDelegate: self];
+    
+    return childViewController;
+    
+}
+
+- (UIViewController *)pageViewController: (UIPageViewController *)pageViewController
+      viewControllerBeforeViewController: (UIViewController *)viewController{
+    
+    NSUInteger index = [(APPChildViewController *)viewController index];
+    
+    if (index == 0)
+    {
+        return nil;
+    }
+    
+    // Decrease the index by 1 to return
+    index--;
+    
+    return [self viewControllerAtIndex: index];
+    
+}
+
+- (UIViewController *)pageViewController: (UIPageViewController *)pageViewController
+       viewControllerAfterViewController: (UIViewController *)viewController
+{
+    
+    NSUInteger index = [(APPChildViewController *)viewController index];
+    
+    index++;
+    
+    return [self viewControllerAtIndex: index];
+}
+
+- (NSInteger)presentationCountForPageViewController: (UIPageViewController *)pageViewController
+{
+    // The number of items reflected in the page indicator.
+    return [[QGDataService service] levelCount];
+}
+
+- (NSInteger)presentationIndexForPageViewController: (UIPageViewController *)pageViewController
+{
+    // The selected item reflected in the page indicator.
+    return 0;
+}
+
+- (void)childViewControllerTapped: (APPChildViewController *)viewController
+{
+    [_pageController removeFromParentViewController];
+    [[_pageController view] removeFromSuperview];
+    
+    [self _showGameViewAtLevel: [viewController index]];
+}
+
+- (void)_showGameViewAtLevel: (NSInteger)level
+{
+    QGGameView *gameView = [[QGGameView alloc] initWithFrame: [[self view] bounds]];
+    [gameView enterLevel: level
+                    info: nil];
+    
+    [self _pushContentView: gameView];
 }
 
 @end

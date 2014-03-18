@@ -58,6 +58,11 @@
     return self;
 }
 
+- (NSInteger)levelCount
+{
+    return [_levels count];
+}
+
 - (NSDictionary *)levelWithIndex: (NSInteger)index
 {
     if (index < [_levels count])

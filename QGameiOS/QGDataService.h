@@ -12,6 +12,8 @@
 
 + (id)service;
 
+- (NSInteger)levelCount;
+
 - (NSDictionary *)levelWithIndex: (NSInteger)index;
 
 @end
