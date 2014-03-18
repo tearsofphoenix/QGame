@@ -13,6 +13,7 @@
 		60027B4018D87B62009FCD4A /* QGLevelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60027B3F18D87B62009FCD4A /* QGLevelsView.m */; };
 		60027B4418D88B0F009FCD4A /* APPChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60027B4218D88B0F009FCD4A /* APPChildViewController.m */; };
 		60027B4518D88B0F009FCD4A /* APPChildViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60027B4318D88B0F009FCD4A /* APPChildViewController.xib */; };
+		60027B4818D89920009FCD4A /* UIAlertView+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 60027B4718D89920009FCD4A /* UIAlertView+BlockSupport.m */; };
 		60EFDC2E18D0A675005F13A9 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EFDC2B18D0A675005F13A9 /* IAPHelper.m */; };
 		60EFDC2F18D0A675005F13A9 /* RageIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EFDC2D18D0A675005F13A9 /* RageIAPHelper.m */; };
 		9210218318D17D180071DE17 /* QGMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9210218218D17D180071DE17 /* QGMainViewController.m */; };
@@ -75,6 +76,8 @@
 		60027B4118D88B0F009FCD4A /* APPChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPChildViewController.h; sourceTree = SOURCE_ROOT; };
 		60027B4218D88B0F009FCD4A /* APPChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPChildViewController.m; sourceTree = SOURCE_ROOT; };
 		60027B4318D88B0F009FCD4A /* APPChildViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APPChildViewController.xib; sourceTree = SOURCE_ROOT; };
+		60027B4618D89920009FCD4A /* UIAlertView+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+BlockSupport.h"; sourceTree = SOURCE_ROOT; };
+		60027B4718D89920009FCD4A /* UIAlertView+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+BlockSupport.m"; sourceTree = SOURCE_ROOT; };
 		60EFDC2A18D0A675005F13A9 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
 		60EFDC2B18D0A675005F13A9 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		60EFDC2C18D0A675005F13A9 /* RageIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RageIAPHelper.h; sourceTree = "<group>"; };
@@ -303,6 +306,8 @@
 		92F52B7A18C85886008BCA12 /* QGameiOS */ = {
 			isa = PBXGroup;
 			children = (
+				60027B4618D89920009FCD4A /* UIAlertView+BlockSupport.h */,
+				60027B4718D89920009FCD4A /* UIAlertView+BlockSupport.m */,
 				92F52B8318C85886008BCA12 /* QGAppDelegate.h */,
 				92F52B8418C85886008BCA12 /* QGAppDelegate.m */,
 				9210218118D17D180071DE17 /* QGMainViewController.h */,
@@ -466,6 +471,7 @@
 				9210218318D17D180071DE17 /* QGMainViewController.m in Sources */,
 				92F52B8118C85886008BCA12 /* main.m in Sources */,
 				60EFDC2E18D0A675005F13A9 /* IAPHelper.m in Sources */,
+				60027B4818D89920009FCD4A /* UIAlertView+BlockSupport.m in Sources */,
 				9276281D18D19AAE0054CE64 /* QGScene+BuildLevel.m in Sources */,
 				60027B4018D87B62009FCD4A /* QGLevelsView.m in Sources */,
 				9252DD4018D2B11C00C8FDAF /* QGDataService.m in Sources */,

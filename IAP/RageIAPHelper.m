@@ -17,8 +17,7 @@
     dispatch_once(&once,
                   (^
                    {
-                       NSSet * productIdentifiers = [NSSet setWithObjects:
-                                                     @"com.veritas.application.ios.qgame.level_unlock",
+                       NSSet * productIdentifiers = [NSSet setWithObjects: QGUnlockProductID,
                                                      nil];
                        sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
                    }));

@@ -12,6 +12,9 @@
 #import "QGLevelsView.h"
 #import "APPChildViewController.h"
 #import "QGDataService.h"
+#import "RageIAPHelper.h"
+#import "UIAlertView+BlockSupport.h"
+#import "QGScene.h"
 
 @interface QGMainViewController ()<UIPageViewControllerDataSource, APPChildViewControllerDelegate>
 
@@ -87,15 +90,23 @@
 
 - (void)_showLevelViewController
 {
+    UIButton *backButton = [[UIButton alloc] initWithFrame: CGRectMake(8, 8, 40, 40)];
+    [backButton setImage: [UIImage imageNamed: @"back"]
+                 forState: UIControlStateNormal];
+    [backButton addTarget: self
+                    action: @selector(_handleLevelBackEvent:)
+          forControlEvents: UIControlEventTouchUpInside];
+
     _pageController = [[UIPageViewController alloc] initWithTransitionStyle: UIPageViewControllerTransitionStyleScroll
                                                       navigationOrientation: UIPageViewControllerNavigationOrientationHorizontal
                                                                     options: nil];
+    [[_pageController view] addSubview: backButton];
     
     self.pageController.dataSource = self;
     [[self.pageController view] setFrame:[[self view] bounds]];
     
     APPChildViewController *initialViewController = [self viewControllerAtIndex: 0];
-
+    
     NSArray *viewControllers = [NSArray arrayWithObject: initialViewController];
     
     [self.pageController setViewControllers: viewControllers
@@ -127,8 +138,8 @@
 - (void)_handlePlayEvent: (id)sender
 {
     [self _showLevelViewController];
-//    QGLevelsView *levelView = [[QGLevelsView alloc] initWithFrame: [[self view] bounds]];
-//    [self _pushContentView: levelView];
+    //    QGLevelsView *levelView = [[QGLevelsView alloc] initWithFrame: [[self view] bounds]];
+    //    [self _pushContentView: levelView];
 }
 
 - (void)_handleSettingsButtonEvent: (id)sender
@@ -262,12 +273,61 @@
     return 0;
 }
 
-- (void)childViewControllerTapped: (APPChildViewController *)viewController
+- (void)_handleLevelBackEvent: (id)sender
+{
+    [self _hideLevelViewController];
+}
+
+- (void)_hideLevelViewController
 {
     [_pageController removeFromParentViewController];
     [[_pageController view] removeFromSuperview];
+}
+
+- (void)childViewControllerTapped: (APPChildViewController *)viewController
+{
+    NSInteger index = [viewController index];
+    BOOL purchased = [[RageIAPHelper sharedInstance] productPurchased: QGUnlockProductID];
     
-    [self _showGameViewAtLevel: [viewController index]];
+    if (index > 8)
+    {
+        if (purchased)
+        {
+            [self _hideLevelViewController];
+            [self _showGameViewAtLevel: index];
+        }else
+        {
+            [[UIAlertView alertWithTitle: nil
+                                 message: @"Unlock the reset levels?"
+                       cancelButtonTitle: @"Cancel"
+                       otherButtonTitles: @[ @"OK" ]
+                                callback: (^(NSInteger buttonIndex)
+                                           {
+                                               if (buttonIndex == 1)
+                                               {
+                                                   NSArray *products = [[QGDataService service] products];
+                                                   [[RageIAPHelper sharedInstance] buyProduct: [products firstObject]];
+                                               }
+                                           })] show];
+        }
+    }else
+    {
+        NSSet *set = [[NSUserDefaults standardUserDefaults] objectForKey: QGPassedLevel];
+        
+        if ([set containsObject: @(index)] || index == 0)
+        {
+            [self _hideLevelViewController];
+
+            [self _showGameViewAtLevel: index];
+        }else
+        {
+            [[UIAlertView alertWithTitle: nil
+                                 message: @"Sorry, work harder to unlock the levels!"
+                       cancelButtonTitle: @"OK"
+                       otherButtonTitles: nil
+                                callback: nil] show];
+        }
+    }
 }
 
 - (void)_showGameViewAtLevel: (NSInteger)level

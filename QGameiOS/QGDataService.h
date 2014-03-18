@@ -16,4 +16,6 @@
 
 - (NSDictionary *)levelWithIndex: (NSInteger)index;
 
+@property (nonatomic, strong) NSArray *products;
+
 @end

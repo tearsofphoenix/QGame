@@ -25,6 +25,7 @@
 #define IsIPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 
 #define QGPrefix            @"com.veritas.application.ios.qgame."
+#define QGPassedLevel       QGPrefix "passed"
 #define QGCurrentGameInfo   QGPrefix "current-info"
 
 #define QGPlayerLocationKey @"location"

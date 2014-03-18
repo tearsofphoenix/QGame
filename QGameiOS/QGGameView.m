@@ -210,6 +210,14 @@
     [self addSubview: alertView];
     [self bringSubviewToFront: alertView];
 
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSMutableSet *set = [NSMutableSet setWithSet: [defaults objectForKey: QGPassedLevel]];
+    [set addObject: @([scene currentLevel])];
+    [defaults setObject: [NSSet setWithSet: set]
+                 forKey: QGPassedLevel];
+    [defaults synchronize];
+    
     [alertView setOkCallback: (^(BOOL isOK)
                                {
                                    if (isOK)

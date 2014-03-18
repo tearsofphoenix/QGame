@@ -8,6 +8,8 @@
 
 #import "IAPHelper.h"
 
+#define QGUnlockProductID @"com.veritas.application.ios.qgame.level_unlock"
+
 @interface RageIAPHelper : IAPHelper
 
 + (RageIAPHelper *)sharedInstance;

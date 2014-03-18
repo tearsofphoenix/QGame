@@ -35,6 +35,7 @@
                                                                                if (success)
                                                                                {
                                                                                    NSLog(@"%@", products);
+                                                                                   [[QGDataService service] setProducts: products];                                                                                   
                                                                                }
                                                                            })];
     
