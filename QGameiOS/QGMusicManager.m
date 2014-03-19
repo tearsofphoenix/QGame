@@ -11,7 +11,7 @@
 
 @interface QGMusicManager ()<AVAudioPlayerDelegate>
 {
-    //    AVAudioPlayer *_audioPlayer;
+    AVAudioPlayer *_audioPlayer;
 }
 @end
 
@@ -41,7 +41,7 @@ static id gsManager = nil;
         
         NSURL *fileURL = [NSURL fileURLWithPath: soundFilePath];
         
-        AVAudioPlayer *_audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL
+        _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL
                                                                              error: nil];
         
         [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback
