@@ -557,7 +557,8 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     
     //play background music
     //
-    [[QGMusicManager manager] playAudio: @"violin"];
+    [[QGMusicManager manager] playAudio: @"violin"
+                              loopCount: -1];
 
     [_delegate didScene: self
            enteredLevel: _currentLevel];
@@ -577,8 +578,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
 
 - (void)_dieInRiver
 {
-    [self enterLevel: _currentLevel
-                info: nil];
+    [_delegate scenePlayerDieInRiver: self];
 }
 
 - (void)_findWayout

@@ -11,6 +11,7 @@
 
 #import "QGControlView.h"
 #import "QGAlertView.h"
+#import "QGMusicManager.h"
 
 @interface QGGameView ()<QGSceneDelegate>
 {
@@ -257,6 +258,15 @@
     QGScene * scene = (QGScene *)[self scene];
     [scene enterLevel: index
                  info: info];
+}
+
+- (void)scenePlayerDieInRiver: (QGScene *)scene
+{
+    [[QGMusicManager manager] playAudio: @"splash"
+                              loopCount: 0];
+    
+    [scene enterLevel: [scene currentLevel]
+                 info: nil];
 }
 
 @end

@@ -12,6 +12,7 @@
 
 + (id)manager;
 
-- (void)playAudio: (NSString *)name;
+- (void)playAudio: (NSString *)name
+        loopCount: (NSInteger)numberOfLoops;
 
 @end

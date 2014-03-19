@@ -25,6 +25,7 @@
 		92273E6D18CFFB6D00EC2E25 /* levels.json in Resources */ = {isa = PBXBuildFile; fileRef = 92273E6918CFFB6D00EC2E25 /* levels.json */; };
 		92273E6E18CFFB6D00EC2E25 /* violin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 92273E6A18CFFB6D00EC2E25 /* violin.m4a */; };
 		92273E8118D0342400EC2E25 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 92273E7F18D0342400EC2E25 /* message.png */; };
+		9242EA2518D98621001BC217 /* splash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9242EA2418D98621001BC217 /* splash.m4a */; };
 		9252DD4018D2B11C00C8FDAF /* QGDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9252DD3F18D2B11C00C8FDAF /* QGDataService.m */; };
 		925B564318C9601800414F57 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5D18C8522E008BCA12 /* down.png */; };
 		925B564418C9601800414F57 /* down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F52B5E18C8522E008BCA12 /* down@2x.png */; };
@@ -105,6 +106,7 @@
 		92273E6918CFFB6D00EC2E25 /* levels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = levels.json; sourceTree = "<group>"; };
 		92273E6A18CFFB6D00EC2E25 /* violin.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = violin.m4a; sourceTree = "<group>"; };
 		92273E7F18D0342400EC2E25 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
+		9242EA2418D98621001BC217 /* splash.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.m4a; sourceTree = "<group>"; };
 		9252DD3E18D2B11C00C8FDAF /* QGDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGDataService.h; sourceTree = "<group>"; };
 		9252DD3F18D2B11C00C8FDAF /* QGDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGDataService.m; sourceTree = "<group>"; };
 		9276280818D17DE00054CE64 /* QGControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGControlView.h; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 		92273E6618CFFB6D00EC2E25 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9242EA2418D98621001BC217 /* splash.m4a */,
 				9276281018D1855B0054CE64 /* back.png */,
 				9276281118D1855B0054CE64 /* back@2x.png */,
 				92273E7F18D0342400EC2E25 /* message.png */,
@@ -505,6 +508,7 @@
 				925B564A18C9601800414F57 /* up@2x.png in Resources */,
 				92F52B9518C85887008BCA12 /* Images.xcassets in Resources */,
 				60027B4518D88B0F009FCD4A /* APPChildViewController.xib in Resources */,
+				9242EA2518D98621001BC217 /* splash.m4a in Resources */,
 				92273E6D18CFFB6D00EC2E25 /* levels.json in Resources */,
 				9276281518D1855B0054CE64 /* back@2x.png in Resources */,
 				92F52B7F18C85886008BCA12 /* InfoPlist.strings in Resources */,

@@ -45,6 +45,8 @@
 
 - (void)sceneFoundWayOutInCurrentLevel: (QGScene *)scene;
 
+- (void)scenePlayerDieInRiver: (QGScene *)scene;
+
 @end
 
 @interface QGScene : SKScene<QGControlViewDelegate>
