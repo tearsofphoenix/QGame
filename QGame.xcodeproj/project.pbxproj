@@ -10,7 +10,7 @@
 		60020F1318CB0F43004E6C6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0118C83BAC008BCA12 /* Foundation.framework */; };
 		60020F1618CB0F43004E6C6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 60020F1518CB0F43004E6C6A /* main.m */; };
 		60020F1A18CB0F43004E6C6A /* MapGenerator.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60020F1918CB0F43004E6C6A /* MapGenerator.1 */; };
-		60027B4018D87B62009FCD4A /* QGLevelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60027B3F18D87B62009FCD4A /* QGLevelsView.m */; };
+		60027B4018D87B62009FCD4A /* QGProductsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60027B3F18D87B62009FCD4A /* QGProductsView.m */; };
 		60027B4418D88B0F009FCD4A /* APPChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60027B4218D88B0F009FCD4A /* APPChildViewController.m */; };
 		60027B4518D88B0F009FCD4A /* APPChildViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60027B4318D88B0F009FCD4A /* APPChildViewController.xib */; };
 		60027B4818D89920009FCD4A /* UIAlertView+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 60027B4718D89920009FCD4A /* UIAlertView+BlockSupport.m */; };
@@ -83,8 +83,8 @@
 		60020F1518CB0F43004E6C6A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		60020F1818CB0F43004E6C6A /* MapGenerator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MapGenerator-Prefix.pch"; sourceTree = "<group>"; };
 		60020F1918CB0F43004E6C6A /* MapGenerator.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MapGenerator.1; sourceTree = "<group>"; };
-		60027B3E18D87B62009FCD4A /* QGLevelsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGLevelsView.h; sourceTree = "<group>"; };
-		60027B3F18D87B62009FCD4A /* QGLevelsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGLevelsView.m; sourceTree = "<group>"; };
+		60027B3E18D87B62009FCD4A /* QGProductsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGProductsView.h; sourceTree = "<group>"; };
+		60027B3F18D87B62009FCD4A /* QGProductsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGProductsView.m; sourceTree = "<group>"; };
 		60027B4118D88B0F009FCD4A /* APPChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPChildViewController.h; sourceTree = SOURCE_ROOT; };
 		60027B4218D88B0F009FCD4A /* APPChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPChildViewController.m; sourceTree = SOURCE_ROOT; };
 		60027B4318D88B0F009FCD4A /* APPChildViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APPChildViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -270,8 +270,8 @@
 				92F52B9018C85886008BCA12 /* QGScene.m */,
 				9276281B18D19AAE0054CE64 /* QGScene+BuildLevel.h */,
 				9276281C18D19AAE0054CE64 /* QGScene+BuildLevel.m */,
-				60027B3E18D87B62009FCD4A /* QGLevelsView.h */,
-				60027B3F18D87B62009FCD4A /* QGLevelsView.m */,
+				60027B3E18D87B62009FCD4A /* QGProductsView.h */,
+				60027B3F18D87B62009FCD4A /* QGProductsView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -548,7 +548,7 @@
 				60027B4818D89920009FCD4A /* UIAlertView+BlockSupport.m in Sources */,
 				9276281D18D19AAE0054CE64 /* QGScene+BuildLevel.m in Sources */,
 				92A8B38118D93FD300D28DDC /* MFNetworkFileCacheManager.m in Sources */,
-				60027B4018D87B62009FCD4A /* QGLevelsView.m in Sources */,
+				60027B4018D87B62009FCD4A /* QGProductsView.m in Sources */,
 				92A8B38418D93FD300D28DDC /* MFRunLoopOperation.m in Sources */,
 				9252DD4018D2B11C00C8FDAF /* QGDataService.m in Sources */,
 				92A8B38818D93FD300D28DDC /* Reachability.m in Sources */,

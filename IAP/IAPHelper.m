@@ -8,6 +8,7 @@
 
 // 1
 #import "IAPHelper.h"
+#import "UIAlertView+BlockSupport.h"
 #import <StoreKit/StoreKit.h>
 
 NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurchasedNotification";
@@ -156,6 +157,12 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     NSLog(@"failedTransaction...");
     if (transaction.error.code != SKErrorPaymentCancelled)
     {
+        [[UIAlertView alertWithTitle: @"Error"
+                             message: [[transaction error] localizedDescription]
+                   cancelButtonTitle: @"OK"
+                   otherButtonTitles: nil
+                            callback: nil] show];
+        
         NSLog(@"Transaction error: %@", transaction.error.localizedDescription);
     }
     

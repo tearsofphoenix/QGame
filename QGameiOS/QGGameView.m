@@ -212,9 +212,9 @@
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSMutableSet *set = [NSMutableSet setWithSet: [defaults objectForKey: QGPassedLevel]];
+    NSMutableSet *set = [NSMutableSet setWithArray: [defaults objectForKey: QGPassedLevel]];
     [set addObject: @([scene currentLevel])];
-    [defaults setObject: [NSSet setWithSet: set]
+    [defaults setObject: [set allObjects]
                  forKey: QGPassedLevel];
     [defaults synchronize];
     

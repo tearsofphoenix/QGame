@@ -75,4 +75,15 @@
     return nil;
 }
 
+- (void)setProducts: (NSArray *)products
+{
+    if (_products != products)
+    {
+        _products = products;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName: QGNotificationProductsChanged
+                                                            object: self];
+    }
+}
+
 @end

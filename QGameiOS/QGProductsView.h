@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "QGGameView.h"
 
-@interface QGLevelsView : UIView<QGContentView>
+@interface QGProductsView : UIView<QGContentView>
 
 @end

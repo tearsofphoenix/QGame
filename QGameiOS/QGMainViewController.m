@@ -9,12 +9,13 @@
 #import "QGMainViewController.h"
 #import "QGSettingsView.h"
 #import "QGGameView.h"
-#import "QGLevelsView.h"
+#import "QGProductsView.h"
 #import "APPChildViewController.h"
 #import "QGDataService.h"
 #import "RageIAPHelper.h"
 #import "UIAlertView+BlockSupport.h"
 #import "QGScene.h"
+#import "QGProductsView.h"
 
 @interface QGMainViewController ()<UIPageViewControllerDataSource, APPChildViewControllerDelegate>
 
@@ -76,7 +77,18 @@
              forControlEvents: UIControlEventTouchUpInside];
     [[self view] addSubview: settingsButton];
     
-    UIButton *feedbackButton = [[UIButton alloc] initWithFrame: CGRectMake(110, 310, 100, 44)];
+    UIButton *productsButton = [[UIButton alloc] initWithFrame: CGRectMake(110, 310, 100, 44)];
+    [productsButton setTitle: @"Products"
+                    forState: UIControlStateNormal];
+    [productsButton setBackgroundColor: [UIColor clearColor]];
+    [[productsButton titleLabel] setFont: font];
+    [[productsButton titleLabel] setTextAlignment: NSTextAlignmentCenter];
+    [productsButton addTarget: self
+                       action: @selector(_handleProductsEvent:)
+             forControlEvents: UIControlEventTouchUpInside];
+    [[self view] addSubview: productsButton];
+    
+    UIButton *feedbackButton = [[UIButton alloc] initWithFrame: CGRectMake(110, 360, 100, 44)];
     [feedbackButton setBackgroundColor: [UIColor clearColor]];
     [[feedbackButton titleLabel] setFont: font];
     [[feedbackButton titleLabel] setTextAlignment: NSTextAlignmentCenter];
@@ -138,8 +150,6 @@
 - (void)_handlePlayEvent: (id)sender
 {
     [self _showLevelViewController];
-    //    QGLevelsView *levelView = [[QGLevelsView alloc] initWithFrame: [[self view] bounds]];
-    //    [self _pushContentView: levelView];
 }
 
 - (void)_handleSettingsButtonEvent: (id)sender
@@ -284,12 +294,18 @@
     [[_pageController view] removeFromSuperview];
 }
 
+- (void)_handleProductsEvent: (id)sender
+{
+    QGProductsView *productsView = [[QGProductsView alloc] initWithFrame: [[self view] bounds]];
+    [self _pushContentView: productsView];
+}
+
 - (void)childViewControllerTapped: (APPChildViewController *)viewController
 {
     NSInteger index = [viewController index];
     BOOL purchased = [[RageIAPHelper sharedInstance] productPurchased: QGUnlockProductID];
     
-    if (index > 8)
+    if (index > 0)
     {
         if (purchased)
         {
@@ -312,7 +328,7 @@
         }
     }else
     {
-        NSSet *set = [[NSUserDefaults standardUserDefaults] objectForKey: QGPassedLevel];
+        NSSet *set = [NSSet setWithArray: [[NSUserDefaults standardUserDefaults] objectForKey: QGPassedLevel]];
         
         if ([set containsObject: @(index)] || index == 0)
         {

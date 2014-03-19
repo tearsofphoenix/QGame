@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define QGServerURL @"http://tearsofphoenix.com/scripts/qgame.php"
+#define QGNotificationProductsChanged @"notification.products-changed"
 
 @interface QGDataService : NSObject
 
