@@ -557,7 +557,7 @@ static SKAction *actionForXY(CGFloat x, CGFloat y)
     
     //play background music
     //
-    [[QGMusicManager manager] playAudio: @"violin"
+    [[QGMusicManager manager] playAudio: @"back"
                               loopCount: -1];
 
     [_delegate didScene: self

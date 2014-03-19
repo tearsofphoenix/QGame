@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "QGGameView.h"
 
+#define QGSettingsChangedNotification @"notification.settings-changed"
+
 @interface QGSettingsView : UIView<QGContentView>
 
 @end

@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "QGScene.h"
+
+#define QGDisableSoundEffect QGPrefix "disable-sound-effect"
 
 @interface QGMusicManager : NSObject
 
