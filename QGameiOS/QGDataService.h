@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define QGServerURL @"http://tearsofphoenix.com/scripts/qgame.php"
+
 @interface QGDataService : NSObject
 
 + (id)service;

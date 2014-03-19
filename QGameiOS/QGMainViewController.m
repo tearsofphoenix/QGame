@@ -54,7 +54,7 @@
     UIFont *font = [UIFont fontWithName: @"Avenir-Medium"
                                    size: 20];
     
-    UIButton *playButton = [[UIButton alloc] initWithFrame: CGRectMake(120, 200, 80, 44)];
+    UIButton *playButton = [[UIButton alloc] initWithFrame: CGRectMake(110, 200, 100, 44)];
     [playButton setTitle: @"Play"
                 forState: UIControlStateNormal];
     [playButton setBackgroundColor: [UIColor clearColor]];

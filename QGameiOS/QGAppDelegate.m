@@ -30,15 +30,6 @@
     
     [RageIAPHelper sharedInstance];
     
-    [[RageIAPHelper sharedInstance] requestProductsWithCompletionHandler: (^(BOOL success, NSArray *products)
-                                                                           {
-                                                                               if (success)
-                                                                               {
-                                                                                   NSLog(@"%@", products);
-                                                                                   [[QGDataService service] setProducts: products];                                                                                   
-                                                                               }
-                                                                           })];
-    
     // Override point for customization after application launch.
     return YES;
 }

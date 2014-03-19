@@ -22,20 +22,29 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     SKProductsRequest * _productsRequest;
     RequestProductsCompletionHandler _completionHandler;
     
-    NSSet * _productIdentifiers;
     NSMutableSet * _purchasedProductIdentifiers;
 }
 
-- (id)initWithProductIdentifiers: (NSSet *)productIdentifiers
+- (id)init
 {
-    
-    if ((self = [super init])) {
-        
-        // Store product identifiers
-        _productIdentifiers = productIdentifiers;
-        
+    if ((self = [super init]))
+    {
         // Check for previously purchased products
         _purchasedProductIdentifiers = [NSMutableSet set];
+        
+        // Add self as transaction observer
+        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+        
+    }
+    return self;
+}
+
+- (void)setProductIdentifiers: (NSSet *)productIdentifiers
+{
+    if (_productIdentifiers != productIdentifiers)
+    {
+        _productIdentifiers = productIdentifiers;
+        
         for (NSString * productIdentifier in _productIdentifiers)
         {
             BOOL productPurchased = [[NSUserDefaults standardUserDefaults] boolForKey: productIdentifier];
@@ -48,13 +57,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
                 NSLog(@"Not purchased: %@", productIdentifier);
             }
         }
-        
-        // Add self as transaction observer
-        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-        
     }
-    return self;
-    
 }
 
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler {

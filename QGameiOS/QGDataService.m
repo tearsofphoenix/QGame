@@ -7,6 +7,8 @@
 //
 
 #import "QGDataService.h"
+#import "MFNetworkClient.h"
+#import "NSData+CMBExtensions.h"
 
 @interface QGDataService ()
 {

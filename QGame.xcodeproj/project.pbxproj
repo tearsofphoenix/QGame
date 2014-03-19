@@ -40,6 +40,18 @@
 		9276281D18D19AAE0054CE64 /* QGScene+BuildLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9276281C18D19AAE0054CE64 /* QGScene+BuildLevel.m */; };
 		9276282318D1A3F80054CE64 /* QGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9276282218D1A3F80054CE64 /* QGAlertView.m */; };
 		927E613118CD4AD000AD120F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927E613018CD4AD000AD120F /* StoreKit.framework */; };
+		92A8B37D18D93FD300D28DDC /* MFCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8B36618D93FD300D28DDC /* MFCacheManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		92A8B37E18D93FD300D28DDC /* MFCacheManagerInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8B36818D93FD300D28DDC /* MFCacheManagerInternal.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		92A8B37F18D93FD300D28DDC /* MFNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8B36A18D93FD300D28DDC /* MFNetworkClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		92A8B38018D93FD300D28DDC /* MFNetworkClientInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8B36C18D93FD300D28DDC /* MFNetworkClientInternal.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		92A8B38118D93FD300D28DDC /* MFNetworkFileCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8B36E18D93FD300D28DDC /* MFNetworkFileCacheManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		92A8B38218D93FD300D28DDC /* MFNetworkFileCacheManagerInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8B37018D93FD300D28DDC /* MFNetworkFileCacheManagerInternal.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		92A8B38318D93FD300D28DDC /* MFNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8B37218D93FD300D28DDC /* MFNetworkOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		92A8B38418D93FD300D28DDC /* MFRunLoopOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8B37418D93FD300D28DDC /* MFRunLoopOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		92A8B38518D93FD300D28DDC /* NSData+CMBExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8B37618D93FD300D28DDC /* NSData+CMBExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		92A8B38618D93FD300D28DDC /* NSObject+GRExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8B37818D93FD300D28DDC /* NSObject+GRExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		92A8B38718D93FD300D28DDC /* NSString+CMBExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8B37A18D93FD300D28DDC /* NSString+CMBExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		92A8B38818D93FD300D28DDC /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8B37C18D93FD300D28DDC /* Reachability.m */; };
 		92DC066818CEE5D80005C638 /* QGMusicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DC066718CEE5D80005C638 /* QGMusicManager.m */; };
 		92F52B7518C85886008BCA12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0118C83BAC008BCA12 /* Foundation.framework */; };
 		92F52B7618C85886008BCA12 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0318C83BAC008BCA12 /* CoreGraphics.framework */; };
@@ -104,6 +116,30 @@
 		9276282118D1A3F80054CE64 /* QGAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGAlertView.h; sourceTree = "<group>"; };
 		9276282218D1A3F80054CE64 /* QGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGAlertView.m; sourceTree = "<group>"; };
 		927E613018CD4AD000AD120F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		92A8B36518D93FD300D28DDC /* MFCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCacheManager.h; sourceTree = "<group>"; };
+		92A8B36618D93FD300D28DDC /* MFCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCacheManager.m; sourceTree = "<group>"; };
+		92A8B36718D93FD300D28DDC /* MFCacheManagerInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCacheManagerInternal.h; sourceTree = "<group>"; };
+		92A8B36818D93FD300D28DDC /* MFCacheManagerInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCacheManagerInternal.m; sourceTree = "<group>"; };
+		92A8B36918D93FD300D28DDC /* MFNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFNetworkClient.h; sourceTree = "<group>"; };
+		92A8B36A18D93FD300D28DDC /* MFNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFNetworkClient.m; sourceTree = "<group>"; };
+		92A8B36B18D93FD300D28DDC /* MFNetworkClientInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFNetworkClientInternal.h; sourceTree = "<group>"; };
+		92A8B36C18D93FD300D28DDC /* MFNetworkClientInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFNetworkClientInternal.m; sourceTree = "<group>"; };
+		92A8B36D18D93FD300D28DDC /* MFNetworkFileCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFNetworkFileCacheManager.h; sourceTree = "<group>"; };
+		92A8B36E18D93FD300D28DDC /* MFNetworkFileCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFNetworkFileCacheManager.m; sourceTree = "<group>"; };
+		92A8B36F18D93FD300D28DDC /* MFNetworkFileCacheManagerInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFNetworkFileCacheManagerInternal.h; sourceTree = "<group>"; };
+		92A8B37018D93FD300D28DDC /* MFNetworkFileCacheManagerInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFNetworkFileCacheManagerInternal.m; sourceTree = "<group>"; };
+		92A8B37118D93FD300D28DDC /* MFNetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFNetworkOperation.h; sourceTree = "<group>"; };
+		92A8B37218D93FD300D28DDC /* MFNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFNetworkOperation.m; sourceTree = "<group>"; };
+		92A8B37318D93FD300D28DDC /* MFRunLoopOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFRunLoopOperation.h; sourceTree = "<group>"; };
+		92A8B37418D93FD300D28DDC /* MFRunLoopOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFRunLoopOperation.m; sourceTree = "<group>"; };
+		92A8B37518D93FD300D28DDC /* NSData+CMBExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CMBExtensions.h"; sourceTree = "<group>"; };
+		92A8B37618D93FD300D28DDC /* NSData+CMBExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CMBExtensions.m"; sourceTree = "<group>"; };
+		92A8B37718D93FD300D28DDC /* NSObject+GRExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+GRExtensions.h"; sourceTree = "<group>"; };
+		92A8B37818D93FD300D28DDC /* NSObject+GRExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+GRExtensions.m"; sourceTree = "<group>"; };
+		92A8B37918D93FD300D28DDC /* NSString+CMBExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CMBExtensions.h"; sourceTree = "<group>"; };
+		92A8B37A18D93FD300D28DDC /* NSString+CMBExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CMBExtensions.m"; sourceTree = "<group>"; };
+		92A8B37B18D93FD300D28DDC /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		92A8B37C18D93FD300D28DDC /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		92DC066618CEE5D80005C638 /* QGMusicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGMusicManager.h; sourceTree = "<group>"; };
 		92DC066718CEE5D80005C638 /* QGMusicManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGMusicManager.m; sourceTree = "<group>"; };
 		92F52B0118C83BAC008BCA12 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -240,6 +276,37 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		92A8B36418D93FD300D28DDC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				92A8B36518D93FD300D28DDC /* MFCacheManager.h */,
+				92A8B36618D93FD300D28DDC /* MFCacheManager.m */,
+				92A8B36718D93FD300D28DDC /* MFCacheManagerInternal.h */,
+				92A8B36818D93FD300D28DDC /* MFCacheManagerInternal.m */,
+				92A8B36918D93FD300D28DDC /* MFNetworkClient.h */,
+				92A8B36A18D93FD300D28DDC /* MFNetworkClient.m */,
+				92A8B36B18D93FD300D28DDC /* MFNetworkClientInternal.h */,
+				92A8B36C18D93FD300D28DDC /* MFNetworkClientInternal.m */,
+				92A8B36D18D93FD300D28DDC /* MFNetworkFileCacheManager.h */,
+				92A8B36E18D93FD300D28DDC /* MFNetworkFileCacheManager.m */,
+				92A8B36F18D93FD300D28DDC /* MFNetworkFileCacheManagerInternal.h */,
+				92A8B37018D93FD300D28DDC /* MFNetworkFileCacheManagerInternal.m */,
+				92A8B37118D93FD300D28DDC /* MFNetworkOperation.h */,
+				92A8B37218D93FD300D28DDC /* MFNetworkOperation.m */,
+				92A8B37318D93FD300D28DDC /* MFRunLoopOperation.h */,
+				92A8B37418D93FD300D28DDC /* MFRunLoopOperation.m */,
+				92A8B37518D93FD300D28DDC /* NSData+CMBExtensions.h */,
+				92A8B37618D93FD300D28DDC /* NSData+CMBExtensions.m */,
+				92A8B37718D93FD300D28DDC /* NSObject+GRExtensions.h */,
+				92A8B37818D93FD300D28DDC /* NSObject+GRExtensions.m */,
+				92A8B37918D93FD300D28DDC /* NSString+CMBExtensions.h */,
+				92A8B37A18D93FD300D28DDC /* NSString+CMBExtensions.m */,
+				92A8B37B18D93FD300D28DDC /* Reachability.h */,
+				92A8B37C18D93FD300D28DDC /* Reachability.m */,
+			);
+			path = Network;
+			sourceTree = SOURCE_ROOT;
+		};
 		92F52AF518C83BAC008BCA12 = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +373,7 @@
 		92F52B7A18C85886008BCA12 /* QGameiOS */ = {
 			isa = PBXGroup;
 			children = (
+				92A8B36418D93FD300D28DDC /* Network */,
 				60027B4618D89920009FCD4A /* UIAlertView+BlockSupport.h */,
 				60027B4718D89920009FCD4A /* UIAlertView+BlockSupport.m */,
 				92F52B8318C85886008BCA12 /* QGAppDelegate.h */,
@@ -460,6 +528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92273E6018CFEC3200EC2E25 /* SKTexture+RectSubtexture.m in Sources */,
+				92A8B38518D93FD300D28DDC /* NSData+CMBExtensions.m in Sources */,
 				92DC066818CEE5D80005C638 /* QGMusicManager.m in Sources */,
 				92F52B8E18C85886008BCA12 /* QGGameView.m in Sources */,
 				92F52B8518C85886008BCA12 /* QGAppDelegate.m in Sources */,
@@ -467,15 +536,26 @@
 				9210218618D17D590071DE17 /* QGSettingsView.m in Sources */,
 				9276280A18D17DE00054CE64 /* QGControlView.m in Sources */,
 				60027B4418D88B0F009FCD4A /* APPChildViewController.m in Sources */,
+				92A8B37F18D93FD300D28DDC /* MFNetworkClient.m in Sources */,
 				9276282318D1A3F80054CE64 /* QGAlertView.m in Sources */,
+				92A8B38018D93FD300D28DDC /* MFNetworkClientInternal.m in Sources */,
+				92A8B37E18D93FD300D28DDC /* MFCacheManagerInternal.m in Sources */,
+				92A8B38618D93FD300D28DDC /* NSObject+GRExtensions.m in Sources */,
 				9210218318D17D180071DE17 /* QGMainViewController.m in Sources */,
 				92F52B8118C85886008BCA12 /* main.m in Sources */,
+				92A8B37D18D93FD300D28DDC /* MFCacheManager.m in Sources */,
 				60EFDC2E18D0A675005F13A9 /* IAPHelper.m in Sources */,
 				60027B4818D89920009FCD4A /* UIAlertView+BlockSupport.m in Sources */,
 				9276281D18D19AAE0054CE64 /* QGScene+BuildLevel.m in Sources */,
+				92A8B38118D93FD300D28DDC /* MFNetworkFileCacheManager.m in Sources */,
 				60027B4018D87B62009FCD4A /* QGLevelsView.m in Sources */,
+				92A8B38418D93FD300D28DDC /* MFRunLoopOperation.m in Sources */,
 				9252DD4018D2B11C00C8FDAF /* QGDataService.m in Sources */,
+				92A8B38818D93FD300D28DDC /* Reachability.m in Sources */,
+				92A8B38718D93FD300D28DDC /* NSString+CMBExtensions.m in Sources */,
+				92A8B38318D93FD300D28DDC /* MFNetworkOperation.m in Sources */,
 				60EFDC2F18D0A675005F13A9 /* RageIAPHelper.m in Sources */,
+				92A8B38218D93FD300D28DDC /* MFNetworkFileCacheManagerInternal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
