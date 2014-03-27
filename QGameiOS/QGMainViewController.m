@@ -87,8 +87,20 @@
                        action: @selector(_handleProductsEvent:)
              forControlEvents: UIControlEventTouchUpInside];
     [[self view] addSubview: productsButton];
-    
-    UIButton *feedbackButton = [[UIButton alloc] initWithFrame: CGRectMake(110, 360, 100, 44)];
+
+    UIButton *restoreButton = [[UIButton alloc] initWithFrame: CGRectMake(80, 360, 160, 44)];
+    [restoreButton setTitle: @"Restore Purchases"
+                    forState: UIControlStateNormal];
+    [restoreButton setBackgroundColor: [UIColor clearColor]];
+    [[restoreButton titleLabel] setFont: [UIFont fontWithName: @"Avenir-Medium"
+                                                         size: 18]];
+    [[restoreButton titleLabel] setTextAlignment: NSTextAlignmentCenter];
+    [restoreButton addTarget: self
+                       action: @selector(_handleRestoreEvent:)
+             forControlEvents: UIControlEventTouchUpInside];
+    [[self view] addSubview: restoreButton];
+
+    UIButton *feedbackButton = [[UIButton alloc] initWithFrame: CGRectMake(110, 410, 100, 44)];
     [feedbackButton setBackgroundColor: [UIColor clearColor]];
     [[feedbackButton titleLabel] setFont: font];
     [[feedbackButton titleLabel] setTextAlignment: NSTextAlignmentCenter];
@@ -353,6 +365,11 @@
                     info: nil];
     
     [self _pushContentView: gameView];
+}
+
+- (void)_handleRestoreEvent: (id)sender
+{
+    [[RageIAPHelper sharedInstance] restoreCompletedTransactions];
 }
 
 @end
