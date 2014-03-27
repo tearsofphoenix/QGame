@@ -16,12 +16,18 @@
     self = [super initWithFrame: frame];
     if (self)
     {
-        [self setBackgroundColor: [UIColor colorWithWhite: 0.9
-                                                    alpha: 0.8]];
-        [[self layer] setCornerRadius: 60];
-        [self setClipsToBounds: YES];
+        UIColor *color = [UIColor colorWithWhite: 0.9
+                                           alpha: 0.8];
+//        [self setBackgroundColor: ];
+//        [[self layer] setCornerRadius: 60];
+//        [self setClipsToBounds: YES];
+        CGColorRef borderColor = [[UIColor blackColor] CGColor];
         
-        UIButton *upButton = [[UIButton alloc] initWithFrame: CGRectMake(40, 0, 48, 48)];
+        UIButton *upButton = [[UIButton alloc] initWithFrame: CGRectMake(48, 0, 48, 48)];
+        [upButton setBackgroundColor: color];
+        
+        [[upButton layer] setBorderColor: borderColor];
+        [[upButton layer] setBorderWidth: 1];
 //        [upButton setBackgroundColor: [UIColor redColor]];
         [upButton setShowsTouchWhenHighlighted: YES];
         [upButton addTarget: self
@@ -31,7 +37,11 @@
                   forState: UIControlStateNormal];
         [self addSubview: upButton];
         
-        UIButton *leftButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 40, 48, 48)];
+        UIButton *leftButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 48, 48, 48)];
+        [leftButton setBackgroundColor: color];
+        [[leftButton layer] setBorderColor: borderColor];
+        [[leftButton layer] setBorderWidth: 1];
+
 //        [leftButton setBackgroundColor: [UIColor greenColor]];
         [leftButton setShowsTouchWhenHighlighted: YES];
         [leftButton addTarget: self
@@ -41,7 +51,12 @@
                     forState: UIControlStateNormal];
         [self addSubview: leftButton];
         
-        UIButton *rightButton = [[UIButton alloc] initWithFrame: CGRectMake(80, 40, 48, 48)];
+        UIButton *rightButton = [[UIButton alloc] initWithFrame: CGRectMake(96, 48, 48, 48)];
+        [rightButton setBackgroundColor: color];
+        
+        [[rightButton layer] setBorderColor: borderColor];
+        [[rightButton layer] setBorderWidth: 1];
+
 //        [rightButton setBackgroundColor: [UIColor blueColor]];
         [rightButton setShowsTouchWhenHighlighted: YES];
         [rightButton addTarget: self
@@ -51,7 +66,10 @@
                      forState: UIControlStateNormal];
         [self addSubview: rightButton];
         
-        UIButton *downButton = [[UIButton alloc] initWithFrame: CGRectMake(40, 80, 48, 48)];
+        UIButton *downButton = [[UIButton alloc] initWithFrame: CGRectMake(48, 48, 48, 48)];
+        [[downButton layer] setBorderColor: borderColor];
+        [[downButton layer] setBorderWidth: 1];
+        [downButton setBackgroundColor: color];
         [downButton setShowsTouchWhenHighlighted: YES];
         [downButton addTarget: self
                        action: @selector(_handleDownButtonTappedEvent:)
