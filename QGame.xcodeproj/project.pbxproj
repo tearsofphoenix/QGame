@@ -10,12 +10,9 @@
 		60020F1318CB0F43004E6C6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F52B0118C83BAC008BCA12 /* Foundation.framework */; };
 		60020F1618CB0F43004E6C6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 60020F1518CB0F43004E6C6A /* main.m */; };
 		60020F1A18CB0F43004E6C6A /* MapGenerator.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60020F1918CB0F43004E6C6A /* MapGenerator.1 */; };
-		60027B4018D87B62009FCD4A /* QGProductsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60027B3F18D87B62009FCD4A /* QGProductsView.m */; };
 		60027B4418D88B0F009FCD4A /* APPChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60027B4218D88B0F009FCD4A /* APPChildViewController.m */; };
 		60027B4518D88B0F009FCD4A /* APPChildViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60027B4318D88B0F009FCD4A /* APPChildViewController.xib */; };
 		60027B4818D89920009FCD4A /* UIAlertView+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 60027B4718D89920009FCD4A /* UIAlertView+BlockSupport.m */; };
-		60EFDC2E18D0A675005F13A9 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EFDC2B18D0A675005F13A9 /* IAPHelper.m */; };
-		60EFDC2F18D0A675005F13A9 /* RageIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EFDC2D18D0A675005F13A9 /* RageIAPHelper.m */; };
 		9210218318D17D180071DE17 /* QGMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9210218218D17D180071DE17 /* QGMainViewController.m */; };
 		9210218618D17D590071DE17 /* QGSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9210218518D17D590071DE17 /* QGSettingsView.m */; };
 		92273E6018CFEC3200EC2E25 /* SKTexture+RectSubtexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 92273E5F18CFEC3200EC2E25 /* SKTexture+RectSubtexture.m */; };
@@ -40,7 +37,6 @@
 		9276281518D1855B0054CE64 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9276281118D1855B0054CE64 /* back@2x.png */; };
 		9276281D18D19AAE0054CE64 /* QGScene+BuildLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9276281C18D19AAE0054CE64 /* QGScene+BuildLevel.m */; };
 		9276282318D1A3F80054CE64 /* QGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9276282218D1A3F80054CE64 /* QGAlertView.m */; };
-		927E613118CD4AD000AD120F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927E613018CD4AD000AD120F /* StoreKit.framework */; };
 		92A8B37D18D93FD300D28DDC /* MFCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8B36618D93FD300D28DDC /* MFCacheManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		92A8B37E18D93FD300D28DDC /* MFCacheManagerInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8B36818D93FD300D28DDC /* MFCacheManagerInternal.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		92A8B37F18D93FD300D28DDC /* MFNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8B36A18D93FD300D28DDC /* MFNetworkClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -84,17 +80,11 @@
 		60020F1518CB0F43004E6C6A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		60020F1818CB0F43004E6C6A /* MapGenerator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MapGenerator-Prefix.pch"; sourceTree = "<group>"; };
 		60020F1918CB0F43004E6C6A /* MapGenerator.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MapGenerator.1; sourceTree = "<group>"; };
-		60027B3E18D87B62009FCD4A /* QGProductsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGProductsView.h; sourceTree = "<group>"; };
-		60027B3F18D87B62009FCD4A /* QGProductsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGProductsView.m; sourceTree = "<group>"; };
 		60027B4118D88B0F009FCD4A /* APPChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPChildViewController.h; sourceTree = SOURCE_ROOT; };
 		60027B4218D88B0F009FCD4A /* APPChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPChildViewController.m; sourceTree = SOURCE_ROOT; };
 		60027B4318D88B0F009FCD4A /* APPChildViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APPChildViewController.xib; sourceTree = SOURCE_ROOT; };
 		60027B4618D89920009FCD4A /* UIAlertView+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+BlockSupport.h"; sourceTree = SOURCE_ROOT; };
 		60027B4718D89920009FCD4A /* UIAlertView+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+BlockSupport.m"; sourceTree = SOURCE_ROOT; };
-		60EFDC2A18D0A675005F13A9 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
-		60EFDC2B18D0A675005F13A9 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
-		60EFDC2C18D0A675005F13A9 /* RageIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RageIAPHelper.h; sourceTree = "<group>"; };
-		60EFDC2D18D0A675005F13A9 /* RageIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RageIAPHelper.m; sourceTree = "<group>"; };
 		9210218118D17D180071DE17 /* QGMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGMainViewController.h; sourceTree = "<group>"; };
 		9210218218D17D180071DE17 /* QGMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGMainViewController.m; sourceTree = "<group>"; };
 		9210218418D17D590071DE17 /* QGSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGSettingsView.h; sourceTree = "<group>"; };
@@ -117,7 +107,6 @@
 		9276281C18D19AAE0054CE64 /* QGScene+BuildLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QGScene+BuildLevel.m"; sourceTree = "<group>"; };
 		9276282118D1A3F80054CE64 /* QGAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGAlertView.h; sourceTree = "<group>"; };
 		9276282218D1A3F80054CE64 /* QGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGAlertView.m; sourceTree = "<group>"; };
-		927E613018CD4AD000AD120F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		92A8B36518D93FD300D28DDC /* MFCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCacheManager.h; sourceTree = "<group>"; };
 		92A8B36618D93FD300D28DDC /* MFCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCacheManager.m; sourceTree = "<group>"; };
 		92A8B36718D93FD300D28DDC /* MFCacheManagerInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCacheManagerInternal.h; sourceTree = "<group>"; };
@@ -193,7 +182,6 @@
 			files = (
 				92F52B7618C85886008BCA12 /* CoreGraphics.framework in Frameworks */,
 				92F52B7718C85886008BCA12 /* UIKit.framework in Frameworks */,
-				927E613118CD4AD000AD120F /* StoreKit.framework in Frameworks */,
 				92F52B7918C85886008BCA12 /* SpriteKit.framework in Frameworks */,
 				92F52B7518C85886008BCA12 /* Foundation.framework in Frameworks */,
 			);
@@ -218,18 +206,6 @@
 				60020F1818CB0F43004E6C6A /* MapGenerator-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		60EFDC2918D0A675005F13A9 /* IAP */ = {
-			isa = PBXGroup;
-			children = (
-				60EFDC2A18D0A675005F13A9 /* IAPHelper.h */,
-				60EFDC2B18D0A675005F13A9 /* IAPHelper.m */,
-				60EFDC2C18D0A675005F13A9 /* RageIAPHelper.h */,
-				60EFDC2D18D0A675005F13A9 /* RageIAPHelper.m */,
-			);
-			name = IAP;
-			path = ../IAP;
 			sourceTree = "<group>";
 		};
 		92273E6618CFFB6D00EC2E25 /* Resources */ = {
@@ -273,8 +249,6 @@
 				92F52B9018C85886008BCA12 /* QGScene.m */,
 				9276281B18D19AAE0054CE64 /* QGScene+BuildLevel.h */,
 				9276281C18D19AAE0054CE64 /* QGScene+BuildLevel.m */,
-				60027B3E18D87B62009FCD4A /* QGProductsView.h */,
-				60027B3F18D87B62009FCD4A /* QGProductsView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -333,7 +307,6 @@
 		92F52B0018C83BAC008BCA12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				927E613018CD4AD000AD120F /* StoreKit.framework */,
 				92F52B0118C83BAC008BCA12 /* Foundation.framework */,
 				92F52B0318C83BAC008BCA12 /* CoreGraphics.framework */,
 				92F52B0518C83BAC008BCA12 /* UIKit.framework */,
@@ -391,7 +364,6 @@
 				92273E5E18CFEC3200EC2E25 /* SKTexture+RectSubtexture.h */,
 				92273E5F18CFEC3200EC2E25 /* SKTexture+RectSubtexture.m */,
 				92F52B9418C85887008BCA12 /* Images.xcassets */,
-				60EFDC2918D0A675005F13A9 /* IAP */,
 				92273E6618CFFB6D00EC2E25 /* Resources */,
 				92F52B7B18C85886008BCA12 /* Supporting Files */,
 			);
@@ -460,7 +432,7 @@
 						DevelopmentTeam = UFT75NKJF6;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.InterAppAudio = {
 								enabled = 0;
@@ -548,17 +520,14 @@
 				9210218318D17D180071DE17 /* QGMainViewController.m in Sources */,
 				92F52B8118C85886008BCA12 /* main.m in Sources */,
 				92A8B37D18D93FD300D28DDC /* MFCacheManager.m in Sources */,
-				60EFDC2E18D0A675005F13A9 /* IAPHelper.m in Sources */,
 				60027B4818D89920009FCD4A /* UIAlertView+BlockSupport.m in Sources */,
 				9276281D18D19AAE0054CE64 /* QGScene+BuildLevel.m in Sources */,
 				92A8B38118D93FD300D28DDC /* MFNetworkFileCacheManager.m in Sources */,
-				60027B4018D87B62009FCD4A /* QGProductsView.m in Sources */,
 				92A8B38418D93FD300D28DDC /* MFRunLoopOperation.m in Sources */,
 				9252DD4018D2B11C00C8FDAF /* QGDataService.m in Sources */,
 				92A8B38818D93FD300D28DDC /* Reachability.m in Sources */,
 				92A8B38718D93FD300D28DDC /* NSString+CMBExtensions.m in Sources */,
 				92A8B38318D93FD300D28DDC /* MFNetworkOperation.m in Sources */,
-				60EFDC2F18D0A675005F13A9 /* RageIAPHelper.m in Sources */,
 				92A8B38218D93FD300D28DDC /* MFNetworkFileCacheManagerInternal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -681,8 +650,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: XIAOMING LIU (MXQULZML35)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QGameiOS/QGameiOS-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -692,7 +661,7 @@
 				INFOPLIST_FILE = "QGameiOS/QGameiOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4AD9B5E1-6172-4FCD-92DF-C6FDD78AB38D";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -704,14 +673,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: XIAOMING LIU (UFT75NKJF6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QGameiOS/QGameiOS-Prefix.pch";
 				INFOPLIST_FILE = "QGameiOS/QGameiOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4AD9B5E1-6172-4FCD-92DF-C6FDD78AB38D";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

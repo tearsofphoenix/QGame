@@ -9,10 +9,10 @@
 #import "QGMainViewController.h"
 #import "QGSettingsView.h"
 #import "QGGameView.h"
-#import "QGProductsView.h"
+
 #import "APPChildViewController.h"
 #import "QGDataService.h"
-#import "RageIAPHelper.h"
+
 #import "UIAlertView+BlockSupport.h"
 #import "QGScene.h"
 #import "QGProductsView.h"
@@ -77,30 +77,7 @@
              forControlEvents: UIControlEventTouchUpInside];
     [[self view] addSubview: settingsButton];
     
-    UIButton *productsButton = [[UIButton alloc] initWithFrame: CGRectMake(110, 310, 100, 44)];
-    [productsButton setTitle: @"Products"
-                    forState: UIControlStateNormal];
-    [productsButton setBackgroundColor: [UIColor clearColor]];
-    [[productsButton titleLabel] setFont: font];
-    [[productsButton titleLabel] setTextAlignment: NSTextAlignmentCenter];
-    [productsButton addTarget: self
-                       action: @selector(_handleProductsEvent:)
-             forControlEvents: UIControlEventTouchUpInside];
-    [[self view] addSubview: productsButton];
-
-    UIButton *restoreButton = [[UIButton alloc] initWithFrame: CGRectMake(80, 360, 160, 44)];
-    [restoreButton setTitle: @"Restore Purchases"
-                    forState: UIControlStateNormal];
-    [restoreButton setBackgroundColor: [UIColor clearColor]];
-    [[restoreButton titleLabel] setFont: [UIFont fontWithName: @"Avenir-Medium"
-                                                         size: 18]];
-    [[restoreButton titleLabel] setTextAlignment: NSTextAlignmentCenter];
-    [restoreButton addTarget: self
-                       action: @selector(_handleRestoreEvent:)
-             forControlEvents: UIControlEventTouchUpInside];
-    [[self view] addSubview: restoreButton];
-
-    UIButton *feedbackButton = [[UIButton alloc] initWithFrame: CGRectMake(110, 410, 100, 44)];
+    UIButton *feedbackButton = [[UIButton alloc] initWithFrame: CGRectMake(110, 310, 100, 44)];
     [feedbackButton setBackgroundColor: [UIColor clearColor]];
     [[feedbackButton titleLabel] setFont: font];
     [[feedbackButton titleLabel] setTextAlignment: NSTextAlignmentCenter];
@@ -306,38 +283,20 @@
     [[_pageController view] removeFromSuperview];
 }
 
-- (void)_handleProductsEvent: (id)sender
-{
-    QGProductsView *productsView = [[QGProductsView alloc] initWithFrame: [[self view] bounds]];
-    [self _pushContentView: productsView];
-}
+//- (void)_handleProductsEvent: (id)sender
+//{
+//    QGProductsView *productsView = [[QGProductsView alloc] initWithFrame: [[self view] bounds]];
+//    [self _pushContentView: productsView];
+//}
 
 - (void)childViewControllerTapped: (APPChildViewController *)viewController
 {
     NSInteger index = [viewController index];
-    BOOL purchased = [[RageIAPHelper sharedInstance] productPurchased: QGUnlockProductID];
     
     if (index > 0)
     {
-        if (purchased)
-        {
             [self _hideLevelViewController];
             [self _showGameViewAtLevel: index];
-        }else
-        {
-            [[UIAlertView alertWithTitle: nil
-                                 message: @"Unlock the reset levels?"
-                       cancelButtonTitle: @"Cancel"
-                       otherButtonTitles: @[ @"OK" ]
-                                callback: (^(NSInteger buttonIndex)
-                                           {
-                                               if (buttonIndex == 1)
-                                               {
-                                                   NSArray *products = [[QGDataService service] products];
-                                                   [[RageIAPHelper sharedInstance] buyProduct: [products firstObject]];
-                                               }
-                                           })] show];
-        }
     }else
     {
         NSSet *set = [NSSet setWithArray: [[NSUserDefaults standardUserDefaults] objectForKey: QGPassedLevel]];
@@ -365,11 +324,6 @@
                     info: nil];
     
     [self _pushContentView: gameView];
-}
-
-- (void)_handleRestoreEvent: (id)sender
-{
-    [[RageIAPHelper sharedInstance] restoreCompletedTransactions];
 }
 
 @end

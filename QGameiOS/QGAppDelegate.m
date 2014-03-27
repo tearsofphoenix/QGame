@@ -8,7 +8,7 @@
 
 #import "QGAppDelegate.h"
 #import "QGGameView.h"
-#import "RageIAPHelper.h"
+
 #import "QGMainViewController.h"
 #import "QGDataService.h"
 
@@ -27,8 +27,6 @@
     [_window setRootViewController: viewController];
     
     [_window makeKeyAndVisible];
-    
-    [RageIAPHelper sharedInstance];
     
     // Override point for customization after application launch.
     return YES;
